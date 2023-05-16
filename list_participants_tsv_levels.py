@@ -8,8 +8,15 @@ import pandas as pd
 from rich import print
 from rich.logging import RichHandler
 
+from autodetect_dates import read_csv
+
+INCLUDE_LEVELS = False
+LOG_LEVEL = "INFO"
 FORMAT = "%(message)s"
-logging.basicConfig(level="INFO", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
+
+logging.basicConfig(
+    level=LOG_LEVEL, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
+)
 
 log = logging.getLogger("rich")
 
@@ -17,6 +24,130 @@ log = logging.getLogger("rich")
 CONTROLLED_TERMS = {
     "participant_id": "nb:ParticipantID",
 }
+
+
+
+def init_output(include_levels: bool = True) -> dict[str, list]:
+    if include_levels:
+        return {
+            "dataset": [],
+            "nb_rows": [],
+            "column": [],
+            "value": [],
+            "type": [],
+            "nb_levels": [],
+            "is_row": [],
+            "description": [],
+            "controlled_term": [],
+            "units": [],
+        }
+    else:
+        return {
+            "dataset": [],
+            "nb_rows": [],
+            "column": [],
+            "type": [],
+            "nb_levels": [],
+            "description": [],
+            "controlled_term": [],
+        }
+
+
+def new_row(dataset_name: str) -> dict[str, str | int | bool]:
+    return {
+        "dataset": dataset_name,
+        "column": "n/a",
+        "type": "n/a",
+        "nb_levels": 0,
+        "value": "n/a",
+        "is_row": "n/a",
+        "description": "n/a",
+        "controlled_term": "n/a",
+        "units": "n/a",
+    }
+
+
+def main():
+    datalad_superdataset = Path("/home/remi/datalad/datasets.datalad.org")
+    openneuro = datalad_superdataset / "openneuro"
+
+    datasets = pd.read_csv(Path(__file__).resolve().parent / "openneuro.tsv", sep="\t")
+
+    output = init_output(include_levels=INCLUDE_LEVELS)
+
+    for dataset_name in datasets.name:
+        mask = datasets.name == dataset_name
+
+        log.info(f"dataset '{dataset_name}'")
+
+        if (
+            not datasets[mask].has_mri.values[0]
+            or not datasets[mask].has_participant_tsv.values[0]
+        ):
+            continue
+
+        row_template = new_row(dataset_name)
+
+        participant_tsv = openneuro / dataset_name / "participants.tsv"
+        try:
+            participants = read_csv(participant_tsv, sep="\t")
+        except pd.errors.ParserError:
+            warn(f"Could not parse: {participant_tsv}")
+            continue
+
+        participants_dict = {}
+        if datasets[mask].has_participant_json.values[0]:
+            participant_json = openneuro / dataset_name / "participants.json"
+            with open(participant_json) as f:
+                participants_dict = json.load(f)
+
+        log.debug(f"dataset {dataset_name} has columns: {participants.columns.values}")
+
+        for column in participants.columns:
+            this_row = row_template.copy()
+
+            this_row["column"] = column
+
+            this_row["nb_rows"] = len(participants)
+
+            this_row["is_row"] = True
+
+            if column in CONTROLLED_TERMS.keys():
+                this_row["controlled_term"] = CONTROLLED_TERMS[column]
+
+            if participants_dict and participants_dict.get(column):
+                this_row["description"] = participants_dict[column].get(
+                    "Description", "n/a"
+                )
+                
+            this_row["type"] = participants[column].dtype
+
+            this_row["nb_levels"] = len(participants[column].unique())
+
+            for key in output.keys():
+                output[key].append(this_row[key])
+
+            if not INCLUDE_LEVELS:
+                continue
+
+            output = list_levels(
+                output, participants, participants_dict, column, row_template
+            )
+
+    output = pd.DataFrame.from_dict(output)
+
+    output_filename = Path(__file__).resolve().parent / "bulk_annotation_source.tsv"
+    if not INCLUDE_LEVELS:
+        output_filename = (
+            Path(__file__).resolve().parent / "bulk_annotation_columns.tsv"
+        )
+
+    output.to_csv(
+        output_filename,
+        index=False,
+        sep="\t",
+    )
+
 
 # columns whose levels do not need to be listed
 # probably better handled by some fuzzy matching
@@ -46,89 +177,6 @@ COLUMNS_TO_SKIP = (
 )
 
 MAX_NB_LEVELS = 100
-
-
-def main():
-    datalad_superdataset = Path("/home/remi/datalad/datasets.datalad.org")
-    openneuro = datalad_superdataset / "openneuro"
-
-    datasets = pd.read_csv(Path(__file__).resolve().parent / "openneuro.tsv", sep="\t")
-
-    output = {
-        "dataset": [],
-        "column": [],
-        "value": [],
-        "is_row": [],
-        "description": [],
-        "controlled_term": [],
-        "units": [],
-    }
-
-    for dataset_name in datasets.name:
-        mask = datasets.name == dataset_name
-
-        log.info(f"dataset '{dataset_name}'")
-
-        if (
-            not datasets[mask].has_mri.values[0]
-            or not datasets[mask].has_participant_tsv.values[0]
-        ):
-            continue
-
-        row_template = new_row(dataset_name)
-
-        participant_tsv = openneuro / dataset_name / "participants.tsv"
-        try:
-            participants = pd.read_csv(participant_tsv, sep="\t")
-        except pd.errors.ParserError:
-            warn(f"Could not parse: {participant_tsv}")
-            continue
-
-        participants_dict = {}
-        if datasets[mask].has_participant_json.values[0]:
-            participant_json = openneuro / dataset_name / "participants.json"
-            with open(participant_json) as f:
-                participants_dict = json.load(f)
-
-        log.debug(f"dataset {dataset_name} has columns: {participants.columns.values}")
-
-        for column in participants.columns:
-            this_row = row_template.copy()
-
-            this_row["column"] = column
-            this_row["is_row"] = True
-            if column in CONTROLLED_TERMS.keys():
-                this_row["controlled_term"] = CONTROLLED_TERMS[column]
-            if participants_dict and participants_dict.get(column):
-                this_row["description"] = participants_dict[column].get(
-                    "Description", "n/a"
-                )
-            for key in this_row.keys():
-                output[key].append(this_row[key])
-
-            output = list_levels(
-                output, participants, participants_dict, column, row_template
-            )
-
-    output = pd.DataFrame.from_dict(output)
-
-    output.to_csv(
-        Path(__file__).resolve().parent / "bulk_annotation_source.tsv",
-        index=False,
-        sep="\t",
-    )
-
-
-def new_row(dataset_name: str) -> dict[str, str]:
-    return {
-        "dataset": dataset_name,
-        "column": "n/a",
-        "value": "n/a",
-        "is_row": "n/a",
-        "description": "n/a",
-        "controlled_term": "n/a",
-        "units": "n/a",
-    }
 
 
 def list_levels(

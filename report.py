@@ -40,7 +40,9 @@ def print_results(datasets):
             f" - with {der}: {(mask).sum()} ({datasets[mask].nb_subjects.sum()} subjects)"
         )
         print(f"   - with participants.tsv: {datasets[mask].has_participant_tsv.sum()}")
-        print(f"   - with phenotype directory: {datasets[mask].has_phenotype_dir.sum()}")
+        print(
+            f"   - with phenotype directory: {datasets[mask].has_phenotype_dir.sum()}"
+        )
 
 
 def nb_participants_tsv_with_more_than_one_column(series):
