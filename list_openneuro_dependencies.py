@@ -16,6 +16,7 @@ from rich import print
 VERBOSE = False
 
 # adapt to your set up
+# LOCAL_DIR = Path(__file__).resolve().parent / "data"
 LOCAL_DIR = "/home/remi/datalad/datasets.datalad.org"
 
 URL_OPENNEURO = "https://github.com/OpenNeuroDatasets/"

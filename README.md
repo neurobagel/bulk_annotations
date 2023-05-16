@@ -43,25 +43,18 @@ Number of datasets: 258 with 10582 subjects including:
 
 ## Install openneuro and openneuro-derivatives using datalad
 
-datalad superdataset must be installed via:
+openneuro can be installed via (this will take a while):
 
 ```bash
-datalad install ///
+make openneuro
 ```
 
 openneuro derivatives can be installed via (this will take a while):
 
 ```bash
-cd datasets.datalad.org
-datalad install openneuro-derivatives --recursive -J 12
+make openneuro-derivatives
 ```
 
-openneuro can be installed via (this will take a while):
-
-```bash
-cd datasets.datalad.org
-datalad install openneuro --recursive -J 12
-```
 
 ## listing datasets contents
 
