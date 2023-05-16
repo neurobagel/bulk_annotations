@@ -30,11 +30,11 @@ def init_dataset() -> dict(str, []):
         "participant_columns": [],
         "has_phenotype_dir": [],
         "has_mri": [],
-        "nb_subjects": [], # usually the number of subjects folder in raw dataset
-        "raw": [], # link to raw dataset
-        "fmriprep": [], # link to fmriprep dataset if exists
-        "freesurfer": [], # link to freesurfer dataset if exists
-        "mriqc": [], # link to mriqc dataset if exists
+        "nb_subjects": [],  # usually the number of subjects folder in raw dataset
+        "raw": [],  # link to raw dataset
+        "fmriprep": [],  # link to fmriprep dataset if exists
+        "freesurfer": [],  # link to freesurfer dataset if exists
+        "mriqc": [],  # link to mriqc dataset if exists
     }
 
 

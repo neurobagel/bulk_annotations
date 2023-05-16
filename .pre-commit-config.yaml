@@ -25,21 +25,21 @@ repos:
     -   id: flynt
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.1
+    rev: v3.4.0
     hooks:
       - id: pyupgrade
         args: [--py311-plus]
 
   - repo: https://github.com/psf/black
-    rev: 23.1.0
+    rev: 23.3.0
     hooks:
       - id: black
-        args: [--verbose, -l, "99"]
+        args: [--config=pyproject.toml]
 
-  # - repo: https://github.com/codespell-project/codespell
-  #   rev: v2.2.4
-  #   hooks:
-  #     - id: codespell
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.4
+    hooks:
+      - id: codespell
 
   - repo: https://github.com/pyCQA/flake8
     rev: 6.0.0

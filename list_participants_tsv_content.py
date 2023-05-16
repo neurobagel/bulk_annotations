@@ -4,15 +4,12 @@ import re
 from pathlib import Path
 from warnings import warn
 
-import numpy as np
 import pandas as pd
 from rich import print
 from rich.logging import RichHandler
 
 FORMAT = "%(message)s"
-logging.basicConfig(
-    level="INFO", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
-)
+logging.basicConfig(level="INFO", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
 
 log = logging.getLogger("rich")
 
@@ -90,7 +87,7 @@ def main():
         participants_dict = {}
         if datasets[mask].has_participant_json.values[0]:
             participant_json = openneuro / dataset_name / "participants.json"
-            with open(participant_json, "r") as f:
+            with open(participant_json) as f:
                 participants_dict = json.load(f)
 
         log.debug(f"dataset {dataset_name} has columns: {participants.columns.values}")

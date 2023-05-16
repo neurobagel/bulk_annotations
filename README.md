@@ -72,4 +72,4 @@ and it will create TSV file with basic info for each dataset and its derivatives
 ### TODO:
 
 - make it able to install on the fly datasets or subdatasets
-  (especially `sourcedata/raw` for the openneuro-derivatives) 
+  (especially `sourcedata/raw` for the openneuro-derivatives)
