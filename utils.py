@@ -19,7 +19,7 @@ def output_dir() -> Path:
     return Path(__file__).parent / "outputs"
 
 
-def dt_inplace(df:pd.DataFrame) -> pd.DataFrame:
+def dt_inplace(df: pd.DataFrame) -> pd.DataFrame:
     """Automatically detect and convert (in place!) each dataframe column \
     of datatype 'object' to a datetime just \
     when ALL of its non-NaN values can be successfully parsed by pd.to_datetime().
@@ -58,16 +58,10 @@ def is_yes_no(levels: pd.Series) -> bool:
     NaN are dropped before checking.
     """
     levels = levels.dropna()
-    return all((isinstance(x, str) and x.lower() in ["no", "yes"] for x in levels.values))
+    return all(isinstance(x, str) and x.lower() in ["no", "yes"] for x in levels.values)
 
 
 def is_euro_format(levels: pd.Series) -> bool:
     """Return True if all values are numbers in with a comma as decimal separator."""
     levels = levels.dropna()
-    return all(
-        (
-            isinstance(x, str)
-            and re.match("[-]?[ ]?[0-9]*,[0-9]*", x)
-            for x in levels.unique()
-        )
-    )    
+    return all(isinstance(x, str) and re.match("[-]?[ ]?[0-9]*,[0-9]*", x) for x in levels.unique())

@@ -22,7 +22,7 @@ from warnings import warn
 
 import pandas as pd
 
-from utils import bulk_annotation_logger, is_yes_no, output_dir, read_csv, is_euro_format
+from utils import bulk_annotation_logger, is_euro_format, is_yes_no, output_dir, read_csv
 
 LOG_LEVEL = "INFO"
 
