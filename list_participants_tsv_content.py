@@ -141,10 +141,10 @@ def list_levels(
     column: str,
     row_template: dict[str, str],
 ) -> pd.DataFrame:
-    """Get levels from data dictionnary first, then from the data itself, \
-    and appends them to the output dictionnary.
+    """Get levels from data dictionary first, then from the data itself, \
+    and appends them to the output dictionary.
 
-    Adds any undefined level not found in the data dictionnary.
+    Adds any undefined level not found in the data dictionary.
 
     Skips columns in COLUMNS_TO_SKIP
     or columns that only contain "no" and "yes" values.

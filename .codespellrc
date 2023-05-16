@@ -1,0 +1,3 @@
+[codespell]
+skip = *.tsv,.git,env
+builtin = clear,rare
