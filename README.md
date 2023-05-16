@@ -2,8 +2,7 @@
 
 Retroactively annotate a large number of BIDS datasets at once
 
-
-# list_openneuro_derivatives
+## list_openneuro_derivatives
 
 **OpenNeuro datasets:**
 
@@ -38,9 +37,13 @@ Number of datasets: 258 with 10582 subjects including:
    - with participants.tsv: 189
    - with phenotype directory: 11
 
-## install openneuro and openneuro-derivatives using datalad
+## Requirements
 
-datalad superdataset must be installed via
+- install datalad: http://handbook.datalad.org/en/latest/intro/installation.html
+
+## Install openneuro and openneuro-derivatives using datalad
+
+datalad superdataset must be installed via:
 
 ```bash
 datalad install ///
@@ -60,12 +63,13 @@ cd datasets.datalad.org
 datalad install openneuro --recursive -J 12
 ```
 
-## listing
+## listing datasets contents
 
-run `list_openneuro_dependencies.py` and it will
-will create TSV file with basic info for each dataset and its derivatives.
+run `list_openneuro_dependencies.py`
+and it will create TSV file with basic info for each dataset and its derivatives.
 
 
-## TODO:
+### TODO:
 
-- make it able to install datasets or subdatasets (especially `sourcedata/raw`) on the fly
+- make it able to install on the fly datasets or subdatasets
+  (especially `sourcedata/raw` for the openneuro-derivatives) 
