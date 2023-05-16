@@ -40,8 +40,7 @@ def print_results(datasets):
 
 
 def nb_participants_tsv_with_more_than_one_column(series):
-    nb = sum(len(i) > 1 for i in series if not isinstance(i, bool))
-    return nb
+    return sum(len(i) > 1 for i in series if not isinstance(i, bool))
 
 
 if __name__ == "__main__":

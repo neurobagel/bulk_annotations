@@ -225,9 +225,8 @@ def install_dataset(dataset_pth: Path, verbose: bool) -> None:
         if verbose:
             print(f"installing: {dataset_pth}")
         dl_dataset.install()
-    else:
-        if verbose:
-            print(f"{dataset_pth} already installed")
+    elif verbose:
+        print(f"{dataset_pth} already installed")
 
 
 def get_nb_subjects(pth: Path) -> int:
