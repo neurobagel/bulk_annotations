@@ -1,4 +1,5 @@
 rich
 datalad
+pandas
 pandas-stubs
 pytest
