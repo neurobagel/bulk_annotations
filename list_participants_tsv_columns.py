@@ -2,11 +2,17 @@
 
 Tries to identify columns:
 - that are all dates or timestamps
-- controlled terms 
+- controlled terms
 - have a description in participants.json
 - columns data type
 - nb of levels in that column
 - nb of rows in the dataset
+
+This is saved in:
+- bulk_annotation_columns.tsv
+
+Also saved:
+- unique_columns.tsv counts the number of for column name
 """
 
 
@@ -18,14 +24,12 @@ from warnings import warn
 import pandas as pd
 from rich.logging import RichHandler
 
-from autodetect_dates import read_csv
+from utils import output_dir, read_csv
 
 LOG_LEVEL = "INFO"
 FORMAT = "%(message)s"
 
-logging.basicConfig(
-    level=LOG_LEVEL, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
-)
+logging.basicConfig(level=LOG_LEVEL, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
 
 log = logging.getLogger("rich")
 
@@ -33,8 +37,8 @@ CONTROLLED_TERMS = {
     "participant_id": "nb:ParticipantID",
 }
 
-def init_output() -> dict[str, list]:
 
+def init_output() -> dict[str, list]:
     return {
         "dataset": [],
         "nb_rows": [],
@@ -70,10 +74,7 @@ def main():
 
         log.info(f"dataset '{dataset_name}'")
 
-        if (
-            not datasets[mask].has_mri.values[0]
-            or not datasets[mask].has_participant_tsv.values[0]
-        ):
+        if not datasets[mask].has_mri.values[0] or not datasets[mask].has_participant_tsv.values[0]:
             continue
 
         row_template = new_row(dataset_name)
@@ -94,7 +95,6 @@ def main():
         log.debug(f"dataset {dataset_name} has columns: {participants.columns.values}")
 
         for column in participants.columns:
-
             this_row = row_template.copy()
 
             this_row["column"] = column
@@ -107,10 +107,8 @@ def main():
                 this_row["controlled_term"] = CONTROLLED_TERMS[column]
 
             if participants_dict and participants_dict.get(column):
-                this_row["description"] = participants_dict[column].get(
-                    "Description", "n/a"
-                )
-                
+                this_row["description"] = participants_dict[column].get("Description", "n/a")
+
             this_row["type"] = participants[column].dtype
 
             this_row["nb_levels"] = len(participants[column].unique())
@@ -120,15 +118,16 @@ def main():
 
     output = pd.DataFrame.from_dict(output)
 
-    output_filename = (
-        Path(__file__).resolve().parent / "bulk_annotation_columns.tsv"
-    )
+    output_filename = output_dir() / "bulk_annotation_columns.tsv"
 
     output.to_csv(
         output_filename,
         index=False,
         sep="\t",
     )
+
+    count = output.column.value_counts()
+    count.to_csv(output_dir() / "unique_columns.tsv", sep="\t")
 
 
 if __name__ == "__main__":

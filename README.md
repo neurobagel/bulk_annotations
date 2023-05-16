@@ -2,8 +2,6 @@
 
 Retroactively annotate a large number of BIDS datasets at once
 
-## list_openneuro_derivatives
-
 **OpenNeuro datasets:**
 
 Number of datasets: 790 with 34479 subjects including:
@@ -39,7 +37,8 @@ Number of datasets: 258 with 10582 subjects including:
 
 ## Requirements
 
-- install datalad: http://handbook.datalad.org/en/latest/intro/installation.html
+- datalad: http://handbook.datalad.org/en/latest/intro/installation.html
+- requires make
 
 ## Install openneuro and openneuro-derivatives using datalad
 
@@ -54,6 +53,10 @@ openneuro derivatives can be installed via (this will take a while):
 ```bash
 make openneuro-derivatives
 ```
+
+### Update datasets to get the latest version
+
+WIP
 
 
 ## listing datasets contents

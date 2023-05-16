@@ -5,18 +5,15 @@ from pathlib import Path
 from warnings import warn
 
 import pandas as pd
+from autodetect_dates import read_csv
 from rich import print
 from rich.logging import RichHandler
-
-from autodetect_dates import read_csv
 
 INCLUDE_LEVELS = False
 LOG_LEVEL = "INFO"
 FORMAT = "%(message)s"
 
-logging.basicConfig(
-    level=LOG_LEVEL, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
-)
+logging.basicConfig(level=LOG_LEVEL, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
 
 log = logging.getLogger("rich")
 
@@ -24,7 +21,6 @@ log = logging.getLogger("rich")
 CONTROLLED_TERMS = {
     "participant_id": "nb:ParticipantID",
 }
-
 
 
 def init_output(include_levels: bool = True) -> dict[str, list]:
@@ -80,10 +76,7 @@ def main():
 
         log.info(f"dataset '{dataset_name}'")
 
-        if (
-            not datasets[mask].has_mri.values[0]
-            or not datasets[mask].has_participant_tsv.values[0]
-        ):
+        if not datasets[mask].has_mri.values[0] or not datasets[mask].has_participant_tsv.values[0]:
             continue
 
         row_template = new_row(dataset_name)
@@ -116,10 +109,8 @@ def main():
                 this_row["controlled_term"] = CONTROLLED_TERMS[column]
 
             if participants_dict and participants_dict.get(column):
-                this_row["description"] = participants_dict[column].get(
-                    "Description", "n/a"
-                )
-                
+                this_row["description"] = participants_dict[column].get("Description", "n/a")
+
             this_row["type"] = participants[column].dtype
 
             this_row["nb_levels"] = len(participants[column].unique())
@@ -130,17 +121,13 @@ def main():
             if not INCLUDE_LEVELS:
                 continue
 
-            output = list_levels(
-                output, participants, participants_dict, column, row_template
-            )
+            output = list_levels(output, participants, participants_dict, column, row_template)
 
     output = pd.DataFrame.from_dict(output)
 
     output_filename = Path(__file__).resolve().parent / "bulk_annotation_source.tsv"
     if not INCLUDE_LEVELS:
-        output_filename = (
-            Path(__file__).resolve().parent / "bulk_annotation_columns.tsv"
-        )
+        output_filename = Path(__file__).resolve().parent / "bulk_annotation_columns.tsv"
 
     output.to_csv(
         output_filename,
@@ -223,9 +210,7 @@ def list_levels(
     undefined_levels = set(actual_levels) - set(levels.keys())
 
     if len(undefined_levels) > MAX_NB_LEVELS:
-        log.info(
-            f"  column '{column}': skipping column with {len(undefined_levels)} levels"
-        )
+        log.info(f"  column '{column}': skipping column with {len(undefined_levels)} levels")
         return output
 
     log.info(f"  column '{column}': defined levels: {set(levels.keys())}")
@@ -257,9 +242,7 @@ def is_categorical(series):
         return True
     elif all(isinstance(x, (str)) for x in series.unique()):
         if all(re.match("([0-9]*[,]{0-1}[0-9]*)", x) for x in series.unique()):
-            log.info(
-                f"  series with comma instead of dot for decimal separator: {series}"
-            )
+            log.info(f"  series with comma instead of dot for decimal separator: {series}")
             print("foo")
             return False
         if all(re.match("([- ]{0-1}[0-9]*)", x) for x in series.unique()):
