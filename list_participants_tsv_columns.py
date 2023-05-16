@@ -65,7 +65,7 @@ def main():
     datalad_superdataset = Path("/home/remi/datalad/datasets.datalad.org")
     openneuro = datalad_superdataset / "openneuro"
 
-    datasets = pd.read_csv(Path(__file__).resolve().parent / "openneuro.tsv", sep="\t")
+    datasets = pd.read_csv(output_dir() / "openneuro.tsv", sep="\t")
 
     output = init_output()
 

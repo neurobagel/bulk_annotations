@@ -5,7 +5,7 @@ import pandas as pd
 
 
 def output_dir():
-    return Path(__file__).parent.parent / "outputs"
+    return Path(__file__).parent / "outputs"
 
 
 def dt_inplace(df):
