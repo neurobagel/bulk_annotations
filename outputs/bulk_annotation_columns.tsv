@@ -377,7 +377,7 @@ ds000157	30	diet_success	float64	10	n/a	n/a
 ds000157	30	diet_importance	float64	7	subject's self-rating of how important dieting is to them	n/a
 ds000157	30	appetite_pre	float64	14	subject's self-rating of appetite strength when asked before the scan	n/a
 ds000157	30	appetite_post	float64	8	subject's self-rating of appetite strength when asked after the scan	n/a
-ds000157	30	oral_contraceptive	object	2	whether or not the subject was using an oral contraceptive	n/a
+ds000157	30	oral_contraceptive	yes/no	2	whether or not the subject was using an oral contraceptive	n/a
 ds000157	30	days_since_menstruationi	int64	18	n/a	n/a
 ds000157	30	cycle_phase_covariate	int64	3	Menstrual Cycle phase (based on days_since_menstruation and oral_contraceptive	n/a
 ds000168	35	participant_id	object	35	n/a	nb:ParticipantID
@@ -472,7 +472,7 @@ ds000201	86	MenstrualPhaseSession1	object	5	determined by participants' self-rep
 ds000201	86	MenstrualPhaseSession2	object	5	determined by participants' self-reported dates for last menstruation if applicable	n/a
 ds000201	86	SleepDeprivedSession1	object	6	experimenter's guess about participant's condition, for validation of blinding	n/a
 ds000201	86	SleepDeprivedSession2	object	6	experimenter's guess about participant's condition, for validation of blinding	n/a
-ds000201	86	EverBeenInStudyBefore	object	3	whether participant has been in fMRI or experimental psychology experiment before, self-report yes/no	n/a
+ds000201	86	EverBeenInStudyBefore	yes/no	3	whether participant has been in fMRI or experimental psychology experiment before, self-report yes/no	n/a
 ds000201	86	MMSE	float64	5	Mini Mental State Exam, score	n/a
 ds000201	86	SawThroughEMGElectrodes	object	5	Whether participant realised that electrodes on face were for EMG	n/a
 ds000201	86	SawThroughZPG	object	4	Whether participant realised that opponents in Zürich Prosocial Game were not real	n/a
@@ -716,7 +716,7 @@ ds000243	120	participant_id	object	120	n/a	nb:ParticipantID
 ds000243	120	Age	float64	111	n/a	n/a
 ds000243	120	Gender	object	2	n/a	n/a
 ds000243	120	Handedness	object	1	n/a	n/a
-ds000243	120	Native English Only	object	1	n/a	n/a
+ds000243	120	Native English Only	yes/no	1	n/a	n/a
 ds000243	120	Total rest minutes	float64	14	n/a	n/a
 ds000244	12	participant_id	object	12	n/a	nb:ParticipantID
 ds000244	12	sex	object	2	n/a	n/a
@@ -969,20 +969,20 @@ ds001486	132	age_ses-T1	float64	116	Age in years at ses-T1	n/a
 ds001486	132	age_ses-T2	float64	79	Age in years at ses-T2	n/a
 ds001486	132	sex	int64	2	Sex of participants	n/a
 ds001486	132	handedness	int64	2	Left or Right-Handed	n/a
-ds001486	132	ses-T1_task-Mult_run-01	object	2	Participant has data for session T1 multiplication task run 01	n/a
-ds001486	132	ses-T1_task-Mult_run-02	object	2	Participant has data for session T1 multiplication task run 02	n/a
-ds001486	132	ses-T1_task-Num_run-01	object	1	Participant has data for session T1 numerosity task run 01	n/a
-ds001486	132	ses-T1_task-Num_run-02	object	1	Participant has data for session T1 numerosity task run 02	n/a
-ds001486	132	ses-T1_task-Rhyming	object	1	Participant has data for session T1 rhyming task	n/a
-ds001486	132	ses-T1_task-Sub_run-01	object	1	Participant has data for session T1 multiplication task run 01	n/a
-ds001486	132	ses-T1_task-Sub_run-02	object	1	Participant has data for session T1 multiplication task run 02	n/a
-ds001486	132	ses-T2_task-Mult_run-01	object	2	Participant has data for session T2 multiplication task run 01	n/a
-ds001486	132	ses-T2_task-Mult_run-02	object	2	Participant has data for session T2 multiplication task run 02	n/a
-ds001486	132	ses-T2_task-Num_run-01	object	2	Participant has data for session T2 numerosity task run 01	n/a
-ds001486	132	ses-T2_task-Num_run-02	object	2	Participant has data for session T2 numerosity task run 02	n/a
-ds001486	132	ses-T2_task-Rhyming	object	2	Participant has data for session T2 rhyming task	n/a
-ds001486	132	ses-T2_task-Sub_run-01	object	2	Participant has data for session T2 multiplication task run 01	n/a
-ds001486	132	ses-T2_task-Sub_run-02	object	2	Participant has data for session T2 multiplication task run 02	n/a
+ds001486	132	ses-T1_task-Mult_run-01	yes/no	2	Participant has data for session T1 multiplication task run 01	n/a
+ds001486	132	ses-T1_task-Mult_run-02	yes/no	2	Participant has data for session T1 multiplication task run 02	n/a
+ds001486	132	ses-T1_task-Num_run-01	yes/no	1	Participant has data for session T1 numerosity task run 01	n/a
+ds001486	132	ses-T1_task-Num_run-02	yes/no	1	Participant has data for session T1 numerosity task run 02	n/a
+ds001486	132	ses-T1_task-Rhyming	yes/no	1	Participant has data for session T1 rhyming task	n/a
+ds001486	132	ses-T1_task-Sub_run-01	yes/no	1	Participant has data for session T1 multiplication task run 01	n/a
+ds001486	132	ses-T1_task-Sub_run-02	yes/no	1	Participant has data for session T1 multiplication task run 02	n/a
+ds001486	132	ses-T2_task-Mult_run-01	yes/no	2	Participant has data for session T2 multiplication task run 01	n/a
+ds001486	132	ses-T2_task-Mult_run-02	yes/no	2	Participant has data for session T2 multiplication task run 02	n/a
+ds001486	132	ses-T2_task-Num_run-01	yes/no	2	Participant has data for session T2 numerosity task run 01	n/a
+ds001486	132	ses-T2_task-Num_run-02	yes/no	2	Participant has data for session T2 numerosity task run 02	n/a
+ds001486	132	ses-T2_task-Rhyming	yes/no	2	Participant has data for session T2 rhyming task	n/a
+ds001486	132	ses-T2_task-Sub_run-01	yes/no	2	Participant has data for session T2 multiplication task run 01	n/a
+ds001486	132	ses-T2_task-Sub_run-02	yes/no	2	Participant has data for session T2 multiplication task run 02	n/a
 ds001491	20	participant_id	object	20	n/a	nb:ParticipantID
 ds001491	20	gender	object	1	gender	n/a
 ds001491	20	handedness	object	1	handedness	n/a
@@ -1367,12 +1367,12 @@ ds002006	30	Handedness	object	1	n/a	n/a
 ds002006	30	Race	object	8	n/a	n/a
 ds002006	30	Ethnicity	object	3	n/a	n/a
 ds002006	30	Vision	object	2	n/a	n/a
-ds002006	30	Learning_Attention_Disorder	object	1	n/a	n/a
-ds002006	30	Neurological_Disorder	object	1	n/a	n/a
-ds002006	30	Mental_Health_Disorder	object	1	n/a	n/a
-ds002006	30	Traumatic_Head_injury	object	1	n/a	n/a
+ds002006	30	Learning_Attention_Disorder	yes/no	1	n/a	n/a
+ds002006	30	Neurological_Disorder	yes/no	1	n/a	n/a
+ds002006	30	Mental_Health_Disorder	yes/no	1	n/a	n/a
+ds002006	30	Traumatic_Head_injury	yes/no	1	n/a	n/a
 ds002006	30	Medications_Drug_use	object	3	n/a	n/a
-ds002006	30	Eating_Disorder	object	1	n/a	n/a
+ds002006	30	Eating_Disorder	yes/no	1	n/a	n/a
 ds002011	22	participant_id	object	22	n/a	nb:ParticipantID
 ds002011	22	sex	object	2	Participant's sex	n/a
 ds002011	22	Age	int64	9	Participant's age	n/a
@@ -1951,7 +1951,7 @@ ds002785	216	sex	object	3	(Self-reported) biological sex of participant	n/a
 ds002785	216	BMI	float64	15	n/a	n/a
 ds002785	216	handedness	object	4	Whether someone is left-handed, right-handed, or ambidextrous	n/a
 ds002785	216	education_category	object	2	Usniversity category	n/a
-ds002785	216	religious_now	object	3	Whether the subject considered him/herself religious or not	n/a
+ds002785	216	religious_now	yes/no	3	Whether the subject considered him/herself religious or not	n/a
 ds002785	216	raven_score	float64	25	Score on Raven's Progressive Matrices test (duration: 30 min)	n/a
 ds002785	216	NEO_N	int64	38	Score on the Neuroticism scale of the NEO-FFI	n/a
 ds002785	216	NEO_E	int64	25	Score on the Extraversion scale of the NEO-FFI	n/a
@@ -2072,25 +2072,25 @@ ds002898	27	sex	object	2	sex of the participant as reported by the participant	n
 ds002898	27	handedness	object	1	handedness of the participant as reported by the participant	n/a
 ds002898	27	education_years	int64	6	years of education calculated as formal education of 6 months or more. Starts from the first year of primary/elementary school onwards. Note that Australian education system includes 13 years of school: 7 years primary/elementary 6 years high school.	n/a
 ds002898	27	education_specify	object	5	the highest level of formal education completed (i.e., does not include uncompleted education or education currently undertaken). In Australia, 'technical school' is education undertaken in the TAFE/vocational education sector	n/a
-ds002898	27	efl	object	2	English as first language	n/a
+ds002898	27	efl	yes/no	2	English as first language	n/a
 ds002898	27	first_language	object	8	First language spoken	n/a
-ds002898	27	visual_impairment	object	2	any kind of vision impairment including wearing reading glasses (self reported)	n/a
+ds002898	27	visual_impairment	yes/no	2	any kind of vision impairment including wearing reading glasses (self reported)	n/a
 ds002898	27	visual_impairment_specify	object	6	description of visual impairment	n/a
-ds002898	27	mental_illness_history	object	2	self report of whether the person has had a current or past Axis I psychiatric condition	n/a
+ds002898	27	mental_illness_history	yes/no	2	self report of whether the person has had a current or past Axis I psychiatric condition	n/a
 ds002898	27	mental_illness_history_specify	object	2	diagnosis or treatment Whether the person has received a diagnosis for any Axis I psychiatric condition	n/a
-ds002898	27	cardiovascular_disease	object	1	history of cadiovascular disease	n/a
-ds002898	27	diabetes	object	1	history of diabetes	n/a
-ds002898	27	regular_medication	object	2	Regular medication	n/a
+ds002898	27	cardiovascular_disease	yes/no	1	history of cadiovascular disease	n/a
+ds002898	27	diabetes	yes/no	1	history of diabetes	n/a
+ds002898	27	regular_medication	yes/no	2	Regular medication	n/a
 ds002898	27	regular_medication_specify	object	4	Description of regular medication	n/a
-ds002898	27	current_smoker	object	2	Currently smoking	n/a
+ds002898	27	current_smoker	yes/no	2	Currently smoking	n/a
 ds002898	27	current_smoker_specify	object	3	Description of current smoking habit	n/a
-ds002898	27	previous_smoker	object	2	Previous smoking	n/a
+ds002898	27	previous_smoker	yes/no	2	Previous smoking	n/a
 ds002898	27	previous_smoker_specify	object	12	Description of previous smoking habit	n/a
-ds002898	27	alcohol_consumption	object	2	Self report a lcohol consumption.	n/a
+ds002898	27	alcohol_consumption	yes/no	2	Self report a lcohol consumption.	n/a
 ds002898	27	alcolhol_drinking_days	float64	7	Includes number of days per week/month the person drinks	n/a
 ds002898	27	alcohol_number_drinks	float64	8	Number average number of standard drinks per drinking session	n/a
 ds002898	27	alcohol_notes	object	5	Description of alcohol consumption	n/a
-ds002898	27	recreational_drugs	object	2	Used recreational drugs in last 6 months	n/a
+ds002898	27	recreational_drugs	yes/no	2	Used recreational drugs in last 6 months	n/a
 ds002898	27	recreational_drugs_specify	object	5	Description of recreational drugs used in last 6 months	n/a
 ds002898	27	edinburgh_hand_r	int64	6	Edinburgh Handedness Inventory: right-hand	n/a
 ds002898	27	edinburgh_hand_l	float64	6	Edinburgh Handedness Inventory: left-hand	n/a
@@ -2207,7 +2207,7 @@ ds003011	4	qc_comments	object	2	Quality control comments	n/a
 ds003017	25	participant_id	object	25	Participant identifier	nb:ParticipantID
 ds003017	25	age	int64	9	Age in years	n/a
 ds003017	25	sex	object	2	Self-rated by participant, M for male, F for female	n/a
-ds003017	25	headcase	object	2	Whether the subject was using a custom-molded CaseForge headcase	n/a
+ds003017	25	headcase	yes/no	2	Whether the subject was using a custom-molded CaseForge headcase	n/a
 ds003020	8	participant_id	object	8	n/a	nb:ParticipantID
 ds003020	8	age	int64	6	n/a	n/a
 ds003020	8	sex	object	2	n/a	n/a
@@ -2259,8 +2259,8 @@ ds003097	928	sexual_attraction_M	float64	8	To what degree the subject was attrac
 ds003097	928	sexual_attraction_F	float64	8	To what degree the subject was attracted to females	n/a
 ds003097	928	gender_identity_M	float64	8	To what degree the subject felt male	n/a
 ds003097	928	gender_identity_F	float64	8	To what degree the subject felt female	n/a
-ds003097	928	religious_upbringing	object	2	Whether the subject was religious or not	n/a
-ds003097	928	religious_now	object	2	Whether the subject is religious now	n/a
+ds003097	928	religious_upbringing	yes/no	2	Whether the subject was religious or not	n/a
+ds003097	928	religious_now	yes/no	2	Whether the subject is religious now	n/a
 ds003097	928	religious_importance	float64	6	How much religion plays a role in the subject's life	n/a
 ds003097	928	DWI_TR_run1	float64	26	Repetition Time (TR) for the first DWI scan (if this scan doesn't exist for a subject, it is coded 'n/a')	n/a
 ds003097	928	DWI_TR_run2	float64	22	Repetition Time (TR) for the second DWI scan (if this scan doesn't exist for a subject, it is coded 'n/a')	n/a
@@ -2365,22 +2365,22 @@ ds003382	10	handedness	object	2	handedness of the participant as reported by the
 ds003382	10	education_years	int64	8	years of education calculated as formal education of 6 months or more. starts from the first year of primary/elementary school onwards	n/a
 ds003382	10	education_specify	object	6	the highest level of formal education completed (i.e., does not include uncompleted education or education currently undertaken)	n/a
 ds003382	10	body_weight	float64	8	body weight of the participant	n/a
-ds003382	10	efl	object	2	english as first language	n/a
-ds003382	10	visual_impairment	object	2	any kind of vision impairment including wearing reading glasses	n/a
+ds003382	10	efl	yes/no	2	english as first language	n/a
+ds003382	10	visual_impairment	yes/no	2	any kind of vision impairment including wearing reading glasses	n/a
 ds003382	10	visual_impairment_specify	object	5	description of visual impairment	n/a
-ds003382	10	mental_illness_history	object	2	handedness of the participant as reported by the participant	n/a
+ds003382	10	mental_illness_history	yes/no	2	handedness of the participant as reported by the participant	n/a
 ds003382	10	mental_illness_specify	object	5	diagnosis or treatment of whether the person has received a diagnosis for any Axis I psychiatric condition	n/a
-ds003382	10	mental_illness_family_history	object	2	self-report of whether the person has a family member who has had a current or past Axis I psychiatric condition	n/a
+ds003382	10	mental_illness_family_history	yes/no	2	self-report of whether the person has a family member who has had a current or past Axis I psychiatric condition	n/a
 ds003382	10	mental_illness_family_history_specify	object	6	diagnosis or treatment of the family member’s  psychiatric condition	n/a
 ds003382	10	dementia_suspec_dx_family	object	3	Whether a family member had suspected or diagnosed dementia	n/a
 ds003382	10	neurological	object	3	Whether the person has a current or previous neurological condition	n/a
 ds003382	10	cardiovascular	object	2	Whether the person has a current or previous cardiovascular condition	n/a
-ds003382	10	diabetes	object	1	Whether the person has a current or previous diabetes diagnosis	n/a
-ds003382	10	regular_medication	object	2	Whether the person is currently taking regular medication	n/a
+ds003382	10	diabetes	yes/no	1	Whether the person has a current or previous diabetes diagnosis	n/a
+ds003382	10	regular_medication	yes/no	2	Whether the person is currently taking regular medication	n/a
 ds003382	10	regular_medication_specify	object	4	description of regular medication	n/a
 ds003382	10	medication_last24hr	object	5	Whether the person took medication in the previous 24hrs	n/a
-ds003382	10	current_smoker	object	1	currently smoking	n/a
-ds003382	10	previous_smoker	object	2	previous smoking	n/a
+ds003382	10	current_smoker	yes/no	1	currently smoking	n/a
+ds003382	10	previous_smoker	yes/no	2	previous smoking	n/a
 ds003382	10	previous_smoker_specify	object	5	description of previous smoking 	n/a
 ds003382	10	alcohol_days_per_week	float64	6	number of days per week the person drinks	n/a
 ds003382	10	standard_drinks_per_drinking_day	int64	5	number average number of standard drinks per drinking day	n/a
@@ -2404,31 +2404,31 @@ ds003397	15	gender	object	2	self-rated by participant, M for male/F for female	n
 ds003397	15	handedness	object	1	handedness of the participant as reported by the participant	n/a
 ds003397	15	education_years	int64	4	years of education calculated as formal education of 6 months or more. starts from the first year of primary/elementary school onwards	n/a
 ds003397	15	highest_level_education_completed	int64	1	the highest level of formal education completed (i.e., does not include uncompleted education or education currently undertaken)	n/a
-ds003397	15	english_as_first_language	object	4	english as first language	n/a
-ds003397	15	visual_impairments	object	4	n/a	n/a
+ds003397	15	english_as_first_language	yes/no	4	english as first language	n/a
+ds003397	15	visual_impairments	yes/no	4	n/a	n/a
 ds003397	15	visual_impairment_specify	object	9	description of visual impairment	n/a
-ds003397	15	hearing_impairment	object	2	whether the participant has hearing impairment	n/a
+ds003397	15	hearing_impairment	yes/no	2	whether the participant has hearing impairment	n/a
 ds003397	15	hearing_specify	float64	1	specify the kind of hearing impairment	n/a
-ds003397	15	personal_history_mental_illness	object	3	whether the participant has history mental illness	n/a
+ds003397	15	personal_history_mental_illness	yes/no	3	whether the participant has history mental illness	n/a
 ds003397	15	mental_illness_history_specify	object	2	diagnosis or treatment of whether the person has received a diagnosis for any Axis I psychiatric condition	n/a
-ds003397	15	personal_history_mental_illness_ever_diagnosed	object	2	Whether a family member had suspected or diagnosed mental illness	n/a
-ds003397	15	personal_history_mental_illness_receive_treatment	object	2	Whether the person diagnosed with mental illness disease received treatment	n/a
-ds003397	15	family_history_mental_illness	object	4	whether the participant has family history mental illness	n/a
+ds003397	15	personal_history_mental_illness_ever_diagnosed	yes/no	2	Whether a family member had suspected or diagnosed mental illness	n/a
+ds003397	15	personal_history_mental_illness_receive_treatment	yes/no	2	Whether the person diagnosed with mental illness disease received treatment	n/a
+ds003397	15	family_history_mental_illness	yes/no	4	whether the participant has family history mental illness	n/a
 ds003397	15	family_health_mental_illness_specify	object	5	diagnosis or treatment of the family member’s psychiatric condition	n/a
-ds003397	15	personal_history_mental_illness_ever_diagnosed.1	object	4	n/a	n/a
-ds003397	15	family_history_dementia	object	4	Whether a family member had suspected or diagnosed dementia	n/a
+ds003397	15	personal_history_mental_illness_ever_diagnosed.1	yes/no	4	n/a	n/a
+ds003397	15	family_history_dementia	yes/no	4	Whether a family member had suspected or diagnosed dementia	n/a
 ds003397	15	family_history_dementia_specify	object	5	specify the family member had suspected or diagnosed dementia and the condition	n/a
 ds003397	15	family_history_dementia_ever_diagnosed	object	4	Whether the family member had diagnosed dementia	n/a
-ds003397	15	cardiovascular	object	2	Whether the person has a current or previous cardiovascular condition	n/a
-ds003397	15	diabetes	object	2	Whether the person has a current or previous diabetes diagnosis	n/a
-ds003397	15	current_tobacco	object	4	Whether the person has tobacco currently	n/a
+ds003397	15	cardiovascular	yes/no	2	Whether the person has a current or previous cardiovascular condition	n/a
+ds003397	15	diabetes	yes/no	2	Whether the person has a current or previous diabetes diagnosis	n/a
+ds003397	15	current_tobacco	yes/no	4	Whether the person has tobacco currently	n/a
 ds003397	15	current_tobacco_average_per_day	object	4	how many tobacco average per day	n/a
-ds003397	15	ever_smoked	object	4	whether the participant ever smoked	n/a
+ds003397	15	ever_smoked	yes/no	4	whether the participant ever smoked	n/a
 ds003397	15	ever_smoked_average	object	4	how many ever smoked in average	n/a
-ds003397	15	ever_consumed_alcohol	object	4	whether the participant ever consumed alcohol	n/a
+ds003397	15	ever_consumed_alcohol	yes/no	4	whether the participant ever consumed alcohol	n/a
 ds003397	15	how_often	object	8	how often the person drinks	n/a
 ds003397	15	standard_drinks_per_occasion	object	9	how many standard drinks per occasion	n/a
-ds003397	15	recreational_drugs_last_6_months	object	3	used recreational drugs in last 6 months	n/a
+ds003397	15	recreational_drugs_last_6_months	yes/no	3	used recreational drugs in last 6 months	n/a
 ds003397	15	drugs_specify	object	3	description of recreational drugs used in last 6 months	n/a
 ds003397	15	drugs_how_often	object	3	how often the recreational drugs were used in last 6 months	n/a
 ds003399	6	participant_id	object	6	name of the patient	nb:ParticipantID
@@ -2441,7 +2441,7 @@ ds003399	6	type surgery	object	6	type of surgery	n/a
 ds003399	6	lobe surgery	object	6	anatomical lobe of surgery 	n/a
 ds003399	6	pathology	object	6	pathology	n/a
 ds003399	6	engel 1 year	object	1	Engel epilepsy surgery outcome scale	n/a
-ds003399	6	aed	object	2	anti-epileptic drug status	n/a
+ds003399	6	aed	yes/no	2	anti-epileptic drug status	n/a
 ds003401	35	participant_id	object	35	Participant identifier	nb:ParticipantID
 ds003401	35	age	int64	11	Age in years (TODO - verify) as in the initial session, might not be correct for other sessions	n/a
 ds003401	35	sex	object	2	self-rated by participant, M for male/F for female (TODO: verify)	n/a
@@ -2613,7 +2613,7 @@ ds003569	25	tsw_error	int64	8	participant's error rate(%) for TSW condition	n/a
 ds003569	25	rs_error	int64	5	participant's error rate(%) for RS condition	n/a
 ds003574	18	participant_id	object	18	Participant identifier	nb:ParticipantID
 ds003574	18	group_won_game	object	2	subjects won at the face or the maze game at the end of the task sessions	n/a
-ds003574	18	sub_reach_n3	object	2	If yes, subjects reach until N3 sleep in the MRI. So the bold session sleep includes W, N1, N2 and N3 sleep stages, If no, subject reach until N2 sleep in the MRI. So the sleep bold session includes W, N1 and N2 sleep stages 	n/a
+ds003574	18	sub_reach_n3	yes/no	2	If yes, subjects reach until N3 sleep in the MRI. So the bold session sleep includes W, N1, N2 and N3 sleep stages, If no, subject reach until N2 sleep in the MRI. So the sleep bold session includes W, N1 and N2 sleep stages 	n/a
 ds003574	18	age	int64	8	Age at time of testing	n/a
 ds003574	18	sex	object	2	Biological sex of the participant	n/a
 ds003574	18	memory_face_game	float64	17	memory for the FACE game, performance for the placement of face according to the original location	n/a
@@ -2685,10 +2685,10 @@ ds003688	63	age	int64	37	Age of the participant at time of testing	n/a
 ds003688	63	handedness	object	4	Dominant hand of the participant according to the Edinburgh Handedness Questionnaire	n/a
 ds003688	63	language_dominance	object	7	Language-dominant hemisphere of the participant as tested with one or combination of techniques in specified in language_dominance_technique	n/a
 ds003688	63	language_dominance_technique	object	12	Technique used to determine the language-dominant hemisphere of the participant	n/a
-ds003688	63	iEEG	object	2	Presence of intracranial electroencephalography (iEEG) recordings for the patient	n/a
-ds003688	63	fMRI	object	2	Presence of functional magnetic resonance imaging (fMRI) recordings for the patient	n/a
+ds003688	63	iEEG	yes/no	2	Presence of intracranial electroencephalography (iEEG) recordings for the patient	n/a
+ds003688	63	fMRI	yes/no	2	Presence of functional magnetic resonance imaging (fMRI) recordings for the patient	n/a
 ds003688	63	iEEG_hemisphere	object	4	Hemisphere where iEEG electrodes were implanted	n/a
-ds003688	63	high_density_grid	object	3	Whether this patient had recordings with a high-density grid	n/a
+ds003688	63	high_density_grid	yes/no	3	Whether this patient had recordings with a high-density grid	n/a
 ds003696	30	participant_id	object	30	Unique participant identifier	nb:ParticipantID
 ds003696	30	age	int64	11	Age of the participant at time of testing	n/a
 ds003696	30	sex	object	2	Biological sex of the participant	n/a
@@ -2930,10 +2930,10 @@ ds003830	37	Medical treatment at the timepoint of MRI	object	11	n/a	n/a
 ds003830	37	Time between last reported seizure to MRI	object	12	n/a	n/a
 ds003830	37	Time between first seizure to MRI	object	15	n/a	n/a
 ds003830	37	Annfalsstyp	object	14	n/a	n/a
-ds003830	37	postictal agression	object	2	n/a	n/a
+ds003830	37	postictal agression	yes/no	2	n/a	n/a
 ds003830	37	interictal behavioural changes	object	5	n/a	n/a
-ds003830	37	cluster-seizures before MRI	object	3	n/a	n/a
-ds003830	37	Status Epileptikus before MRI	object	3	n/a	n/a
+ds003830	37	cluster-seizures before MRI	yes/no	3	n/a	n/a
+ds003830	37	Status Epileptikus before MRI	yes/no	3	n/a	n/a
 ds003830	37	Sevofluran level start BOLD (%)	object	15	n/a	n/a
 ds003830	37	Sevofluran level end BOLD (%)	object	16	n/a	n/a
 ds003830	37	HF (/min)	int64	29	n/a	n/a
@@ -3275,10 +3275,10 @@ ds004194	11	age	int64	10	Age of the participant at time of testing	n/a
 ds004194	11	sex	object	2	Biological sex of the participant	n/a
 ds004194	11	group	object	1	Group participant belongs to	n/a
 ds004194	11	site	object	2	Site where data was acquired	n/a
-ds004194	11	high_density_grid	object	2	Whether the patient had a high density grid implanted	n/a
-ds004194	11	visual	object	1	Whether participant performed visual BAIR tasks	n/a
-ds004194	11	motor	object	1	Whether participant performed motor BAIR tasks	n/a
-ds004194	11	tactile	object	1	Whether participant performed tactile BAIR tasks	n/a
+ds004194	11	high_density_grid	yes/no	2	Whether the patient had a high density grid implanted	n/a
+ds004194	11	visual	yes/no	1	Whether participant performed visual BAIR tasks	n/a
+ds004194	11	motor	yes/no	1	Whether participant performed motor BAIR tasks	n/a
+ds004194	11	tactile	yes/no	1	Whether participant performed tactile BAIR tasks	n/a
 ds004197	4	participant_id	object	4	Unique subject identifier	nb:ParticipantID
 ds004197	4	Age	int64	4	Age of the subject	n/a
 ds004197	4	Sex	object	2	Sex of the subject	n/a

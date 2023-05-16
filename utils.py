@@ -1,7 +1,18 @@
 import contextlib
+import logging
+import re
 from pathlib import Path
 
 import pandas as pd
+from rich.logging import RichHandler
+
+
+def bulk_annotation_logger(log_level: str = "INFO"):
+    FORMAT = "%(message)s"
+
+    logging.basicConfig(level=log_level, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
+
+    return logging.getLogger("rich")
 
 
 def output_dir():
@@ -39,3 +50,23 @@ def read_csv(*args, **kwargs):
     https://towardsdatascience.com/auto-detect-and-set-the-date-datetime-datatypes-when-reading-csv-into-pandas-261746095361
     """
     return dt_inplace(pd.read_csv(*args, **kwargs))
+
+
+def is_yes_no(levels: pd.Series):
+    """Return True if all levels are either 'yes' or 'no'.
+
+    NaN are dropped before checking.
+    """
+    levels = levels.dropna()
+    return all((isinstance(x, str) and x.lower() in ["no", "yes"] for x in levels.values))
+
+
+def is_euro_format(levels: pd.Series):
+    levels = levels.dropna()
+    return all(
+        (
+            isinstance(x, str)
+            and re.match("[0-9]*,[0-9]*", x)
+            for x in levels.unique()
+        )
+    )    

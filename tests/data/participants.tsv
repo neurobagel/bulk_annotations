@@ -1,0 +1,7 @@
+participant_id	sex	age	acq_date	yes_no_nan	euro_format	height
+sub-01	M	22	2018-01-01	yes	12,1	12.34
+sub-02	F	24	2018-01-01	no	0,32	12.34
+sub-03	F	24	2013-01-01	n/a	43121,0540	12.34
+sub-05	M	22	2018-01-01	YES	0,4	12.34
+sub-07	F	24	2018-01-01	No	123,6	12.34
+sub-07	F	24	2013-01-01	n/a	n/a	12.34

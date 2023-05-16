@@ -1,21 +1,18 @@
 import json
-import logging
 import re
 from pathlib import Path
 from warnings import warn
 
 import pandas as pd
-from autodetect_dates import read_csv
 from rich import print
-from rich.logging import RichHandler
+
+from utils import bulk_annotation_logger, is_yes_no, read_csv
 
 INCLUDE_LEVELS = False
 LOG_LEVEL = "INFO"
-FORMAT = "%(message)s"
 
-logging.basicConfig(level=LOG_LEVEL, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
 
-log = logging.getLogger("rich")
+log = bulk_annotation_logger(LOG_LEVEL)
 
 
 CONTROLLED_TERMS = {
@@ -223,10 +220,6 @@ def list_levels(
     output = append_levels(output, undefined_levels, column, row_template)
 
     return output
-
-
-def is_yes_no(levels):
-    return all(isinstance(x, str) and x.lower() in ["no", "yes", "nan"] for x in levels)
 
 
 def is_categorical(series):

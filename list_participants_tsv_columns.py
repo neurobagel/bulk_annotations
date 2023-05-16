@@ -17,21 +17,17 @@ Also saved:
 
 
 import json
-import logging
 from pathlib import Path
 from warnings import warn
 
 import pandas as pd
-from rich.logging import RichHandler
 
-from utils import output_dir, read_csv
+from utils import bulk_annotation_logger, is_yes_no, output_dir, read_csv, is_euro_format
 
 LOG_LEVEL = "INFO"
-FORMAT = "%(message)s"
 
-logging.basicConfig(level=LOG_LEVEL, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
+log = bulk_annotation_logger(LOG_LEVEL)
 
-log = logging.getLogger("rich")
 
 CONTROLLED_TERMS = {
     "participant_id": "nb:ParticipantID",
@@ -110,6 +106,11 @@ def main():
                 this_row["description"] = participants_dict[column].get("Description", "n/a")
 
             this_row["type"] = participants[column].dtype
+            if this_row["type"] == "object":
+                if is_yes_no(participants[column]):
+                    this_row["type"] = "yes/no"
+                elif is_euro_format(participants[column]):
+                    this_row["type"] = "euro"
 
             this_row["nb_levels"] = len(participants[column].unique())
 
