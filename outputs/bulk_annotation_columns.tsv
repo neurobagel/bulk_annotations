@@ -416,8 +416,8 @@ ds000200	14	notes	object	3	n/a	n/a
 ds000201	86	participant_id	object	86	n/a	nb:ParticipantID
 ds000201	86	Sex	object	2	self-rated by participant, male/female	n/a
 ds000201	86	AgeGroup	object	2	Young: 20-30 years old at time of experiment, inclusive. Old: 65-75 years old at time of experiment, inclusive.	n/a
-ds000201	86	BMI1	object	82	Body Mass Index, session 1	n/a
-ds000201	86	BMI2	object	81	Body Mass Index, session 2	n/a
+ds000201	86	BMI1	euro	82	Body Mass Index, session 1	n/a
+ds000201	86	BMI2	euro	81	Body Mass Index, session 2	n/a
 ds000201	86	EducationLevel	object	4	self-rated by participant, Har avslutat grundskolan = finished primary school, Har avslutat gymnasieskolan = finished secondary school, Studerar för nävarande på universitet/högskola = Student at university, Har examen från universitet/högskola = Has degree from university	n/a
 ds000201	86	HADS_Anxiety	int64	9	Hospital Anxiety and Depression scale, Anxiety subscale	n/a
 ds000201	86	HADS_Depression	int64	6	Hospital Anxiety and Depression scale, Depression subscale	n/a
@@ -464,7 +464,7 @@ ds000201	86	SRH5	int64	3	Self-rated health in general, 5-point scale	n/a
 ds000201	86	ESS	int64	20	Epworth Sleepiness Scale	n/a
 ds000201	86	SicknessQ	int64	19	Sickness-Q scale	n/a
 ds000201	86	ECS	object	22	Emotional Contagion Scale	n/a
-ds000201	86	BIS11_Total	object	31	Barratt Impulsiveness Scale-11, total score	n/a
+ds000201	86	BIS11_Total	euro	31	Barratt Impulsiveness Scale-11, total score	n/a
 ds000201	86	BIS11_Attentional	object	16	Barratt Impulsiveness Scale-11, Attentional factor	n/a
 ds000201	86	BIS11_Motor	object	14	Barratt Impulsiveness Scale-11, Motor factor	n/a
 ds000201	86	BIS11_Nonplanning	object	19	Barratt Impulsiveness Scale-11, Nonplanning factor	n/a
@@ -720,7 +720,7 @@ ds000243	120	Native English Only	yes/no	1	n/a	n/a
 ds000243	120	Total rest minutes	float64	14	n/a	n/a
 ds000244	12	participant_id	object	12	n/a	nb:ParticipantID
 ds000244	12	sex	object	2	n/a	n/a
-ds000244	12	age	object	12	n/a	n/a
+ds000244	12	age	euro	12	n/a	n/a
 ds000244	12	handedness score	float64	5	n/a	n/a
 ds000245	45	participant_id	object	45	n/a	nb:ParticipantID
 ds000245	45	Age	int64	20	n/a	n/a
@@ -1172,17 +1172,17 @@ ds001771	40	PC_chloe3	object	10	Percent of correct answer when Chloe is speaking
 ds001771	40	PC_chloe4	object	10	Percent of correct answer when Chloe is speaking in run 4	n/a
 ds001771	40	mean_PC_chloe	object	22	Average percent of correct answer when Chloe is speaking across all runs	n/a
 ds001771	40	RT_anne1	object	36	Average reaction time when Anne is speaking in run 1	n/a
-ds001771	40	RT_anne2	object	33	Average reaction time when Anne is speaking in run 2	n/a
+ds001771	40	RT_anne2	euro	33	Average reaction time when Anne is speaking in run 2	n/a
 ds001771	40	RT_anne3	object	34	Average reaction time when Anne is speaking in run 3	n/a
 ds001771	40	RT_anne4	object	37	Average reaction time when Anne is speaking in run 4	n/a
 ds001771	40	mean_RT_anne	object	33	Average reaction time when Anne is speaking across all runs	n/a
-ds001771	40	RT_betty1	object	35	Average reaction time when Betty is speaking in run 1	n/a
-ds001771	40	RT_betty2	object	33	Average reaction time when Betty is speaking in run 2	n/a
-ds001771	40	RT_betty3	object	36	Average reaction time when Betty is speaking in run 3	n/a
-ds001771	40	RT_betty4	object	35	Average reaction time when Betty is speaking in run 4	n/a
+ds001771	40	RT_betty1	euro	35	Average reaction time when Betty is speaking in run 1	n/a
+ds001771	40	RT_betty2	euro	33	Average reaction time when Betty is speaking in run 2	n/a
+ds001771	40	RT_betty3	euro	36	Average reaction time when Betty is speaking in run 3	n/a
+ds001771	40	RT_betty4	euro	35	Average reaction time when Betty is speaking in run 4	n/a
 ds001771	40	mean_RT_betty	object	33	Average reaction time when Betty is speaking across all runs	n/a
-ds001771	40	RT_chloe1	object	35	Average reaction time when Chloe is speaking in run 1	n/a
-ds001771	40	RT_chloe2	object	32	Average reaction time when Chloe is speaking in run 2	n/a
+ds001771	40	RT_chloe1	euro	35	Average reaction time when Chloe is speaking in run 1	n/a
+ds001771	40	RT_chloe2	euro	32	Average reaction time when Chloe is speaking in run 2	n/a
 ds001771	40	RT_chloe3	object	36	Average reaction time when Chloe is speaking in run 3	n/a
 ds001771	40	RT_chloe4	object	35	Average reaction time when Chloe is speaking in run 4	n/a
 ds001771	40	mean_RT_chloe	object	36	Average reaction time when Chloe is speaking across all runs	n/a
@@ -1190,7 +1190,7 @@ ds001771	40	PC_voices_lab	object	8	Percent of good detection of voices vs. bells
 ds001771	40	PC_bells_lab	object	6	Percent of good detection of voices vs. bells during laboratory behavioral session	n/a
 ds001771	40	difference_PC	object	12	PC_bells_lab - PC_voices_lab	n/a
 ds001771	40	d'_voices	object	11	NC	n/a
-ds001771	40	d'_bells	object	11	NC	n/a
+ds001771	40	d'_bells	euro	11	NC	n/a
 ds001771	40	rt_voices	object	32	Reaction time for voices detection of voices vs. bells classification during laboratory behavioral session	n/a
 ds001771	40	rt_bells	object	35	Reaction time for bells detection of voices vs. bells classification during laboratory behavioral session	n/a
 ds001784	14	participant_id	object	14	ID number assigned to participant (prefix sub-).	nb:ParticipantID
@@ -1859,7 +1859,7 @@ ds002684	4	age	int64	2	n/a	n/a
 ds002684	4	sex	object	2	n/a	n/a
 ds002684	4	group	object	1	n/a	n/a
 ds002685	13	participant_id	object	13	n/a	nb:ParticipantID
-ds002685	13	age	object	13	n/a	n/a
+ds002685	13	age	euro	13	n/a	n/a
 ds002685	13	sex	object	2	n/a	n/a
 ds002685	13	handedness score	object	6	n/a	n/a
 ds002687	24	participant_id	object	24	n/a	nb:ParticipantID
@@ -2001,7 +2001,7 @@ ds002842	22	sex	object	2	n/a	n/a
 ds002842	22	speaker	object	1	n/a	n/a
 ds002842	22	L1	object	1	n/a	n/a
 ds002842	22	Where_learnt_German	object	4	n/a	n/a
-ds002842	22	How_long_learnt_German_years	object	15	n/a	n/a
+ds002842	22	How_long_learnt_German_years	euro	15	n/a	n/a
 ds002842	22	From_which_age	object	12	n/a	n/a
 ds002842	22	Level	object	9	n/a	n/a
 ds002842	22	How_long_lived_inGerman_speaking_country_years	object	16	n/a	n/a
@@ -2433,7 +2433,7 @@ ds003397	15	drugs_specify	object	3	description of recreational drugs used in las
 ds003397	15	drugs_how_often	object	3	how often the recreational drugs were used in last 6 months	n/a
 ds003399	6	participant_id	object	6	name of the patient	nb:ParticipantID
 ds003399	6	sex	object	2	gender of the patient (male/female/unknown)	n/a
-ds003399	6	age	object	6	age of the patient during the session	n/a
+ds003399	6	age	euro	6	age of the patient during the session	n/a
 ds003399	6	coverage	object	4	anatomical coverage of the electrodes	n/a
 ds003399	6	side	object	2	side of the brain	n/a
 ds003399	6	type iEEG	object	2	type of implantation	n/a
@@ -2924,8 +2924,8 @@ ds003830	37	breed-phenotype	object	5	n/a	n/a
 ds003830	37	age (years)	object	23	n/a	n/a
 ds003830	37	gender 	object	5	n/a	n/a
 ds003830	37	Body weight (kg)	object	33	n/a	n/a
-ds003830	37	displacematn mean absolut (mm)	object	12	n/a	n/a
-ds003830	37	displament mean relative (mm)	object	10	n/a	n/a
+ds003830	37	displacematn mean absolut (mm)	euro	12	n/a	n/a
+ds003830	37	displament mean relative (mm)	euro	10	n/a	n/a
 ds003830	37	Medical treatment at the timepoint of MRI	object	11	n/a	n/a
 ds003830	37	Time between last reported seizure to MRI	object	12	n/a	n/a
 ds003830	37	Time between first seizure to MRI	object	15	n/a	n/a

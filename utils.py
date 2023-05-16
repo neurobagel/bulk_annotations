@@ -15,11 +15,11 @@ def bulk_annotation_logger(log_level: str = "INFO"):
     return logging.getLogger("rich")
 
 
-def output_dir():
+def output_dir() -> Path:
     return Path(__file__).parent / "outputs"
 
 
-def dt_inplace(df):
+def dt_inplace(df:pd.DataFrame) -> pd.DataFrame:
     """Automatically detect and convert (in place!) each dataframe column \
     of datatype 'object' to a datetime just \
     when ALL of its non-NaN values can be successfully parsed by pd.to_datetime().
@@ -37,7 +37,7 @@ def dt_inplace(df):
     return df
 
 
-def read_csv(*args, **kwargs):
+def read_csv(*args, **kwargs) -> pd.DataFrame:
     """Drop-in replacement for Pandas pd.read_csv.
 
     It invokes pd.read_csv() (passing its arguments)
@@ -52,7 +52,7 @@ def read_csv(*args, **kwargs):
     return dt_inplace(pd.read_csv(*args, **kwargs))
 
 
-def is_yes_no(levels: pd.Series):
+def is_yes_no(levels: pd.Series) -> bool:
     """Return True if all levels are either 'yes' or 'no'.
 
     NaN are dropped before checking.
@@ -61,12 +61,13 @@ def is_yes_no(levels: pd.Series):
     return all((isinstance(x, str) and x.lower() in ["no", "yes"] for x in levels.values))
 
 
-def is_euro_format(levels: pd.Series):
+def is_euro_format(levels: pd.Series) -> bool:
+    """Return True if all values are numbers in with a comma as decimal separator."""
     levels = levels.dropna()
     return all(
         (
             isinstance(x, str)
-            and re.match("[0-9]*,[0-9]*", x)
+            and re.match("[-]?[ ]?[0-9]*,[0-9]*", x)
             for x in levels.unique()
         )
     )    
