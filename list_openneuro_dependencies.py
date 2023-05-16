@@ -22,7 +22,7 @@ URL_OPENNEURO = "https://github.com/OpenNeuroDatasets/"
 URL_OPENNEURO_DERIVATIVES = "https://github.com/OpenNeuroDerivatives/"
 
 
-def init_dataset() -> dict(str, []):
+def init_dataset() -> dict[str, list]:
     return {
         "name": [],
         "has_participant_tsv": [],
@@ -72,7 +72,7 @@ def has_mri(bids_pth: Path) -> bool:
     )
 
 
-def new_dataset(name: str) -> dict[str, str]:
+def new_dataset(name: str) -> dict[str, str | int | bool | list[str]]:
     return {
         "name": name,
         "has_participant_tsv": "n/a",
@@ -99,8 +99,8 @@ def list_participants_tsv_columns(participant_tsv: Path) -> list[str]:
 
 
 def list_openneuro(
-    datalad_superdataset: Path, datasets: dict[str, dict[str, str]]
-) -> dict[str, str]:
+    datalad_superdataset: Path, datasets: dict[str, list]
+) -> dict[str, list]:
     """Indexes content of dataset on openneuro.
 
     Also checks for derivatives folders for mriqc, frmiprep and freesurfer.
@@ -140,7 +140,7 @@ def list_openneuro(
     return datasets
 
 
-def has_participant_tsv(pth: Path) -> tuple(bool, bool, list[str]):
+def has_participant_tsv(pth: Path) -> tuple[bool, bool, str | list[str]]:
     tsv_status = bool((pth / "participants.tsv").exists())
     json_status = bool((pth / "participants.json").exists())
     columns = "n/a"
@@ -150,8 +150,8 @@ def has_participant_tsv(pth: Path) -> tuple(bool, bool, list[str]):
 
 
 def list_openneuro_derivatives(
-    datalad_superdataset: Path, datasets: dict[str, dict[str, str]]
-) -> dict[str, str]:
+    datalad_superdataset: Path, datasets: dict[str, list]
+) -> dict[str, list]:
     """Indexes content of dataset on openneuro derivatives.
 
     List mriqc datasets and eventually matching fmriprep dataset.
