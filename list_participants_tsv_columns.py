@@ -27,7 +27,7 @@ from utils import (
     is_euro_format,
     is_yes_no,
     output_dir,
-    read_csv,
+    read_csv_autodetect_date,
 )
 
 LOG_LEVEL = "INFO"
@@ -86,7 +86,7 @@ def main():
 
         participant_tsv = openneuro / dataset_name / "participants.tsv"
         try:
-            participants = read_csv(participant_tsv, sep="\t")
+            participants = read_csv_autodetect_date(participant_tsv, sep="\t")
         except pd.errors.ParserError:
             warn(f"Could not parse: {participant_tsv}")
             continue

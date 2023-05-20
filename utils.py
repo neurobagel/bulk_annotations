@@ -42,7 +42,7 @@ def dt_inplace(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def read_csv(*args, **kwargs) -> pd.DataFrame:
+def read_csv_autodetect_date(*args, **kwargs) -> pd.DataFrame:
     """Drop-in replacement for Pandas pd.read_csv.
 
     It invokes pd.read_csv() (passing its arguments)
