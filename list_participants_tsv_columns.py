@@ -22,7 +22,13 @@ from warnings import warn
 
 import pandas as pd
 
-from utils import bulk_annotation_logger, is_euro_format, is_yes_no, output_dir, read_csv
+from utils import (
+    bulk_annotation_logger,
+    is_euro_format,
+    is_yes_no,
+    output_dir,
+    read_csv,
+)
 
 LOG_LEVEL = "INFO"
 
@@ -70,7 +76,10 @@ def main():
 
         log.info(f"dataset '{dataset_name}'")
 
-        if not datasets[mask].has_mri.values[0] or not datasets[mask].has_participant_tsv.values[0]:
+        if (
+            not datasets[mask].has_mri.values[0]
+            or not datasets[mask].has_participant_tsv.values[0]
+        ):
             continue
 
         row_template = new_row(dataset_name)
@@ -88,7 +97,9 @@ def main():
             with open(participant_json) as f:
                 participants_dict = json.load(f)
 
-        log.debug(f"dataset {dataset_name} has columns: {participants.columns.values}")
+        log.debug(
+            f"dataset {dataset_name} has columns: {participants.columns.values}"
+        )
 
         for column in participants.columns:
             this_row = row_template.copy()
@@ -103,7 +114,9 @@ def main():
                 this_row["controlled_term"] = CONTROLLED_TERMS[column]
 
             if participants_dict and participants_dict.get(column):
-                this_row["description"] = participants_dict[column].get("Description", "n/a")
+                this_row["description"] = participants_dict[column].get(
+                    "Description", "n/a"
+                )
 
             this_row["type"] = participants[column].dtype
             if this_row["type"] == "object":

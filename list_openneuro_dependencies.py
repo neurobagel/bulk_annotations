@@ -100,7 +100,9 @@ def list_participants_tsv_columns(participant_tsv: Path) -> list[str]:
         return ["cannot be parsed"]
 
 
-def list_openneuro(datalad_superdataset: Path, datasets: dict[str, list]) -> dict[str, list]:
+def list_openneuro(
+    datalad_superdataset: Path, datasets: dict[str, list]
+) -> dict[str, list]:
     """Indexes content of dataset on openneuro.
 
     Also checks for derivatives folders for mriqc, frmiprep and freesurfer.
@@ -121,7 +123,9 @@ def list_openneuro(datalad_superdataset: Path, datasets: dict[str, list]) -> dic
         dataset["has_participant_tsv"] = tsv_status
         dataset["has_participant_json"] = json_status
         dataset["participant_columns"] = columns
-        dataset["has_phenotype_dir"] = bool((dataset_pth / "phenotype").exists())
+        dataset["has_phenotype_dir"] = bool(
+            (dataset_pth / "phenotype").exists()
+        )
 
         for der in [
             "fmriprep",
@@ -130,7 +134,9 @@ def list_openneuro(datalad_superdataset: Path, datasets: dict[str, list]) -> dic
         ]:
             if der_datasets := dataset_pth.glob(f"derivatives/*{der}*"):
                 for i in der_datasets:
-                    dataset[der] = f"{URL_OPENNEURO}{dataset_name}/tree/main/derivatives/{i.name}"
+                    dataset[
+                        der
+                    ] = f"{URL_OPENNEURO}{dataset_name}/tree/main/derivatives/{i.name}"
 
         for keys in datasets:
             datasets[keys].append(dataset[keys])
@@ -171,20 +177,28 @@ def list_openneuro_derivatives(
         dataset["has_mri"] = True
         dataset["mriqc"] = f"{URL_OPENNEURO_DERIVATIVES}{dataset_pth.name}"
 
-        tsv_status, json_status, columns = has_participant_tsv(dataset_pth / "sourcedata" / "raw")
+        tsv_status, json_status, columns = has_participant_tsv(
+            dataset_pth / "sourcedata" / "raw"
+        )
         dataset["has_participant_tsv"] = tsv_status
         dataset["has_participant_json"] = json_status
         dataset["participant_columns"] = columns
 
-        dataset["has_phenotype_dir"] = (dataset_pth / "sourcedata" / "raw" / "phenotype").exists()
+        dataset["has_phenotype_dir"] = (
+            dataset_pth / "sourcedata" / "raw" / "phenotype"
+        ).exists()
 
         fmriprep_dataset = Path(str(dataset_pth).replace("mriqc", "fmriprep"))
         if fmriprep_dataset.exists():
-            dataset["fmriprep"] = f"{URL_OPENNEURO_DERIVATIVES}{fmriprep_dataset.name}"
+            dataset[
+                "fmriprep"
+            ] = f"{URL_OPENNEURO_DERIVATIVES}{fmriprep_dataset.name}"
 
         freesurfer_dataset = fmriprep_dataset / "sourcedata" / "freesurfer"
         if freesurfer_dataset.exists():
-            dataset["freesurfer"] = f"{dataset['fmriprep']}/tree/main/sourcedata/freesurfer"
+            dataset[
+                "freesurfer"
+            ] = f"{dataset['fmriprep']}/tree/main/sourcedata/freesurfer"
 
         for keys in datasets:
             datasets[keys].append(dataset[keys])
@@ -199,7 +213,9 @@ def list_openneuro_derivatives(
 
             dataset["nb_subjects"] = get_nb_subjects(dataset_pth)
             dataset["has_mri"] = True
-            dataset["fmriprep"] = f"{URL_OPENNEURO_DERIVATIVES}{dataset_pth.name}"
+            dataset[
+                "fmriprep"
+            ] = f"{URL_OPENNEURO_DERIVATIVES}{dataset_pth.name}"
 
             tsv_status, json_status, columns = has_participant_tsv(
                 dataset_pth / "sourcedata" / "raw"
@@ -214,7 +230,9 @@ def list_openneuro_derivatives(
 
             freesurfer_dataset = dataset_pth / "sourcedata" / "freesurfer"
             if freesurfer_dataset.exists():
-                dataset["freesurfer"] = f"{dataset['fmriprep']}/tree/main/sourcedata/freesurfer"
+                dataset[
+                    "freesurfer"
+                ] = f"{dataset['fmriprep']}/tree/main/sourcedata/freesurfer"
 
     return datasets
 

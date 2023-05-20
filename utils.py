@@ -10,7 +10,12 @@ from rich.logging import RichHandler
 def bulk_annotation_logger(log_level: str = "INFO"):
     FORMAT = "%(message)s"
 
-    logging.basicConfig(level=log_level, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
+    logging.basicConfig(
+        level=log_level,
+        format=FORMAT,
+        datefmt="[%X]",
+        handlers=[RichHandler()],
+    )
 
     return logging.getLogger("rich")
 
@@ -58,10 +63,16 @@ def is_yes_no(levels: pd.Series) -> bool:
     NaN are dropped before checking.
     """
     levels = levels.dropna()
-    return all(isinstance(x, str) and x.lower() in ["no", "yes"] for x in levels.values)
+    return all(
+        isinstance(x, str) and x.lower() in ["no", "yes"]
+        for x in levels.values
+    )
 
 
 def is_euro_format(levels: pd.Series) -> bool:
     """Return True if all values are numbers in with a comma as decimal separator."""
     levels = levels.dropna()
-    return all(isinstance(x, str) and re.match("[-]?[ ]?[0-9]*,[0-9]*", x) for x in levels.unique())
+    return all(
+        isinstance(x, str) and re.match("[-]?[ ]?[0-9]*,[0-9]*", x)
+        for x in levels.unique()
+    )

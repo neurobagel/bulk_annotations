@@ -64,7 +64,9 @@ def main():
     datalad_superdataset = Path("/home/remi/datalad/datasets.datalad.org")
     openneuro = datalad_superdataset / "openneuro"
 
-    datasets = pd.read_csv(Path(__file__).resolve().parent / "openneuro.tsv", sep="\t")
+    datasets = pd.read_csv(
+        Path(__file__).resolve().parent / "openneuro.tsv", sep="\t"
+    )
 
     output = init_output(include_levels=INCLUDE_LEVELS)
 
@@ -73,7 +75,10 @@ def main():
 
         log.info(f"dataset '{dataset_name}'")
 
-        if not datasets[mask].has_mri.values[0] or not datasets[mask].has_participant_tsv.values[0]:
+        if (
+            not datasets[mask].has_mri.values[0]
+            or not datasets[mask].has_participant_tsv.values[0]
+        ):
             continue
 
         row_template = new_row(dataset_name)
@@ -91,7 +96,9 @@ def main():
             with open(participant_json) as f:
                 participants_dict = json.load(f)
 
-        log.debug(f"dataset {dataset_name} has columns: {participants.columns.values}")
+        log.debug(
+            f"dataset {dataset_name} has columns: {participants.columns.values}"
+        )
 
         for column in participants.columns:
             this_row = row_template.copy()
@@ -106,7 +113,9 @@ def main():
                 this_row["controlled_term"] = CONTROLLED_TERMS[column]
 
             if participants_dict and participants_dict.get(column):
-                this_row["description"] = participants_dict[column].get("Description", "n/a")
+                this_row["description"] = participants_dict[column].get(
+                    "Description", "n/a"
+                )
 
             this_row["type"] = participants[column].dtype
 
@@ -118,13 +127,19 @@ def main():
             if not INCLUDE_LEVELS:
                 continue
 
-            output = list_levels(output, participants, participants_dict, column, row_template)
+            output = list_levels(
+                output, participants, participants_dict, column, row_template
+            )
 
     output = pd.DataFrame.from_dict(output)
 
-    output_filename = Path(__file__).resolve().parent / "bulk_annotation_source.tsv"
+    output_filename = (
+        Path(__file__).resolve().parent / "bulk_annotation_source.tsv"
+    )
     if not INCLUDE_LEVELS:
-        output_filename = Path(__file__).resolve().parent / "bulk_annotation_columns.tsv"
+        output_filename = (
+            Path(__file__).resolve().parent / "bulk_annotation_columns.tsv"
+        )
 
     output.to_csv(
         output_filename,
@@ -207,7 +222,9 @@ def list_levels(
     undefined_levels = set(actual_levels) - set(levels.keys())
 
     if len(undefined_levels) > MAX_NB_LEVELS:
-        log.info(f"  column '{column}': skipping column with {len(undefined_levels)} levels")
+        log.info(
+            f"  column '{column}': skipping column with {len(undefined_levels)} levels"
+        )
         return output
 
     log.info(f"  column '{column}': defined levels: {set(levels.keys())}")
@@ -235,7 +252,9 @@ def is_categorical(series):
         return True
     elif all(isinstance(x, (str)) for x in series.unique()):
         if all(re.match("([0-9]*[,]{0-1}[0-9]*)", x) for x in series.unique()):
-            log.info(f"  series with comma instead of dot for decimal separator: {series}")
+            log.info(
+                f"  series with comma instead of dot for decimal separator: {series}"
+            )
             print("foo")
             return False
         if all(re.match("([- ]{0-1}[0-9]*)", x) for x in series.unique()):
@@ -248,7 +267,10 @@ def is_categorical(series):
 
 
 def append_levels(
-    output: pd.DataFrame, levels: set | dict, column: str, row_template: dict[str, str]
+    output: pd.DataFrame,
+    levels: set | dict,
+    column: str,
+    row_template: dict[str, str],
 ):
     for level_ in levels:
         if level_ in ("n/a", "nan"):
