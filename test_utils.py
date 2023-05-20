@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from utils import is_euro_format, is_yes_no, read_csv
+from utils import is_euro_format, is_yes_no, read_csv_autodetect_date
 
 
 @pytest.fixture
