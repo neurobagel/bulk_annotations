@@ -128,7 +128,7 @@ def list_openneuro(datalad_superdataset: Path, datasets: dict[str, list]) -> dic
             "freesurfer",
             "mriqc",
         ]:
-            if der_datasets := dataset_pth.glob(f"derivatives/*{der}"):
+            if der_datasets := dataset_pth.glob(f"derivatives/*{der}*"):
                 for i in der_datasets:
                     dataset[der] = f"{URL_OPENNEURO}{dataset_name}/tree/main/derivatives/{i.name}"
 
