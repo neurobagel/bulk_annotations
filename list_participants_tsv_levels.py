@@ -6,7 +6,15 @@ from warnings import warn
 import pandas as pd
 from rich import print
 
-from utils import bulk_annotation_logger, is_yes_no, read_csv
+from utils import (
+    bulk_annotation_logger,
+    is_euro_format,
+    is_yes_no,
+    output_dir,
+    read_csv_autodetect_date,
+    init_output,
+    exclude_datasets
+)
 
 INCLUDE_LEVELS = False
 LOG_LEVEL = "INFO"
@@ -18,32 +26,6 @@ log = bulk_annotation_logger(LOG_LEVEL)
 CONTROLLED_TERMS = {
     "participant_id": "nb:ParticipantID",
 }
-
-
-def init_output(include_levels: bool = True) -> dict[str, list]:
-    if include_levels:
-        return {
-            "dataset": [],
-            "nb_rows": [],
-            "column": [],
-            "value": [],
-            "type": [],
-            "nb_levels": [],
-            "is_row": [],
-            "description": [],
-            "controlled_term": [],
-            "units": [],
-        }
-    else:
-        return {
-            "dataset": [],
-            "nb_rows": [],
-            "column": [],
-            "type": [],
-            "nb_levels": [],
-            "description": [],
-            "controlled_term": [],
-        }
 
 
 def new_row(dataset_name: str) -> dict[str, str | int | bool]:
@@ -68,24 +50,21 @@ def main():
         Path(__file__).resolve().parent / "openneuro.tsv", sep="\t"
     )
 
-    output = init_output(include_levels=INCLUDE_LEVELS)
+    output = init_output(include_levels=True)
 
     for dataset_name in datasets.name:
         mask = datasets.name == dataset_name
 
         log.info(f"dataset '{dataset_name}'")
 
-        if (
-            not datasets[mask].has_mri.values[0]
-            or not datasets[mask].has_participant_tsv.values[0]
-        ):
+        if exclude_datasets(datasets[mask]):
             continue
 
         row_template = new_row(dataset_name)
 
         participant_tsv = openneuro / dataset_name / "participants.tsv"
         try:
-            participants = read_csv(participant_tsv, sep="\t")
+            participants = read_csv_autodetect_date(participant_tsv, sep="\t")
         except pd.errors.ParserError:
             warn(f"Could not parse: {participant_tsv}")
             continue
@@ -124,23 +103,12 @@ def main():
             for key in output.keys():
                 output[key].append(this_row[key])
 
-            if not INCLUDE_LEVELS:
-                continue
-
             output = list_levels(
                 output, participants, participants_dict, column, row_template
             )
 
     output = pd.DataFrame.from_dict(output)
-
-    output_filename = (
-        Path(__file__).resolve().parent / "bulk_annotation_source.tsv"
-    )
-    if not INCLUDE_LEVELS:
-        output_filename = (
-            Path(__file__).resolve().parent / "bulk_annotation_columns.tsv"
-        )
-
+    output_filename = (output_dir() / "bulk_annotation_source.tsv")
     output.to_csv(
         output_filename,
         index=False,
