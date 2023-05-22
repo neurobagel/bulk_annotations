@@ -1,54 +1,31 @@
-import json
-import re
 from pathlib import Path
 from warnings import warn
 
 import pandas as pd
-from rich import print
 
+from heuristics import is_age, is_participant_id, is_sex, skip_column
+from logger import bulk_annotation_logger
 from utils import (
-    bulk_annotation_logger,
-    is_euro_format,
-    is_yes_no,
+    exclude_datasets,
+    get_participants_dict,
+    init_output,
+    new_row_template,
     output_dir,
     read_csv_autodetect_date,
-    init_output,
-    exclude_datasets
+    update_row_with_column_info,
 )
 
-INCLUDE_LEVELS = False
 LOG_LEVEL = "INFO"
 
 
 log = bulk_annotation_logger(LOG_LEVEL)
 
 
-CONTROLLED_TERMS = {
-    "participant_id": "nb:ParticipantID",
-}
-
-
-def new_row(dataset_name: str) -> dict[str, str | int | bool]:
-    return {
-        "dataset": dataset_name,
-        "column": "n/a",
-        "type": "n/a",
-        "nb_levels": 0,
-        "value": "n/a",
-        "is_row": "n/a",
-        "description": "n/a",
-        "controlled_term": "n/a",
-        "units": "n/a",
-    }
-
-
 def main():
     datalad_superdataset = Path("/home/remi/datalad/datasets.datalad.org")
     openneuro = datalad_superdataset / "openneuro"
 
-    datasets = pd.read_csv(
-        Path(__file__).resolve().parent / "openneuro.tsv", sep="\t"
-    )
+    datasets = pd.read_csv(output_dir() / "openneuro.tsv", sep="\t")
 
     output = init_output(include_levels=True)
 
@@ -60,8 +37,6 @@ def main():
         if exclude_datasets(datasets[mask]):
             continue
 
-        row_template = new_row(dataset_name)
-
         participant_tsv = openneuro / dataset_name / "participants.tsv"
         try:
             participants = read_csv_autodetect_date(participant_tsv, sep="\t")
@@ -69,81 +44,50 @@ def main():
             warn(f"Could not parse: {participant_tsv}")
             continue
 
-        participants_dict = {}
-        if datasets[mask].has_participant_json.values[0]:
-            participant_json = openneuro / dataset_name / "participants.json"
-            with open(participant_json) as f:
-                participants_dict = json.load(f)
+        participants_dict = get_participants_dict(
+            datasets, dataset_name, openneuro
+        )
 
         log.debug(
             f"dataset {dataset_name} has columns: {participants.columns.values}"
         )
 
+        row_template = new_row_template(
+            dataset_name, nb_rows=len(participants), include_levels=True
+        )
+
         for column in participants.columns:
             this_row = row_template.copy()
 
-            this_row["column"] = column
+            this_row = update_row_with_column_info(
+                this_row, column, participants, participants_dict
+            )
 
-            this_row["nb_rows"] = len(participants)
-
-            this_row["is_row"] = True
-
-            if column in CONTROLLED_TERMS.keys():
-                this_row["controlled_term"] = CONTROLLED_TERMS[column]
-
-            if participants_dict and participants_dict.get(column):
-                this_row["description"] = participants_dict[column].get(
-                    "Description", "n/a"
-                )
-
-            this_row["type"] = participants[column].dtype
-
-            this_row["nb_levels"] = len(participants[column].unique())
+            if is_participant_id(participants, column):
+                this_row["controlled_term"] = "nb:ParticipantID"
+            elif is_age(this_row):
+                this_row["controlled_term"] = "nb:Age"
+            elif is_sex(column):
+                this_row["controlled_term"] = "nb:Sex"
 
             for key in output.keys():
                 output[key].append(this_row[key])
+
+            if skip_column(this_row):
+                log.debug(f"  column '{column}': skipping column")
+                continue
 
             output = list_levels(
                 output, participants, participants_dict, column, row_template
             )
 
     output = pd.DataFrame.from_dict(output)
-    output_filename = (output_dir() / "bulk_annotation_source.tsv")
+    output_filename = output_dir() / "bulk_annotation_levels.tsv"
     output.to_csv(
         output_filename,
         index=False,
         sep="\t",
     )
-
-
-# columns whose levels do not need to be listed
-# probably better handled by some fuzzy matching
-COLUMNS_TO_SKIP = (
-    "participant_id",
-    "participant_ID",
-    "date",
-    "time",
-    "age",
-    "Age",
-    "DOB",
-    "session_id",
-    "date_of_scan",
-    "age_at_first_scan_years",
-    "ageAtFirstScanYears",
-    "height",
-    "weight",
-    "scan_time",
-    "years_of_education",
-    "dataset_id",
-    "date_run",
-    "ftcd-fmri-delay-days",
-    "time_after_stroke" "HF (/min)",
-    "age (years)",
-    "a_date",
-    "birthdate_shifted",
-)
-
-MAX_NB_LEVELS = 100
 
 
 def list_levels(
@@ -157,14 +101,7 @@ def list_levels(
     and appends them to the output dictionary.
 
     Adds any undefined level not found in the data dictionary.
-
-    Skips columns in COLUMNS_TO_SKIP
-    or columns that only contain "no" and "yes" values.
     """
-    if column in COLUMNS_TO_SKIP:
-        log.info(f"  column '{column}': skipping column")
-        return output
-
     levels = {}
     if (
         participants_dict
@@ -174,64 +111,20 @@ def list_levels(
         levels = participants_dict[column]["Levels"]
         output = append_levels(output, levels, column, row_template)
 
-    if not is_categorical(participants[column]):
-        log.info(f"  column '{column}': skipping non categorical column")
-        log.info(f"  column '{column}': {participants[column].unique()}")
+    actual_levels = list(participants[column].unique())
+    defined_levels = set(levels.keys())
+    undefined_levels = set(actual_levels) - defined_levels
+
+    if len(undefined_levels) == 0:
         return output
 
-    actual_levels = []
-    for x in participants[column].unique():
-        if isinstance(x, str):
-            if x.endswith(",") or x.endswith(", ") or x.endswith(" "):
-                log.info(f"  column '{column}': cleaning level '{x}'")
-            actual_levels.append(x.rstrip().rstrip(","))
-        else:
-            actual_levels.append(x)
-    undefined_levels = set(actual_levels) - set(levels.keys())
-
-    if len(undefined_levels) > MAX_NB_LEVELS:
-        log.info(
-            f"  column '{column}': skipping column with {len(undefined_levels)} levels"
-        )
-        return output
-
-    log.info(f"  column '{column}': defined levels: {set(levels.keys())}")
+    if len(defined_levels):
+        log.info(f"  column '{column}': defined levels: {set(levels.keys())}")
     log.info(f"  column '{column}': undefined levels: {undefined_levels}")
-
-    if is_yes_no(undefined_levels):
-        log.info(f"  column '{column}': skipping yes/no column")
-        return output
 
     output = append_levels(output, undefined_levels, column, row_template)
 
     return output
-
-
-def is_categorical(series):
-    if series.dtype == "float64":
-        return False
-    elif any(isinstance(x, (float)) for x in series.unique()):
-        return False
-    if series.dtype == "int64":
-        return True
-    elif all(isinstance(x, (int)) for x in series.unique()):
-        return True
-    elif is_yes_no(series):
-        return True
-    elif all(isinstance(x, (str)) for x in series.unique()):
-        if all(re.match("([0-9]*[,]{0-1}[0-9]*)", x) for x in series.unique()):
-            log.info(
-                f"  series with comma instead of dot for decimal separator: {series}"
-            )
-            print("foo")
-            return False
-        if all(re.match("([- ]{0-1}[0-9]*)", x) for x in series.unique()):
-            log.info(f"  series of int with n/a values: {series}")
-            return False
-    else:
-        for x in series.unique():
-            print(x)
-        return True
 
 
 def append_levels(
@@ -241,10 +134,6 @@ def append_levels(
     row_template: dict[str, str],
 ):
     for level_ in levels:
-        if level_ in ("n/a", "nan"):
-            log.info(f"  column '{column}': skipping level '{level_}'")
-            continue
-
         log.debug(f"  column '{column}': appending level '{level_}'")
 
         this_row = row_template.copy()

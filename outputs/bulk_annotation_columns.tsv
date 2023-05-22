@@ -153,10 +153,10 @@ ds000110	18	sex	object	2	n/a	n/a
 ds000110	18	age	int64	7	n/a	n/a
 ds000113	37	participant_id	object	37	n/a	nb:ParticipantID
 ds000113	37	gender	object	3	n/a	n/a
-ds000113	37	age	object	6	n/a	n/a
+ds000113	37	age	nb:range	6	n/a	n/a
 ds000113	37	handedness	object	4	n/a	n/a
-ds000113	37	hearing_problems_current	object	2	n/a	n/a
-ds000113	37	hearing_problems_past	object	3	n/a	n/a
+ds000113	37	hearing_problems_current	yes_no	2	n/a	n/a
+ds000113	37	hearing_problems_past	yes_no	3	n/a	n/a
 ds000113	37	absolute_pitch	float64	4	n/a	n/a
 ds000113	37	german_speak	float64	2	n/a	n/a
 ds000113	37	german_comprehend	float64	2	n/a	n/a
@@ -195,21 +195,21 @@ ds000113	37	background_preference2_duration	float64	9	n/a	n/a
 ds000113	37	background_preference3_genre	object	11	n/a	n/a
 ds000113	37	background_preference3_duration	float64	8	n/a	n/a
 ds000113	37	concert_preference1_genre	object	12	n/a	n/a
-ds000113	37	concert_preference1_duration	object	10	n/a	n/a
+ds000113	37	concert_preference1_duration	nb:range	10	n/a	n/a
 ds000113	37	concert_preference2_genre	object	10	n/a	n/a
-ds000113	37	concert_preference2_duration	object	6	n/a	n/a
+ds000113	37	concert_preference2_duration	nb:range	6	n/a	n/a
 ds000113	37	concert_preference3_genre	object	7	n/a	n/a
-ds000113	37	concert_preference3_duration	object	3	n/a	n/a
+ds000113	37	concert_preference3_duration	nb:range	3	n/a	n/a
 ds000113	37	favorite_music_examples	object	16	n/a	n/a
-ds000113	37	musician	object	3	n/a	n/a
-ds000113	37	music_lover	object	3	n/a	n/a
+ds000113	37	musician	yes_no	3	n/a	n/a
+ds000113	37	music_lover	yes_no	3	n/a	n/a
 ds000113	37	musician_style1	object	7	n/a	n/a
 ds000113	37	musician_style2	object	6	n/a	n/a
 ds000113	37	musician_style3	object	5	n/a	n/a
 ds000113	37	musician_instruments	object	8	n/a	n/a
-ds000113	37	musician_improv	object	3	n/a	n/a
+ds000113	37	musician_improv	yes_no	3	n/a	n/a
 ds000113	37	musician_improv_style	object	4	n/a	n/a
-ds000113	37	musician_conductor	object	3	n/a	n/a
+ds000113	37	musician_conductor	yes_no	3	n/a	n/a
 ds000113	37	musician_other_activities	object	4	n/a	n/a
 ds000113	37	musician_act1	object	7	n/a	n/a
 ds000113	37	musician_act1_duration	float64	9	n/a	n/a
@@ -223,11 +223,11 @@ ds000113	37	musician_act3	object	4	n/a	n/a
 ds000113	37	musician_act3_duration	float64	4	n/a	n/a
 ds000113	37	musician_act3_startage	float64	4	n/a	n/a
 ds000113	37	musician_act3_endage	float64	4	n/a	n/a
-ds000113	37	forrest_seen	object	3	n/a	n/a
+ds000113	37	forrest_seen	yes_no	3	n/a	n/a
 ds000113	37	forrest_seen_dist	float64	16	n/a	n/a
 ds000113	37	forrest_seen_count	float64	10	n/a	n/a
 ds000113	37	forrest_seen_languages	object	5	n/a	n/a
-ds000113	37	forrest_ad_known	object	3	n/a	n/a
+ds000113	37	forrest_ad_known	yes_no	3	n/a	n/a
 ds000113	37	forrest_ad_rating	float64	4	n/a	n/a
 ds000113	37	forrest_ad_storydepth	float64	3	n/a	n/a
 ds000113	37	forrest_ad_fatigue	float64	5	n/a	n/a
@@ -241,8 +241,8 @@ ds000113	37	audioq5	float64	3	n/a	n/a
 ds000113	37	audioq6	float64	3	n/a	n/a
 ds000113	37	audioq7	float64	4	n/a	n/a
 ds000113	37	audioq8	float64	4	n/a	n/a
-ds000113	37	vision_problems_current	object	2	n/a	n/a
-ds000113	37	vision_problems_past	object	3	n/a	n/a
+ds000113	37	vision_problems_current	yes_no	2	n/a	n/a
+ds000113	37	vision_problems_past	yes_no	3	n/a	n/a
 ds000114	10	participant_id	object	10	n/a	nb:ParticipantID
 ds000114	10	dominant_hand	object	2	n/a	n/a
 ds000115	99	participant_id	object	99	n/a	nb:ParticipantID
@@ -397,7 +397,7 @@ ds000172	13	Age	float64	12	n/a	n/a
 ds000174	42	participant_id	int64	42	n/a	nb:ParticipantID
 ds000174	42	group	object	2	n/a	n/a
 ds000174	42	gender	object	2	n/a	n/a
-ds000174	42	age at baseline 	float64	40	n/a	n/a
+ds000174	42	age at baseline	float64	40	n/a	n/a
 ds000174	42	age at onset first CB use	float64	15	n/a	n/a
 ds000174	42	age at onset frequent CB use	float64	10	n/a	n/a
 ds000174	42	cudit total baseline	int64	16	n/a	n/a
@@ -405,7 +405,7 @@ ds000174	42	cudit total follow-up	int64	20	n/a	n/a
 ds000174	42	audit total baseline	int64	13	n/a	n/a
 ds000174	42	audit total follow-up	int64	16	n/a	n/a
 ds000200	14	participant_id	object	14	n/a	nb:ParticipantID
-ds000200	14	MnExposition	object	2	n/a	n/a
+ds000200	14	MnExposition	yes_no	2	n/a	n/a
 ds000200	14	age	int64	7	n/a	n/a
 ds000200	14	gender	object	2	n/a	n/a
 ds000200	14	Obvolume_mm3	float64	13	n/a	n/a
@@ -422,16 +422,16 @@ ds000201	86	EducationLevel	object	4	self-rated by participant, Har avslutat grun
 ds000201	86	HADS_Anxiety	int64	9	Hospital Anxiety and Depression scale, Anxiety subscale	n/a
 ds000201	86	HADS_Depression	int64	6	Hospital Anxiety and Depression scale, Depression subscale	n/a
 ds000201	86	ISI	int64	8	Insomnia Severity Index	n/a
-ds000201	86	KSQ_SleepQualityIndex	object	8	Karolinska Sleep Questionnaire, SleepQualityIndex	n/a
-ds000201	86	KSQ_WakeupSymptomIndex	object	9	Karolinska Sleep Questionnaire, WakeupSymptomIndex	n/a
-ds000201	86	KSQ_SnoringSymptomIndex	object	6	Karolinska Sleep Questionnaire, SnoringSymptomIndex	n/a
-ds000201	86	KSQ_SleepSymptomIndex	object	12	Karolinska Sleep Questionnaire, SleepSymptomIndex	n/a
+ds000201	86	KSQ_SleepQualityIndex	nb:euro	8	Karolinska Sleep Questionnaire, SleepQualityIndex	n/a
+ds000201	86	KSQ_WakeupSymptomIndex	nb:euro	9	Karolinska Sleep Questionnaire, WakeupSymptomIndex	n/a
+ds000201	86	KSQ_SnoringSymptomIndex	nb:euro	6	Karolinska Sleep Questionnaire, SnoringSymptomIndex	n/a
+ds000201	86	KSQ_SleepSymptomIndex	nb:euro	12	Karolinska Sleep Questionnaire, SleepSymptomIndex	n/a
 ds000201	86	KSQ_WeekdayBedTime	object	23	Karolinska Sleep Questionnaire, WeekdayBedTime	n/a
 ds000201	86	KSQ_WeekendBedTime	object	25	Karolinska Sleep Questionnaire, WeekendBedTime	n/a
 ds000201	86	KSQ_WeekdayRiseTime	object	29	Karolinska Sleep Questionnaire, WeekdayRiseTime	n/a
 ds000201	86	KSQ_WeekendRiseTime	object	26	Karolinska Sleep Questionnaire, WeekendRiseTime	n/a
 ds000201	86	KSQ_NapFrequency	object	5	Karolinska Sleep Questionnaire, NapFrequency	n/a
-ds000201	86	KSQ_NapDuration	object	21	Karolinska Sleep Questionnaire, NapDuration	n/a
+ds000201	86	KSQ_NapDuration	nb:range	21	Karolinska Sleep Questionnaire, NapDuration	n/a
 ds000201	86	KSQ_ConcernDisturbedSleep	object	4	Karolinska Sleep Questionnaire, ConcernDisturbedSleep	n/a
 ds000201	86	KSQ_Panic	object	4	Karolinska Sleep Questionnaire, Panic	n/a
 ds000201	86	KSQ_Worry	object	4	Karolinska Sleep Questionnaire, Worry	n/a
@@ -442,10 +442,10 @@ ds000201	86	KSQ_HealthProblem	object	5	Karolinska Sleep Questionnaire, HealthPro
 ds000201	86	KSQ_TotalSleepRequirement	object	15	Karolinska Sleep Questionnaire, TotalSleepRequirement	n/a
 ds000201	86	KSQ_OverallSleepQuality	object	3	Karolinska Sleep Questionnaire, OverallSleepQuality	n/a
 ds000201	86	KSQ_MorningOrEveningPerson	int64	5	Karolinska Sleep Questionnaire, MorningOrEveningPerson	n/a
-ds000201	86	IRI_EC	object	16	Interpersonal Reactivity Index, Empathic Concern subscale	n/a
-ds000201	86	IRI_PT	object	18	Interpersonal Reactivity Index, Perspective Taking subscale	n/a
-ds000201	86	IRI_PD	object	22	Interpersonal Reactivity Index, Personal Distress subscale	n/a
-ds000201	86	IRI_F	object	22	Interpersonal Reactivity Index, Fantasy subscale	n/a
+ds000201	86	IRI_EC	nb:euro	16	Interpersonal Reactivity Index, Empathic Concern subscale	n/a
+ds000201	86	IRI_PT	nb:euro	18	Interpersonal Reactivity Index, Perspective Taking subscale	n/a
+ds000201	86	IRI_PD	nb:euro	22	Interpersonal Reactivity Index, Personal Distress subscale	n/a
+ds000201	86	IRI_F	nb:euro	22	Interpersonal Reactivity Index, Fantasy subscale	n/a
 ds000201	86	TAS20_Total	int64	26	Toronto Alexithymia Scale-20, total score	n/a
 ds000201	86	TAS20_DIF	int64	15	Toronto Alexithymia Scale-20, Difficulty Identifying Feelings subscale	n/a
 ds000201	86	TAS20_DDF	int64	14	Toronto Alexithymia Scale-20, Difficulty Describing Feelings subscale	n/a
@@ -463,11 +463,11 @@ ds000201	86	SelfRatedHealth	int64	4	Self-rated health right now, 7-point scale	n
 ds000201	86	SRH5	int64	3	Self-rated health in general, 5-point scale	n/a
 ds000201	86	ESS	int64	20	Epworth Sleepiness Scale	n/a
 ds000201	86	SicknessQ	int64	19	Sickness-Q scale	n/a
-ds000201	86	ECS	object	22	Emotional Contagion Scale	n/a
+ds000201	86	ECS	nb:euro	22	Emotional Contagion Scale	n/a
 ds000201	86	BIS11_Total	nb:euro	31	Barratt Impulsiveness Scale-11, total score	n/a
-ds000201	86	BIS11_Attentional	object	16	Barratt Impulsiveness Scale-11, Attentional factor	n/a
-ds000201	86	BIS11_Motor	object	14	Barratt Impulsiveness Scale-11, Motor factor	n/a
-ds000201	86	BIS11_Nonplanning	object	19	Barratt Impulsiveness Scale-11, Nonplanning factor	n/a
+ds000201	86	BIS11_Attentional	nb:euro	16	Barratt Impulsiveness Scale-11, Attentional factor	n/a
+ds000201	86	BIS11_Motor	nb:euro	14	Barratt Impulsiveness Scale-11, Motor factor	n/a
+ds000201	86	BIS11_Nonplanning	nb:euro	19	Barratt Impulsiveness Scale-11, Nonplanning factor	n/a
 ds000201	86	MenstrualPhaseSession1	object	5	determined by participants' self-reported dates for last menstruation if applicable	n/a
 ds000201	86	MenstrualPhaseSession2	object	5	determined by participants' self-reported dates for last menstruation if applicable	n/a
 ds000201	86	SleepDeprivedSession1	object	6	experimenter's guess about participant's condition, for validation of blinding	n/a
@@ -621,7 +621,7 @@ ds000220	26	months_time1_time2	int64	4	n/a	n/a
 ds000220	26	months_time2_time3	float64	6	n/a	n/a
 ds000221	318	participant_id	object	318	n/a	nb:ParticipantID
 ds000221	318	gender	object	2	n/a	n/a
-ds000221	318	age (5-year bins)	object	13	n/a	n/a
+ds000221	318	age (5-year bins)	nb:range	13	n/a	n/a
 ds000222	79	participant_id	object	79	n/a	nb:ParticipantID
 ds000222	79	group	object	2	n/a	n/a
 ds000222	79	age	int64	26	n/a	n/a
@@ -641,7 +641,7 @@ ds000224	10	education_degree	object	4	Highest educational degree obtained	n/a
 ds000224	10	education_years	float64	7	Number of total years of education	n/a
 ds000228	155	participant_id	object	155	n/a	nb:ParticipantID
 ds000228	155	Age	float64	127	n/a	n/a
-ds000228	155	AgeGroup	object	6	n/a	n/a
+ds000228	155	AgeGroup	nb:range	6	n/a	n/a
 ds000228	155	Child_Adult	object	2	n/a	n/a
 ds000228	155	Gender	object	2	n/a	n/a
 ds000228	155	Handedness	object	3	n/a	n/a
@@ -655,7 +655,7 @@ ds000228	155	KBIT_raw	float64	31	n/a	n/a
 ds000228	155	KBIT_standard	float64	43	n/a	n/a
 ds000228	155	DCCS Summary	float64	5	n/a	n/a
 ds000228	155	Scanlog: Scanner	object	2	n/a	n/a
-ds000228	155	Scanlog: Coil	object	3	Children under age five years used one of two custom 32-channel phased-array head coils made for younger (n=3, M(SD)=3.91(.42) years) or older (n=28, M(SD)=4.07(.42) years) children (Keil et al., 2011); all other participants used the standard Siemens 32-channel head coil.	n/a
+ds000228	155	Scanlog: Coil	nb:range	3	Children under age five years used one of two custom 32-channel phased-array head coils made for younger (n=3, M(SD)=3.91(.42) years) or older (n=28, M(SD)=4.07(.42) years) children (Keil et al., 2011); all other participants used the standard Siemens 32-channel head coil.	n/a
 ds000228	155	Scanlog: Voxel slize	object	2	n/a	n/a
 ds000228	155	Scanlog: Slice Gap	float64	3	n/a	n/a
 ds000229	15	participant_id	object	15	n/a	nb:ParticipantID
@@ -680,7 +680,7 @@ ds000235	4	participant_id	object	4	n/a	nb:ParticipantID
 ds000235	4	age	int64	4	n/a	n/a
 ds000235	4	sex	object	2	n/a	n/a
 ds000236	18	participant_id	object	18	n/a	nb:ParticipantID
-ds000236	18	age	object	11	n/a	n/a
+ds000236	18	age	nb:bounded	11	n/a	n/a
 ds000236	18	sex	object	2	n/a	n/a
 ds000238	35	participant_id	object	35	n/a	nb:ParticipantID
 ds000238	35	age	int64	12	n/a	n/a
@@ -779,8 +779,8 @@ ds001178	23	participant_id	object	23	n/a	nb:ParticipantID
 ds001178	23	source	object	7	n/a	n/a
 ds001178	23	problem	object	23	n/a	n/a
 ds001226	36	participant_id	object	36	n/a	nb:ParticipantID
-ds001226	36	 sex	object	2	n/a	n/a
-ds001226	36	 age	int64	25	n/a	n/a
+ds001226	36	sex	object	2	n/a	n/a
+ds001226	36	age	int64	25	n/a	n/a
 ds001226	36	tumor type & grade	object	11	n/a	n/a
 ds001226	36	tumor size (cub cm)	float64	26	n/a	n/a
 ds001226	36	tumor location	object	7	n/a	n/a
@@ -1141,58 +1141,58 @@ ds001761	4	sex	object	1	n/a	n/a
 ds001771	40	participant_id	object	40	n/a	nb:ParticipantID
 ds001771	40	age	int64	15	Age of the subject	n/a
 ds001771	40	sex	object	2	Sex of the subject. 'F' for female and 'M' for male.	n/a
-ds001771	40	PC_run1	object	18	Percent of correct answers in run 1	n/a
-ds001771	40	PC_run2	object	17	Percent of correct answers in run 2	n/a
-ds001771	40	PC_run3	object	21	Percent of correct answers in run 3	n/a
-ds001771	40	PC_run4	object	22	Percent of correct answers in run 4	n/a
-ds001771	40	mean_PC	object	34	Average of percent of correct answers across all runs	n/a
-ds001771	40	RT_run1	object	35	Average reaction time in run 1	n/a
-ds001771	40	RT_run2	object	34	Average reaction time in run 2	n/a
-ds001771	40	RT_run3	object	32	Average reaction time in run 3	n/a
-ds001771	40	RT_run4	object	35	Average reaction time in run 4	n/a
-ds001771	40	mean_RT	object	34	Average reaction time across all runs	n/a
-ds001771	40	miss_ans_run1	object	10	Percent of trials without any answer in run 1	n/a
-ds001771	40	miss_ans_run2	object	10	Percent of trials without any answer in run 2	n/a
-ds001771	40	miss_ans_run3	object	12	Percent of trials without any answer in run 3	n/a
-ds001771	40	miss_ans_run4	object	11	Percent of trials without any answer in run 4	n/a
-ds001771	40	mean_miss_ans	object	17	Average of missing response (in percent) across all runs	n/a
-ds001771	40	PC_anne1	object	11	Percent of correct answer when Anne is speaking in run 1	n/a
-ds001771	40	PC_anne2	object	10	Percent of correct answer when Anne is speaking in run 2	n/a
-ds001771	40	PC_anne3	object	10	Percent of correct answer when Anne is speaking in run 3	n/a
-ds001771	40	PC_anne4	object	9	Percent of correct answer when Anne is speaking in run 4	n/a
-ds001771	40	mean_PC_anne	object	27	Average percent of correct answer when Anne is speaking across all runs	n/a
-ds001771	40	PC_betty1	object	10	Percent of correct answer when Betty is speaking in run 1	n/a
-ds001771	40	PC_betty2	object	10	Percent of correct answer when Betty is speaking in run 2	n/a
-ds001771	40	PC_betty3	object	8	Percent of correct answer when Betty is speaking in run 3	n/a
-ds001771	40	PC_betty4	object	11	Percent of correct answer when Betty is speaking in run 4	n/a
-ds001771	40	mean_PC_betty	object	31	Average percent of correct answer when Betty is speaking across all runs	n/a
-ds001771	40	PC_chloe1	object	10	Percent of correct answer when Chloe is speaking in run 1	n/a
-ds001771	40	PC_chloe2	object	10	Percent of correct answer when Chloe is speaking in run 2	n/a
-ds001771	40	PC_chloe3	object	10	Percent of correct answer when Chloe is speaking in run 3	n/a
-ds001771	40	PC_chloe4	object	10	Percent of correct answer when Chloe is speaking in run 4	n/a
-ds001771	40	mean_PC_chloe	object	22	Average percent of correct answer when Chloe is speaking across all runs	n/a
-ds001771	40	RT_anne1	object	36	Average reaction time when Anne is speaking in run 1	n/a
+ds001771	40	PC_run1	nb:euro	18	Percent of correct answers in run 1	n/a
+ds001771	40	PC_run2	nb:euro	17	Percent of correct answers in run 2	n/a
+ds001771	40	PC_run3	nb:euro	21	Percent of correct answers in run 3	n/a
+ds001771	40	PC_run4	nb:euro	22	Percent of correct answers in run 4	n/a
+ds001771	40	mean_PC	nb:euro	34	Average of percent of correct answers across all runs	n/a
+ds001771	40	RT_run1	nb:euro	35	Average reaction time in run 1	n/a
+ds001771	40	RT_run2	nb:euro	34	Average reaction time in run 2	n/a
+ds001771	40	RT_run3	nb:euro	32	Average reaction time in run 3	n/a
+ds001771	40	RT_run4	nb:euro	35	Average reaction time in run 4	n/a
+ds001771	40	mean_RT	nb:euro	34	Average reaction time across all runs	n/a
+ds001771	40	miss_ans_run1	nb:euro	10	Percent of trials without any answer in run 1	n/a
+ds001771	40	miss_ans_run2	nb:euro	10	Percent of trials without any answer in run 2	n/a
+ds001771	40	miss_ans_run3	nb:euro	12	Percent of trials without any answer in run 3	n/a
+ds001771	40	miss_ans_run4	nb:euro	11	Percent of trials without any answer in run 4	n/a
+ds001771	40	mean_miss_ans	nb:euro	17	Average of missing response (in percent) across all runs	n/a
+ds001771	40	PC_anne1	nb:euro	11	Percent of correct answer when Anne is speaking in run 1	n/a
+ds001771	40	PC_anne2	nb:euro	10	Percent of correct answer when Anne is speaking in run 2	n/a
+ds001771	40	PC_anne3	nb:euro	10	Percent of correct answer when Anne is speaking in run 3	n/a
+ds001771	40	PC_anne4	nb:euro	9	Percent of correct answer when Anne is speaking in run 4	n/a
+ds001771	40	mean_PC_anne	nb:euro	27	Average percent of correct answer when Anne is speaking across all runs	n/a
+ds001771	40	PC_betty1	nb:euro	10	Percent of correct answer when Betty is speaking in run 1	n/a
+ds001771	40	PC_betty2	nb:euro	10	Percent of correct answer when Betty is speaking in run 2	n/a
+ds001771	40	PC_betty3	nb:euro	8	Percent of correct answer when Betty is speaking in run 3	n/a
+ds001771	40	PC_betty4	nb:euro	11	Percent of correct answer when Betty is speaking in run 4	n/a
+ds001771	40	mean_PC_betty	nb:euro	31	Average percent of correct answer when Betty is speaking across all runs	n/a
+ds001771	40	PC_chloe1	nb:euro	10	Percent of correct answer when Chloe is speaking in run 1	n/a
+ds001771	40	PC_chloe2	nb:euro	10	Percent of correct answer when Chloe is speaking in run 2	n/a
+ds001771	40	PC_chloe3	nb:euro	10	Percent of correct answer when Chloe is speaking in run 3	n/a
+ds001771	40	PC_chloe4	nb:euro	10	Percent of correct answer when Chloe is speaking in run 4	n/a
+ds001771	40	mean_PC_chloe	nb:euro	22	Average percent of correct answer when Chloe is speaking across all runs	n/a
+ds001771	40	RT_anne1	nb:euro	36	Average reaction time when Anne is speaking in run 1	n/a
 ds001771	40	RT_anne2	nb:euro	33	Average reaction time when Anne is speaking in run 2	n/a
-ds001771	40	RT_anne3	object	34	Average reaction time when Anne is speaking in run 3	n/a
-ds001771	40	RT_anne4	object	37	Average reaction time when Anne is speaking in run 4	n/a
-ds001771	40	mean_RT_anne	object	33	Average reaction time when Anne is speaking across all runs	n/a
+ds001771	40	RT_anne3	nb:euro	34	Average reaction time when Anne is speaking in run 3	n/a
+ds001771	40	RT_anne4	nb:euro	37	Average reaction time when Anne is speaking in run 4	n/a
+ds001771	40	mean_RT_anne	nb:euro	33	Average reaction time when Anne is speaking across all runs	n/a
 ds001771	40	RT_betty1	nb:euro	35	Average reaction time when Betty is speaking in run 1	n/a
 ds001771	40	RT_betty2	nb:euro	33	Average reaction time when Betty is speaking in run 2	n/a
 ds001771	40	RT_betty3	nb:euro	36	Average reaction time when Betty is speaking in run 3	n/a
 ds001771	40	RT_betty4	nb:euro	35	Average reaction time when Betty is speaking in run 4	n/a
-ds001771	40	mean_RT_betty	object	33	Average reaction time when Betty is speaking across all runs	n/a
+ds001771	40	mean_RT_betty	nb:euro	33	Average reaction time when Betty is speaking across all runs	n/a
 ds001771	40	RT_chloe1	nb:euro	35	Average reaction time when Chloe is speaking in run 1	n/a
 ds001771	40	RT_chloe2	nb:euro	32	Average reaction time when Chloe is speaking in run 2	n/a
-ds001771	40	RT_chloe3	object	36	Average reaction time when Chloe is speaking in run 3	n/a
-ds001771	40	RT_chloe4	object	35	Average reaction time when Chloe is speaking in run 4	n/a
-ds001771	40	mean_RT_chloe	object	36	Average reaction time when Chloe is speaking across all runs	n/a
-ds001771	40	PC_voices_lab	object	8	Percent of good detection of voices vs. bells during laboratory behavioral session	n/a
-ds001771	40	PC_bells_lab	object	6	Percent of good detection of voices vs. bells during laboratory behavioral session	n/a
-ds001771	40	difference_PC	object	12	PC_bells_lab - PC_voices_lab	n/a
-ds001771	40	d'_voices	object	11	NC	n/a
+ds001771	40	RT_chloe3	nb:euro	36	Average reaction time when Chloe is speaking in run 3	n/a
+ds001771	40	RT_chloe4	nb:euro	35	Average reaction time when Chloe is speaking in run 4	n/a
+ds001771	40	mean_RT_chloe	nb:euro	36	Average reaction time when Chloe is speaking across all runs	n/a
+ds001771	40	PC_voices_lab	nb:euro	8	Percent of good detection of voices vs. bells during laboratory behavioral session	n/a
+ds001771	40	PC_bells_lab	nb:euro	6	Percent of good detection of voices vs. bells during laboratory behavioral session	n/a
+ds001771	40	difference_PC	nb:euro	12	PC_bells_lab - PC_voices_lab	n/a
+ds001771	40	d'_voices	nb:euro	11	NC	n/a
 ds001771	40	d'_bells	nb:euro	11	NC	n/a
-ds001771	40	rt_voices	object	32	Reaction time for voices detection of voices vs. bells classification during laboratory behavioral session	n/a
-ds001771	40	rt_bells	object	35	Reaction time for bells detection of voices vs. bells classification during laboratory behavioral session	n/a
+ds001771	40	rt_voices	nb:euro	32	Reaction time for voices detection of voices vs. bells classification during laboratory behavioral session	n/a
+ds001771	40	rt_bells	nb:euro	35	Reaction time for bells detection of voices vs. bells classification during laboratory behavioral session	n/a
 ds001784	14	participant_id	object	14	ID number assigned to participant (prefix sub-).	nb:ParticipantID
 ds001784	14	study_id	object	14	Anonymized participant identifier in larger DBS study.	n/a
 ds001784	14	gender	object	2	Participant's reported gender.	n/a
@@ -1207,7 +1207,7 @@ ds001784	14	ybocs_fu	float64	3	Summary score on the Yale-Brown Obessive Compulsi
 ds001784	14	madrs_bl	int64	8	Summary score on the Montgomery-Asberg Depression Rating Scale (MADRS) immediately prior to surgery.	n/a
 ds001784	14	madrs_fu	int64	10	Summary score on the Montgomery-Asberg Depression Rating Scale (MADRS) at follow-up visit (i.e. time of EEG data collection).	n/a
 ds001784	14	responder	bool	2	Whether the participant achieved clinical response at any point during his/her clinical trial; the criterion was a 50% drop in MADRS or a 35% drop in YBOCS. This may not have corresponded to the score at the time of study data collection.	n/a
-ds001784	14	hypomania	object	3	Whether the participant ever experienced a hypomanic episode following DBS surgery.	n/a
+ds001784	14	hypomania	yes_no	3	Whether the participant ever experienced a hypomanic episode following DBS surgery.	n/a
 ds001784	14	dbs_stim_freq	int64	5	Frequency of participant's chronic deep brain stimulation.	n/a
 ds001796	64	participant_id	object	64	participant_id	nb:ParticipantID
 ds001796	64	age	int64	27	age of the participant	n/a
@@ -1300,7 +1300,7 @@ ds001894	188	handedness	int64	1	Left or Right-Handed	n/a
 ds001919	254	participant_id	object	254	Unique ID	nb:ParticipantID
 ds001919	254	sex	object	3	M or F	n/a
 ds001919	254	age	object	29	yy	n/a
-ds001919	254	date_of_scan	object	89	yyyy-mm-dd	n/a
+ds001919	254	date_of_scan	nb:range	89	yyyy-mm-dd	n/a
 ds001919	254	institution_id	object	41	InstitutionId	n/a
 ds001919	254	institution	object	36	InstitutionName	n/a
 ds001919	254	manufacturer	object	3	ManufacturerName	n/a
@@ -1542,7 +1542,7 @@ ds002080	29	SSP_spanlength	int64	7	n/a	n/a
 ds002105	24	participant_id	object	24	assigned participant-id	nb:ParticipantID
 ds002105	24	sex	object	2	participant sex	n/a
 ds002105	24	age	int64	11	age of the participant	n/a
-ds002105	24	native_english	object	3	native english speaker	n/a
+ds002105	24	native_english	yes_no	3	native english speaker	n/a
 ds002105	24	ses-rest	bool	2	resting scan present	n/a
 ds002116	65	participant_id	int64	65	participant id	nb:ParticipantID
 ds002116	65	age	int64	9	age of participant	n/a
@@ -1603,7 +1603,7 @@ ds002169	33	sex	object	1	n/a	n/a
 ds002185	22	participant_id	object	22	n/a	nb:ParticipantID
 ds002185	22	age	int64	11	n/a	n/a
 ds002185	22	sex	object	1	Participant's gender	n/a
-ds002185	22	handedness 	object	2	n/a	n/a
+ds002185	22	handedness	object	2	n/a	n/a
 ds002185	22	group	object	5	Assignment to No-Apparent-olfactory-bulb (NAB) group or a control group	n/a
 ds002236	91	participant_id	object	91	n/a	nb:ParticipantID
 ds002236	91	age	float64	34	Age of participant at standardized testing visit	n/a
@@ -1626,7 +1626,7 @@ ds002278	1	age	int64	1	Age in years (TODO - verify) as in the initial session, m
 ds002278	1	sex	object	1	self-rated by participant, M for male/F for female (TODO: verify)	n/a
 ds002278	1	group	object	1	(TODO: adjust - by default everyone is in control group)	n/a
 ds002307	19	participant_id	object	19	n/a	nb:ParticipantID
-ds002307	19	DOB 	int64	4	n/a	n/a
+ds002307	19	DOB	int64	4	n/a	n/a
 ds002307	19	rs-fMRI 1	int64	6	n/a	n/a
 ds002307	19	rs-fMRI 2	int64	8	n/a	n/a
 ds002307	19	rs-fMRI 3	int64	8	n/a	n/a
@@ -1634,7 +1634,7 @@ ds002307	19	rs-fMRI 4	int64	10	n/a	n/a
 ds002307	19	rs-fMRI 5	object	11	n/a	n/a
 ds002307	19	rs-fMRI 6	object	11	n/a	n/a
 ds002307	19	rs-fMRI 7	object	6	n/a	n/a
-ds002307	19	excluded_rs-fMRI_sessions	object	10	n/a	n/a
+ds002307	19	excluded_rs-fMRI_sessions	nb:euro	10	n/a	n/a
 ds002307	19	dMRI	int64	9	n/a	n/a
 ds002322	26	participant_id	int64	26	n/a	nb:ParticipantID
 ds002322	26	age	int64	6	age of participant	n/a
@@ -1686,7 +1686,7 @@ ds002338	23	age	int64	18	n/a	n/a
 ds002338	23	sex	object	2	n/a	n/a
 ds002338	23	feedback_type	object	2	n/a	n/a
 ds002345	315	participant_id	object	315	n/a	nb:ParticipantID
-ds002345	315	age	object	76	age of the participant	n/a
+ds002345	315	age	nb:euro	76	age of the participant	n/a
 ds002345	315	sex	object	10	sex of the participant	n/a
 ds002345	315	task	object	36	tasks (story stimuli) collected for participant	n/a
 ds002345	315	condition	object	47	within- or between-subject experimental condition for corresponding task (if applicable)	n/a
@@ -1861,7 +1861,7 @@ ds002684	4	group	object	1	n/a	n/a
 ds002685	13	participant_id	object	13	n/a	nb:ParticipantID
 ds002685	13	age	nb:euro	13	n/a	n/a
 ds002685	13	sex	object	2	n/a	n/a
-ds002685	13	handedness score	object	6	n/a	n/a
+ds002685	13	handedness score	nb:euro	6	n/a	n/a
 ds002687	24	participant_id	object	24	n/a	nb:ParticipantID
 ds002687	24	sex	int64	2	Sex of participant	n/a
 ds002687	24	race	float64	4	How would you describe yourself?	n/a
@@ -2004,7 +2004,7 @@ ds002842	22	Where_learnt_German	object	4	n/a	n/a
 ds002842	22	How_long_learnt_German_years	nb:euro	15	n/a	n/a
 ds002842	22	From_which_age	object	12	n/a	n/a
 ds002842	22	Level	object	9	n/a	n/a
-ds002842	22	How_long_lived_inGerman_speaking_country_years	object	16	n/a	n/a
+ds002842	22	How_long_lived_inGerman_speaking_country_years	nb:euro	16	n/a	n/a
 ds002842	22	From_which_age_lived_inGerman_speaking_country	int64	13	n/a	n/a
 ds002843	166	participant_id	object	166	n/a	nb:ParticipantID
 ds002843	166	sex	object	2	n/a	n/a
@@ -2193,16 +2193,16 @@ ds003008	49	BAS-drive	int64	8	n/a	n/a
 ds003008	49	BAS-fun seeking	int64	9	n/a	n/a
 ds003008	49	BIS	int64	9	behaviroal inhibition system	n/a
 ds003011	4	participant_id	object	4	Participant identifier	nb:ParticipantID
-ds003011	4	has_Y1CMH	object	2	Scanned on GE 750w Discovery 3T at CMH in year 1 of study	n/a
-ds003011	4	has_Y1MRC	object	2	Scanned on Siemens Tim Trio 3T at MRC in year 1 of study	n/a
-ds003011	4	has_Y1ZHH	object	2	Scanned on GE 750 Signa 3T at ZHH in year 1 of study	n/a
-ds003011	4	has_Y2CMH	object	2	Scanned on GE 750w Discovery 3T at CMH in year 2 of study	n/a
-ds003011	4	has_Y2MRC	object	2	Scanned on Siemens Tim Trio 3T at MRC in year 2 of study	n/a
-ds003011	4	has_Y2ZHH	object	2	Scanned on GE 750 Signa 3T at ZHH in year 2 of study	n/a
-ds003011	4	has_Y3CMH	object	2	Scanned on GE 750w Discovery 3T at CMH in year 3 of study	n/a
-ds003011	4	has_Y3MRP	object	2	Scanned on Siemens Prisma at MRP in year 3 of study	n/a
-ds003011	4	has_Y3ZHP	object	2	Scanned on Siemens Prisma at ZHP in year 3 of study	n/a
-ds003011	4	has_Y4CMP	object	2	Scanned on Siemens Prisma at CMP in year 4 of study	n/a
+ds003011	4	has_Y1CMH	yes_no	2	Scanned on GE 750w Discovery 3T at CMH in year 1 of study	n/a
+ds003011	4	has_Y1MRC	yes_no	2	Scanned on Siemens Tim Trio 3T at MRC in year 1 of study	n/a
+ds003011	4	has_Y1ZHH	yes_no	2	Scanned on GE 750 Signa 3T at ZHH in year 1 of study	n/a
+ds003011	4	has_Y2CMH	yes_no	2	Scanned on GE 750w Discovery 3T at CMH in year 2 of study	n/a
+ds003011	4	has_Y2MRC	yes_no	2	Scanned on Siemens Tim Trio 3T at MRC in year 2 of study	n/a
+ds003011	4	has_Y2ZHH	yes_no	2	Scanned on GE 750 Signa 3T at ZHH in year 2 of study	n/a
+ds003011	4	has_Y3CMH	yes_no	2	Scanned on GE 750w Discovery 3T at CMH in year 3 of study	n/a
+ds003011	4	has_Y3MRP	yes_no	2	Scanned on Siemens Prisma at MRP in year 3 of study	n/a
+ds003011	4	has_Y3ZHP	yes_no	2	Scanned on Siemens Prisma at ZHP in year 3 of study	n/a
+ds003011	4	has_Y4CMP	yes_no	2	Scanned on Siemens Prisma at CMP in year 4 of study	n/a
 ds003011	4	qc_comments	object	2	Quality control comments	n/a
 ds003017	25	participant_id	object	25	Participant identifier	nb:ParticipantID
 ds003017	25	age	int64	9	Age in years	n/a
@@ -2306,7 +2306,7 @@ ds003233	25	gender	object	2	Participant gender	n/a
 ds003233	25	age	int64	7	Participant age (years)	n/a
 ds003233	25	scanner	object	2	MRI scanner assignment (fixed for participant)	n/a
 ds003233	25	group	object	2	Participant group label	n/a
-ds003233	25	missing_scans	object	2	Participant is missing scans	n/a
+ds003233	25	missing_scans	yes_no	2	Participant is missing scans	n/a
 ds003242	122	participant_id	object	122	n/a	nb:ParticipantID
 ds003242	122	age	int64	11	n/a	n/a
 ds003242	122	sex	object	2	n/a	n/a
@@ -2326,7 +2326,7 @@ ds003346	145	age	float64	32	age of the participant	n/a
 ds003346	145	educ	float64	7	n/a	n/a
 ds003346	145	educ_yr	float64	7	n/a	n/a
 ds003346	145	occup	float64	11	n/a	n/a
-ds003346	145	income	object	41	n/a	n/a
+ds003346	145	income	nb:range	41	n/a	n/a
 ds003346	145	civil_st	float64	7	n/a	n/a
 ds003346	145	child	float64	3	n/a	n/a
 ds003346	145	child_num	float64	6	n/a	n/a
@@ -2384,7 +2384,7 @@ ds003382	10	previous_smoker	yes_no	2	previous smoking	n/a
 ds003382	10	previous_smoker_specify	object	5	description of previous smoking 	n/a
 ds003382	10	alcohol_days_per_week	float64	6	number of days per week the person drinks	n/a
 ds003382	10	standard_drinks_per_drinking_day	int64	5	number average number of standard drinks per drinking day	n/a
-ds003382	10	recreational_drugs	object	2	used recreational drugs in last 6 months	n/a
+ds003382	10	recreational_drugs	yes_no	2	used recreational drugs in last 6 months	n/a
 ds003382	10	recreational_drugs_specify	object	2	description of recreational drugs used in last 6 months	n/a
 ds003382	10	edinburgh_hand_l	float64	5	Edinburgh Handedness Inventory: left-hand	n/a
 ds003382	10	edinburgh_hand_r	float64	5	Edinburgh Handedness Inventory: right-hand	n/a
@@ -2426,8 +2426,8 @@ ds003397	15	current_tobacco_average_per_day	object	4	how many tobacco average pe
 ds003397	15	ever_smoked	yes_no	4	whether the participant ever smoked	n/a
 ds003397	15	ever_smoked_average	object	4	how many ever smoked in average	n/a
 ds003397	15	ever_consumed_alcohol	yes_no	4	whether the participant ever consumed alcohol	n/a
-ds003397	15	how_often	object	8	how often the person drinks	n/a
-ds003397	15	standard_drinks_per_occasion	object	9	how many standard drinks per occasion	n/a
+ds003397	15	how_often	nb:range	8	how often the person drinks	n/a
+ds003397	15	standard_drinks_per_occasion	nb:range	9	how many standard drinks per occasion	n/a
 ds003397	15	recreational_drugs_last_6_months	yes_no	3	used recreational drugs in last 6 months	n/a
 ds003397	15	drugs_specify	object	3	description of recreational drugs used in last 6 months	n/a
 ds003397	15	drugs_how_often	object	3	how often the recreational drugs were used in last 6 months	n/a
@@ -2624,7 +2624,7 @@ ds003592	301	participant_id	object	301	n/a	nb:ParticipantID
 ds003592	301	sex	object	3	sex of the participant	n/a
 ds003592	301	site	int64	2	site of participant	n/a
 ds003592	301	agegroup	object	2	age group of participant	n/a
-ds003592	301	age	object	40	age of the participant	n/a
+ds003592	301	age	nb:bounded	40	age of the participant	n/a
 ds003592	301	education	float64	14	education of the participant	n/a
 ds003592	301	openneuro	int64	2	exists in other openneuro dataset	n/a
 ds003592	301	flair_slicediff	int64	2	discrepancy in FLAIR slices	n/a
@@ -2642,10 +2642,10 @@ ds003606	29	participant_id	object	29	n/a	nb:ParticipantID
 ds003606	29	sex	int64	7	n/a	n/a
 ds003606	29	age	object	2	n/a	n/a
 ds003612	51	participant_id	object	51	n/a	nb:ParticipantID
-ds003612	51	        age	int64	11	n/a	n/a
+ds003612	51	age	int64	11	n/a	n/a
 ds003612	51	sex	object	2	n/a	n/a
 ds003612	51	group	object	3	n/a	n/a
-ds003612	51	HDT 	int64	31	n/a	n/a
+ds003612	51	HDT	int64	31	n/a	n/a
 ds003612	51	EHI	int64	25	n/a	n/a
 ds003612	51	VMIQ	int64	20	n/a	n/a
 ds003633	12	participant_id	object	12	Unique participant identifier	nb:ParticipantID
@@ -2921,21 +2921,21 @@ ds003826	113	group	object	2	experimental group the participant was classified to
 ds003826	113	ChQ-ME	int64	22	morningness-eveningness scale of Chronotype Questionnaire (Oginska et al., 2011, 2017)	n/a
 ds003830	37	participant_id	object	37	n/a	nb:ParticipantID
 ds003830	37	breed-phenotype	object	5	n/a	n/a
-ds003830	37	age (years)	object	23	n/a	n/a
-ds003830	37	gender 	object	5	n/a	n/a
-ds003830	37	Body weight (kg)	object	33	n/a	n/a
+ds003830	37	age (years)	nb:euro	23	n/a	n/a
+ds003830	37	gender	object	5	n/a	n/a
+ds003830	37	Body weight (kg)	nb:euro	33	n/a	n/a
 ds003830	37	displacematn mean absolut (mm)	nb:euro	12	n/a	n/a
 ds003830	37	displament mean relative (mm)	nb:euro	10	n/a	n/a
 ds003830	37	Medical treatment at the timepoint of MRI	object	11	n/a	n/a
 ds003830	37	Time between last reported seizure to MRI	object	12	n/a	n/a
-ds003830	37	Time between first seizure to MRI	object	15	n/a	n/a
+ds003830	37	Time between first seizure to MRI	nb:euro	15	n/a	n/a
 ds003830	37	Annfalsstyp	object	14	n/a	n/a
 ds003830	37	postictal agression	yes_no	2	n/a	n/a
 ds003830	37	interictal behavioural changes	object	5	n/a	n/a
 ds003830	37	cluster-seizures before MRI	yes_no	3	n/a	n/a
 ds003830	37	Status Epileptikus before MRI	yes_no	3	n/a	n/a
-ds003830	37	Sevofluran level start BOLD (%)	object	15	n/a	n/a
-ds003830	37	Sevofluran level end BOLD (%)	object	16	n/a	n/a
+ds003830	37	Sevofluran level start BOLD (%)	nb:euro	15	n/a	n/a
+ds003830	37	Sevofluran level end BOLD (%)	nb:euro	16	n/a	n/a
 ds003830	37	HF (/min)	int64	29	n/a	n/a
 ds003830	37	RR (/min)	int64	17	n/a	n/a
 ds003831	77	participant_id	object	77	numerical id of the participant	nb:ParticipantID
@@ -2990,7 +2990,7 @@ ds003999	29	size	object	4	Conventional size of the stroke lession	n/a
 ds003999	29	Broca	object	4	Shows whether Broca area injured by the stroke	n/a
 ds003999	29	Wernike	object	4	Shows whether Wernike area injured by the stroke	n/a
 ds003999	29	Basal	object	4	Shows whether Basal ganlia injured by the stroke	n/a
-ds003999	29	Thalamus	object	3	n/a	n/a
+ds003999	29	Thalamus	yes_no	3	n/a	n/a
 ds004006	41	participant_id	object	41	n/a	nb:ParticipantID
 ds004006	41	age	int64	15	n/a	n/a
 ds004006	41	sex	object	2	n/a	n/a
@@ -3058,8 +3058,8 @@ ds004114	751	session_id	object	2	Scanning session (2nd session acquired within 6
 ds004114	751	dataset_id	int64	65	Dataset identifier	n/a
 ds004114	751	rat_strain	object	5	Rat strain	n/a
 ds004114	751	rat_sex	object	2	Rat sex	n/a
-ds004114	751	rat_age	object	11	Rat age in months reported in 2 months bins	n/a
-ds004114	751	rat_weight	object	14	Rat weight in grams reported in 50 grams bins	n/a
+ds004114	751	rat_age	nb:range	11	Rat age in months reported in 2 months bins	n/a
+ds004114	751	rat_weight	nb:range	14	Rat weight in grams reported in 50 grams bins	n/a
 ds004114	751	anesthesia_induction	object	6	Anesthesia used for induction. Multiple agents are reported using / divider	n/a
 ds004114	751	anesthesia_induction_dose	object	18	Anesthesia dose for induction. For isoflurane, reported in percentage, for injectables, reported in mg/kg, for dexmedetomidine, normalized to medetomidine	n/a
 ds004114	751	anesthesia_maintenance	object	6	Anesthesia used for maintenance. Multiple agents are reported using / divider	n/a
@@ -3097,7 +3097,7 @@ ds004128	32	participant_id	object	32	n/a	nb:ParticipantID
 ds004128	32	age	int64	17	n/a	n/a
 ds004128	32	sex	object	2	n/a	n/a
 ds004129	1090	participant_id	object	1090	OpenNeuro ID of the subject.	nb:ParticipantID
-ds004129	1090	age	object	67	Participant's age in years. n/a means there was no response from participant though a response was possible. Question may have been skipped over by participant.	n/a
+ds004129	1090	age	nb:bounded	67	Participant's age in years. n/a means there was no response from participant though a response was possible. Question may have been skipped over by participant.	n/a
 ds004129	1090	sex	object	3	Biological sex assigned at birth.	n/a
 ds004129	1090	handedness	object	4	Handedness is decided based on Laterality Quotient ranges from the Edinburgh Handedness Inventory.  See Levels below for exact ranges.	n/a
 ds004129	1090	eligibility	int64	2	Eligibility for the study.	n/a
@@ -3134,7 +3134,7 @@ ds004129	1090	urine_chemistry	int64	2	Presence of Urine Chemistry data in data s
 ds004129	1090	vitamin_levels	int64	2	Presence of Vitamin Levels data in data set.	n/a
 ds004129	1090	whodas	int64	2	Presence of World Health Organization Disability Assessment Schedule 2.0 (WHODAS 2.0) data in data set.	n/a
 ds004130	1090	participant_id	object	1090	OpenNeuro ID of the subject.	nb:ParticipantID
-ds004130	1090	age	object	67	Participant's age in years. n/a means there was no response from participant though a response was possible. Question may have been skipped over by participant.	n/a
+ds004130	1090	age	nb:bounded	67	Participant's age in years. n/a means there was no response from participant though a response was possible. Question may have been skipped over by participant.	n/a
 ds004130	1090	sex	object	3	Biological sex assigned at birth.	n/a
 ds004130	1090	handedness	object	4	Handedness is decided based on Laterality Quotient ranges from the Edinburgh Handedness Inventory.  See Levels below for exact ranges.	n/a
 ds004130	1090	eligibility	int64	2	Eligibility for the study.	n/a
@@ -3171,7 +3171,7 @@ ds004130	1090	urine_chemistry	int64	2	Presence of Urine Chemistry data in data s
 ds004130	1090	vitamin_levels	int64	2	Presence of Vitamin Levels data in data set.	n/a
 ds004130	1090	whodas	int64	2	Presence of World Health Organization Disability Assessment Schedule 2.0 (WHODAS 2.0) data in data set.	n/a
 ds004131	1090	participant_id	object	1090	OpenNeuro ID of the subject.	nb:ParticipantID
-ds004131	1090	age	object	67	Participant's age in years. n/a means there was no response from participant though a response was possible. Question may have been skipped over by participant.	n/a
+ds004131	1090	age	nb:bounded	67	Participant's age in years. n/a means there was no response from participant though a response was possible. Question may have been skipped over by participant.	n/a
 ds004131	1090	sex	object	3	Biological sex assigned at birth.	n/a
 ds004131	1090	handedness	object	4	Handedness is decided based on Laterality Quotient ranges from the Edinburgh Handedness Inventory.  See Levels below for exact ranges.	n/a
 ds004131	1090	eligibility	int64	2	Eligibility for the study.	n/a
@@ -3360,7 +3360,7 @@ ds004285	78	sex	object	2	n/a	n/a
 ds004288	30	participant_id	object	30	Participant identifier	nb:ParticipantID
 ds004288	30	filename	object	30	the corresponding name of the file from the OASIS dataset	n/a
 ds004288	30	sex	object	2	self-rated by participant, m for male/ f for female	n/a
-ds004288	30	age	object	22	Age in years at time of imaging	n/a
+ds004288	30	age	nb:bounded	22	Age in years at time of imaging	n/a
 ds004288	30	handedness	object	1	self-rated by participant, R for right/ L for Left	n/a
 ds004288	30	MMSE	int64	1	score from the MINI-MENTAL STATE EXAMINATION	n/a
 ds004298	40	participant_id	object	40	Participant identifier	nb:ParticipantID
@@ -3400,7 +3400,7 @@ ds004349	62	gender	int64	3	gender of the participant as reported by the particip
 ds004349	62	inclusion	int64	2	index of participants that were included in manuscript analyses	n/a
 ds004349	62	comment	object	9	Reason for exclusion and any additional notes about the participant	n/a
 ds004392	58	participant_id	object	58	n/a	nb:ParticipantID
-ds004392	58	age	object	53	age of the participant	n/a
+ds004392	58	age	nb:bounded	53	age of the participant	n/a
 ds004392	58	sex	int64	2	sex of the participant as reported by the participant	n/a
 ds004392	58	handedness	object	3	handedness of the participant as reported by the participant	n/a
 ds004392	58	years_of_education	int64	13	years of formal education as reported by the participant	n/a

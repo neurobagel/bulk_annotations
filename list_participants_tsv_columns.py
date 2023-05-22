@@ -15,27 +15,26 @@ Also saved:
 - unique_columns.tsv counts the number of for column name
 """
 
-
-
 from pathlib import Path
 from warnings import warn
 
 import pandas as pd
 
+from logger import bulk_annotation_logger
 from utils import (
-    bulk_annotation_logger,
-    output_dir,
-    read_csv_autodetect_date,
-    new_row_template,
-    init_output,
     exclude_datasets,
     get_participants_dict,
-    update_row_with_column_info
+    init_output,
+    new_row_template,
+    output_dir,
+    read_csv_autodetect_date,
+    update_row_with_column_info,
 )
 
 LOG_LEVEL = "INFO"
 
 log = bulk_annotation_logger(LOG_LEVEL)
+
 
 def main():
     datalad_superdataset = Path("/home/remi/datalad/datasets.datalad.org")
@@ -60,19 +59,24 @@ def main():
             warn(f"Could not parse: {participant_tsv}")
             continue
 
-        participants_dict = get_participants_dict(datasets, dataset_name, openneuro)
+        participants_dict = get_participants_dict(
+            datasets, dataset_name, openneuro
+        )
 
         log.debug(
             f"dataset {dataset_name} has columns: {participants.columns.values}"
         )
 
-        row_template = new_row_template(dataset_name, nb_rows=len(participants))
+        row_template = new_row_template(
+            dataset_name, nb_rows=len(participants), include_levels=False
+        )
 
         for column in participants.columns:
-
             this_row = row_template.copy()
 
-            this_row = update_row_with_column_info(this_row, column, participants, participants_dict)
+            this_row = update_row_with_column_info(
+                this_row, column, participants, participants_dict
+            )
 
             for key in output.keys():
                 output[key].append(this_row[key])
@@ -88,6 +92,7 @@ def main():
     output.column = output.column.str.lower()
     count = output.column.value_counts()
     count.to_csv(output_dir() / "unique_columns.tsv", sep="\t")
+
 
 if __name__ == "__main__":
     main()
