@@ -16,7 +16,6 @@ Also saved:
 """
 
 from pathlib import Path
-from warnings import warn
 
 import pandas as pd
 
@@ -56,7 +55,7 @@ def main():
         try:
             participants = read_csv_autodetect_date(participant_tsv, sep="\t")
         except pd.errors.ParserError:
-            warn(f"Could not parse: {participant_tsv}")
+            log.warning(f"Could not parse: {participant_tsv}")
             continue
 
         participants_dict = get_participants_dict(

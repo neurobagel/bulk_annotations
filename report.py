@@ -1,3 +1,5 @@
+"""Print a small report about the datasets that got covered."""
+
 from pathlib import Path
 
 import pandas as pd

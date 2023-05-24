@@ -1,6 +1,13 @@
 # bulk_annotations
 
-Retroactively annotate a large number of BIDS datasets at once
+Retroactively annotate the phenotypic data of a large number of BIDS datasets at once.
+
+At the moment this focuses on datasets with MRI data only.
+
+This takes as input the datasets that are available on the datalad superdataset.
+
+This may not reflect the latest version of all of the datasets on [openneuro](https://github.com/OpenNeuroDatasets)
+and [openneuro derivatives](https://github.com/OpenNeuroDerivatives).
 
 **OpenNeuro datasets:**
 

@@ -1,5 +1,22 @@
+"""List all columns and their levels in participants.tsv files in openneuro datasets.
+
+Tries to identify columns:
+- that are all dates or timestamps
+- controlled terms
+- have a description in participants.json
+- columns data type
+- nb of levels in that column
+- nb of rows in the dataset
+- controlled terms probably associated with the column
+- name of the level in a given column
+
+In general this will try to first load information from the participants.json
+and then eventually see if things can be "updated" (list missing levels...)
+
+This is saved in:
+- bulk_annotation_levels.tsv
+"""
 from pathlib import Path
-from warnings import warn
 
 import pandas as pd
 
@@ -17,6 +34,8 @@ from utils import (
 
 LOG_LEVEL = "INFO"
 
+# set to True to do some debugging on a subset of datasets
+DRY_RUN = False
 
 log = bulk_annotation_logger(LOG_LEVEL)
 
@@ -29,7 +48,11 @@ def main():
 
     output = init_output(include_levels=True)
 
+    i = 0
     for dataset_name in datasets.name:
+        i += 1
+        if DRY_RUN and i > 10:
+            break
         mask = datasets.name == dataset_name
 
         log.info(f"dataset '{dataset_name}'")
@@ -41,7 +64,7 @@ def main():
         try:
             participants = read_csv_autodetect_date(participant_tsv, sep="\t")
         except pd.errors.ParserError:
-            warn(f"Could not parse: {participant_tsv}")
+            log.warning(f"Could not parse: {participant_tsv}")
             continue
 
         participants_dict = get_participants_dict(
@@ -88,6 +111,8 @@ def main():
         index=False,
         sep="\t",
     )
+
+    sanity_checks(output_filename)
 
 
 def list_levels(
@@ -145,6 +170,49 @@ def append_levels(
         for key in this_row:
             output[key].append(this_row[key])
     return output
+
+
+def sanity_checks(file: Path):
+    """Run checks on output file.
+
+    Checks:
+    - some columns of the oupput files should not have duplicated values
+    for a given dataset because:
+      - controlled_term (cannot have 2 nb:Age for one dataset)
+      - cannot be describing a column twice in a dataset
+      - no duplicated levels for a column in a dataset
+    """
+    df = pd.read_csv(file, sep="\t")
+    included_datasets = df.dataset.unique()
+
+    for dataset in included_datasets:
+        mask = (df.dataset == dataset) & (df.is_row == True)
+
+        dataset_df = df[mask]
+
+        controlled_terms_counts = dataset_df.controlled_term.value_counts()
+        if not all(controlled_terms_counts.values == 1):
+            log.error(f"controlled_term duplicated for dataset {dataset}")
+            log.error(controlled_terms_counts)
+
+        columns = dataset_df.column.value_counts()
+        if not all(columns.values == 1):
+            log.error(f"column duplicated for dataset {dataset}")
+            log.error(columns)
+
+        for column in dataset_df.column.unique():
+            mask = (
+                (df.dataset == dataset)
+                & (df.is_row == False)
+                & (df.column == column)
+            )
+
+            levels = dataset_df.value.value_counts()
+            if not all(levels.values == 1):
+                log.error(
+                    f"levels duplicated for dataset {dataset} and column {column}"
+                )
+                log.error(levels)
 
 
 if __name__ == "__main__":

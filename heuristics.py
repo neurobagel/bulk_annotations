@@ -16,8 +16,7 @@ NEUROBAGEL = {
     "nb:Sex": (
         "gender",
         "gender_f",
-        "gender_identity_f",
-        "gender_identity_m",
+        "gender_m",
         "jsex",
         "rat_sex",
         "sex",
@@ -92,6 +91,7 @@ COLUMNS_TO_SKIP = {
     "date_of_scan",
     "date_run",
     "dob",
+    "filename",
     "ftcd-fmri-delay-days",
     "guid",
     "height",
@@ -109,7 +109,7 @@ COLUMNS_TO_SKIP = {
     "years_of_education",
 }
 
-MAX_NB_LEVELS = 15
+MAX_NB_LEVELS = 50
 
 
 def skip_column(this_row: dict) -> bool:
