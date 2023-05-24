@@ -1,3 +1,11 @@
+"""Contains code and constants to detect certain column "type" participants.tsv.
+
+Constants can either be either for neurobagel terms or
+variables that are under different names but probably mean the same thing.
+
+
+"""
+
 import re
 
 import pandas as pd
@@ -14,6 +22,8 @@ NEUROBAGEL = {
         "rat_sex",
         "sex",
     ),
+    # TODO: check if this does not not lead
+    # to more than one column being being flagged as nb:Age
     "nb:Age": (
         "age",
         "age (years)",
@@ -72,6 +82,8 @@ NEUROBAGEL = {
     "nb:Assessment": ("assessment_tool"),
 }
 
+# the following is more manually curated to avoid indexing
+# the labels of columns that should not be.
 COLUMNS_TO_SKIP = {
     "a_date",
     "birthdate_shifted",
@@ -101,7 +113,14 @@ MAX_NB_LEVELS = 15
 
 
 def skip_column(this_row: dict) -> bool:
-    """Return True if column should be skipped."""
+    """Return True if column should be skipped.
+
+    The value returned depends on:
+    - the column name,
+    - its controlled term,
+    - its type,
+    - the number of levels it has.
+    """
     return (
         this_row["column"].lower() in COLUMNS_TO_SKIP
         or this_row["controlled_term"] in ["nb:ParticipantID", "nb:Age"]
@@ -123,6 +142,10 @@ def skip_column(this_row: dict) -> bool:
 
 
 def get_column_type(col: pd.Series):
+    """Return column type.
+
+    Will run most of the heuristics to detect the column type.
+    """
     col_type = str(col.dtype)
     if col_type in {"object", "n/a"}:
         if is_yes_no(col):
@@ -143,7 +166,7 @@ def get_column_type(col: pd.Series):
 
 
 def is_yes_no(col: pd.Series) -> bool:
-    """Return True if all levels are either 'yes' or 'no'.
+    """Return True for 'binary' columns.
 
     NaN are dropped before checking.
     """
@@ -160,7 +183,7 @@ def is_yes_no(col: pd.Series) -> bool:
 
 
 def is_euro_format(col: pd.Series) -> bool:
-    """Return True if all values are numbers in with a comma as decimal separator.
+    """Return True if all values are floats  with a comma as decimal separator.
 
     NaN are dropped before checking.
     """
@@ -182,6 +205,10 @@ def is_age_with_Y(col: pd.Series) -> bool:
 
 
 def is_bounded(col: pd.Series) -> bool:
+    """Return true if the values are floats with at least one value that ends with +.
+
+    NaN are dropped before checking.
+    """
     col = col.dropna()
     return all(
         isinstance(x, str) and re.match("[+0-9.]*", x.strip())
@@ -190,6 +217,11 @@ def is_bounded(col: pd.Series) -> bool:
 
 
 def is_range(col: pd.Series) -> bool:
+    """Return true if the values are integers \
+    with at least one value that where 2 integers are separated by a dash.
+
+    NaN are dropped before checking.
+    """
     col = col.dropna()
     return all(
         isinstance(x, str) and re.match("[-0-9]*", x.strip())
@@ -198,6 +230,10 @@ def is_range(col: pd.Series) -> bool:
 
 
 def is_participant_id(df: pd.DataFrame, column: str) -> bool:
+    """Return True if column is a participant_id column.
+
+    NaN are dropped before checking.
+    """
     if column.strip().lower() != "participant_id":
         return False
     levels = df[column]
@@ -208,7 +244,7 @@ def is_participant_id(df: pd.DataFrame, column: str) -> bool:
     )
 
 
-def is_age(this_row):
+def is_age(this_row: dict):
     if this_row["column"].lower() not in NEUROBAGEL["nb:Age"]:
         return False
     if this_row["column"] in [
@@ -229,6 +265,10 @@ def is_sex(column: str):
 
 
 def is_int(levels):
+    """Return true if the values are integers or strings that are integers.
+
+    Will also return true if the values just either a dot or a dash.
+    """
     levels = levels.dropna()
     return all(isinstance(x, (int)) for x in levels.unique()) or all(
         isinstance(x, (str)) and re.match("^[0-9]*$|^[.-]{1}$", x.strip())

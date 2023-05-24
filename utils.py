@@ -78,6 +78,7 @@ def new_row_template(
 
 
 def init_output(include_levels: bool = False) -> dict[str, list]:
+    """Return a dict with keys corresponding to the columns of the output tsv."""
     if include_levels:
         return {
             "dataset": [],
@@ -107,6 +108,7 @@ def init_output(include_levels: bool = False) -> dict[str, list]:
 
 
 def exclude_datasets(dataset: pd.Series):
+    """Detect if the dataset should be excluded from further analysis."""
     return (
         not dataset.has_mri.values[0]
         or not dataset.has_participant_tsv.values[0]
@@ -114,6 +116,7 @@ def exclude_datasets(dataset: pd.Series):
 
 
 def get_participants_dict(datasets, dataset_name, src_pth):
+    """Load participants.json if it exists."""
     mask = datasets.name == dataset_name
     participants_dict = {}
     if datasets[mask].has_participant_json.values[0]:
@@ -124,18 +127,24 @@ def get_participants_dict(datasets, dataset_name, src_pth):
 
 
 def get_column_description(participants_dict, column):
+    """Get the column description from participants.json \
+        if the file and description exist."""
     if participants_dict and participants_dict.get(column):
         return participants_dict[column].get("Description", "n/a")
     return "n/a"
 
 
 def get_column_unit(participants_dict, column):
+    """Get the column unit from participants.json \
+        if the file and unit description exist."""
     if participants_dict and participants_dict.get(column):
         return participants_dict[column].get("Unit", "n/a")
     return "n/a"
 
 
 def get_column_term_url(participants_dict, column):
+    """Get the column unit from participants.json \
+        if the file and TermURL description exist."""
     if participants_dict and participants_dict.get(column):
         return participants_dict[column].get("TermURL", "n/a")
     return "n/a"

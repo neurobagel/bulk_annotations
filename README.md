@@ -69,3 +69,13 @@ and it will create TSV file with basic info for each dataset and its derivatives
 
 - make it able to install on the fly datasets or subdatasets
   (especially `sourcedata/raw` for the openneuro-derivatives)
+
+
+### listing the content of the participants.tsv files
+
+Run `list_participants_tsv_columns.py.py`
+to get a listing of all the columns present in all the participants.tsv files
+and a list of all the unique columns across participants.tsv files.
+
+Run `list_participants_tsv_levels.py` to also get a listing of all the levels
+in all the columns present in all the participants.tsv files.
