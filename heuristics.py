@@ -88,10 +88,7 @@ COLUMNS_TO_SKIP = {
     "height_inches",
     "height (cm)",
     "hf (/min)",
-    "institution",
-    "institution_id",
     "scan_time",
-    "session_id",
     "time",
     "time_after_stroke",
     "weight",
@@ -107,7 +104,7 @@ def skip_column(this_row: dict) -> bool:
     """Return True if column should be skipped."""
     return (
         this_row["column"].lower() in COLUMNS_TO_SKIP
-        or this_row["controlled_term"] in NEUROBAGEL.keys()
+        or this_row["controlled_term"] in ["nb:ParticipantID", "nb:Age"]
         or this_row["type"]
         in {
             "datetime64[ns]",
