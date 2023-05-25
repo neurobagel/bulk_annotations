@@ -176,6 +176,9 @@ def sanity_checks(file: Path):
     """Run checks on output file.
 
     Checks:
+
+    Each dataset should have a nb:ParticipantID
+
     - some columns of the oupput files should not have duplicated values
     for a given dataset because:
       - controlled_term (cannot have 2 nb:Age for one dataset)
@@ -191,14 +194,25 @@ def sanity_checks(file: Path):
         dataset_df = df[mask]
 
         controlled_terms_counts = dataset_df.controlled_term.value_counts()
+
+        if "nb:ParticipantID" not in controlled_terms_counts:
+            log.error(
+                f"dataset {dataset} has no nb:ParticipantID.\n"
+                f"list of controlled terms: {controlled_terms_counts}"
+            )
+
         if not all(controlled_terms_counts.values == 1):
-            log.error(f"controlled_term duplicated for dataset {dataset}")
-            log.error(controlled_terms_counts)
+            log.error(
+                f"controlled_term duplicated for dataset {dataset}\n"
+                f"list of controlled terms: {controlled_terms_counts}"
+            )
 
         columns = dataset_df.column.value_counts()
         if not all(columns.values == 1):
-            log.error(f"column duplicated for dataset {dataset}")
-            log.error(columns)
+            log.error(
+                f"column duplicated for dataset {dataset}\n"
+                f"list of columns: {columns}"
+            )
 
         for column in dataset_df.column.unique():
             mask = (
@@ -210,9 +224,9 @@ def sanity_checks(file: Path):
             levels = dataset_df.value.value_counts()
             if not all(levels.values == 1):
                 log.error(
-                    f"levels duplicated for dataset {dataset} and column {column}"
+                    f"levels duplicated for dataset {dataset} and column {column}\n"
+                    rf"\list of levels: {levels}"
                 )
-                log.error(levels)
 
 
 if __name__ == "__main__":

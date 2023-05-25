@@ -23,6 +23,36 @@ NEUROBAGEL = {
     ),
     # TODO: check if this does not not lead
     # to more than one column being being flagged as nb:Age
+    #
+    # Not included to avoid duplicates of age columns:
+    # - "age at onset first cb use",
+    # - "age at onset frequent cb use",
+    # - "age_ses02",
+    # - "age_sess1",
+    # - "age_sess2",
+    # - "age_ses-t1",
+    # - "age_ses-t2",
+    # - "age_ses-t1_aanonword_run-01",
+    # - "age_ses-t1_aanonword_run-02",
+    # - "age_ses-t1_aaword_run-01",
+    # - "age_ses-t1_aaword_run-02",
+    # - "age_ses-t1_avnonword_run-01",
+    # - "age_ses-t1_avnonword_run-02",
+    # - "age_ses-t1_avword_run-01",
+    # - "age_ses-t1_avword_run-02",
+    # - "age_ses-t1_vvnonword_run-01",
+    # - "age_ses-t1_vvnonword_run-02",
+    # - "age_ses-t1_vvword_run-01",
+    # - "age_ses-t1_vvword_run-02",
+    # - "age_ses-t1_dwi",
+    # - "age_ses-t1_phenotype",
+    # - "age_ses-t1_t1w",
+    # - "age_ses-t2_phenotype",
+    # - "age_ses-t2_t1w",
+    # - "age_ses-t2_vvnonword_run-01",
+    # - "age_ses-t2_vvnonword_run-02",
+    # - "age_ses-t2_vvword_run-01",
+    # - "age_ses-t2_vvword_run-02",
     "nb:Age": (
         "age",
         "age (years)",
@@ -31,37 +61,9 @@ NEUROBAGEL = {
         "age (5-year bins)",
         "age (years)",
         "age at baseline ",
-        "age at onset first cb use",
-        "age at onset frequent cb use",
         "age_at_first_scan_years",
         "age_exam_ses01",
         "age_group",
-        "age_ses-t1",
-        "age_ses-t1_aanonword_run-01",
-        "age_ses-t1_aanonword_run-02",
-        "age_ses-t1_aaword_run-01",
-        "age_ses-t1_aaword_run-02",
-        "age_ses-t1_avnonword_run-01",
-        "age_ses-t1_avnonword_run-02",
-        "age_ses-t1_avword_run-01",
-        "age_ses-t1_avword_run-02",
-        "age_ses-t1_dwi",
-        "age_ses-t1_phenotype",
-        "age_ses-t1_t1w",
-        "age_ses-t1_vvnonword_run-01",
-        "age_ses-t1_vvnonword_run-02",
-        "age_ses-t1_vvword_run-01",
-        "age_ses-t1_vvword_run-02",
-        "age_ses-t2",
-        "age_ses-t2_phenotype",
-        "age_ses-t2_t1w",
-        "age_ses-t2_vvnonword_run-01",
-        "age_ses-t2_vvnonword_run-02",
-        "age_ses-t2_vvword_run-01",
-        "age_ses-t2_vvword_run-02",
-        "age_ses02",
-        "age_sess1",
-        "age_sess2",
         "ageatfirstscanyears",
         "agegroup",
         "rat_age",
@@ -86,6 +88,7 @@ NEUROBAGEL = {
 COLUMNS_TO_SKIP = {
     "a_date",
     "birthdate_shifted",
+    "comment",
     "dataset_id",
     "date",
     "date_of_scan",
@@ -109,7 +112,7 @@ COLUMNS_TO_SKIP = {
     "years_of_education",
 }
 
-MAX_NB_LEVELS = 50
+MAX_NB_LEVELS = 10
 
 
 def skip_column(this_row: dict) -> bool:
@@ -136,6 +139,7 @@ def skip_column(this_row: dict) -> bool:
             "nb:range",
             "nb:bounded",
             "nb:euro",
+            "ratio",
         }
         or this_row["nb_levels"] > MAX_NB_LEVELS
     )
@@ -162,6 +166,8 @@ def get_column_type(col: pd.Series):
             col_type = "nb:range"
         elif is_age_with_Y(col):
             col_type = "ageY"
+        elif is_ratio(col):
+            col_type = "ratio"
     return col_type
 
 
@@ -189,10 +195,10 @@ def is_euro_format(col: pd.Series) -> bool:
     """
     col = col.dropna()
     return all(
-        isinstance(x, str) and re.match("[- 0-9,]*", x.strip())
+        isinstance(x, str) and re.match("^[- 0-9,]*$", x.strip())
         for x in col.unique()
     ) and any(
-        re.match("[-]?[ ]?[0-9]*,[0-9]*", x.strip()) for x in col.unique()
+        re.match("^[-]?[ ]?[0-9]*,[0-9]*$", x.strip()) for x in col.unique()
     )
 
 
@@ -211,9 +217,11 @@ def is_bounded(col: pd.Series) -> bool:
     """
     col = col.dropna()
     return all(
-        isinstance(x, str) and re.match("[+0-9.]*", x.strip())
+        isinstance(x, str) and re.match("^[+0-9.]*$", x.strip())
         for x in col.unique()
-    ) and any(re.match("[0-9]*[.]?[0-9]*[+]", x.strip()) for x in col.unique())
+    ) and any(
+        re.match("^[0-9]*[.]?[0-9]*[+]$", x.strip()) for x in col.unique()
+    )
 
 
 def is_range(col: pd.Series) -> bool:
@@ -224,9 +232,21 @@ def is_range(col: pd.Series) -> bool:
     """
     col = col.dropna()
     return all(
-        isinstance(x, str) and re.match("[-0-9]*", x.strip())
+        isinstance(x, str) and re.match("^[-0-9]*$", x.strip())
         for x in col.unique()
-    ) and any(re.match("[0-9]+-[0-9]+", x.strip()) for x in col.unique())
+    ) and any(re.match("^[0-9]*-{1}[0-9]+$", x.strip()) for x in col.unique())
+
+
+def is_ratio(col: pd.Series) -> bool:
+    """Return true if all the values are integers separated by a /.
+
+    NaN are dropped before checking.
+    """
+    col = col.dropna()
+    return all(
+        isinstance(x, str) and re.match("^([0-9]+(/){0-1})*$", x.strip())
+        for x in col.unique()
+    )
 
 
 def is_participant_id(df: pd.DataFrame, column: str) -> bool:
@@ -239,7 +259,7 @@ def is_participant_id(df: pd.DataFrame, column: str) -> bool:
     levels = df[column]
     levels = levels.dropna()
     return levels.dtype in ["object", "n/a"] and all(
-        isinstance(x, str) and re.match("^sub-[a-zA-Z0-9]*", x.strip())
+        isinstance(x, str) and re.match("^sub-[a-zA-Z0-9]*$", x.strip())
         for x in levels.unique()
     )
 
@@ -247,7 +267,7 @@ def is_participant_id(df: pd.DataFrame, column: str) -> bool:
 def is_age(this_row: dict):
     if this_row["column"].lower() not in NEUROBAGEL["nb:Age"]:
         return False
-    if this_row["column"] in [
+    if this_row["type"] in [
         "float64",
         "int64",
         "int",
