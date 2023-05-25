@@ -1,20 +1,36 @@
 """List all columns and their levels in participants.tsv files in openneuro datasets.
 
-Tries to identify columns:
-- that are all dates or timestamps
-- controlled terms
-- have a description in participants.json
-- columns data type
-- nb of levels in that column
-- nb of rows in the dataset
-- controlled terms probably associated with the column
-- name of the level in a given column
+Tries to identify for each column:
+- from participants.json
+  - description
+  - unit
+  - term_url
+- nb_levels it contains
+- its type from one of the following:
+    - "datetime64[ns]",
+    - "float64",
+    - "int64",
+    - "yes_no",
+    - "bool",
+    - "int",
+    - "float",
+    - "nb:range",
+    - "nb:bounded",
+    - "nb:euro",
+    - "ratio",
+- tries to give it a controlled term: nb:Age, nb:ParticipantID, nb:Sex
+- checks if the levels of this columns should be indexed or it can be skipped
+  see heuristics.skip_column for details
+- if the column was not skipped then its levels are listed
+  by first checking the ones mentioned in the participants.json if it exists
+  then looking up any levels that was not described in there.
 
-In general this will try to first load information from the participants.json
-and then eventually see if things can be "updated" (list missing levels...)
 
-This is saved in:
+Output is saved in:
 - bulk_annotation_levels.tsv
+
+Some sanity checks are performed on the output files (no duplicate for a given dataset...)
+
 """
 from pathlib import Path
 

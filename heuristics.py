@@ -3,7 +3,6 @@
 Constants can either be either for neurobagel terms or
 variables that are under different names but probably mean the same thing.
 
-
 """
 
 import re
@@ -112,6 +111,8 @@ COLUMNS_TO_SKIP = {
     "years_of_education",
 }
 
+# can be used as an "aggressive" filter to skip columns that have too many
+# levels and are probably continuous variables
 MAX_NB_LEVELS = 10
 
 
@@ -140,6 +141,7 @@ def skip_column(this_row: dict) -> bool:
             "nb:bounded",
             "nb:euro",
             "ratio",
+            "ageY",
         }
         or this_row["nb_levels"] > MAX_NB_LEVELS
     )
