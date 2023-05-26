@@ -107,20 +107,16 @@ def init_output(include_levels: bool = False) -> dict[str, list]:
         }
 
 
-def exclude_datasets(dataset: pd.Series):
+def exclude_datasets(dataset: pd.DataFrame):
     """Detect if the dataset should be excluded from further analysis."""
-    return (
-        not dataset.has_mri.values[0]
-        or not dataset.has_participant_tsv.values[0]
-    )
+    return not dataset["has_mri"] or not dataset["has_participant_tsv"]
 
 
-def get_participants_dict(datasets, dataset_name, src_pth):
+def get_participants_dict(dataset: pd.DataFrame, src_pth: Path):
     """Load participants.json if it exists."""
-    mask = datasets.name == dataset_name
     participants_dict = {}
-    if datasets[mask].has_participant_json.values[0]:
-        participant_json = src_pth / dataset_name / "participants.json"
+    if dataset["has_participant_json"]:
+        participant_json = src_pth / dataset["name"] / "participants.json"
         with open(participant_json) as f:
             participants_dict = json.load(f)
     return participants_dict

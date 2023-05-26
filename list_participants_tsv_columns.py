@@ -43,12 +43,12 @@ def main():
 
     output = init_output()
 
-    for dataset_name in datasets.name:
-        mask = datasets.name == dataset_name
+    for _, dataset in datasets.iterrows():
+        dataset_name = dataset["name"]
 
         log.info(f"dataset '{dataset_name}'")
 
-        if exclude_datasets(datasets[mask]):
+        if exclude_datasets(dataset):
             continue
 
         participant_tsv = openneuro / dataset_name / "participants.tsv"
@@ -58,9 +58,7 @@ def main():
             log.warning(f"Could not parse: {participant_tsv}")
             continue
 
-        participants_dict = get_participants_dict(
-            datasets, dataset_name, openneuro
-        )
+        participants_dict = get_participants_dict(dataset, openneuro)
 
         log.debug(
             f"dataset {dataset_name} has columns: {participants.columns.values}"

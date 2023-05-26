@@ -32,10 +32,10 @@ def test_is_yes_no(input_tsv):
 def test_is_euro_format(input_tsv):
     df = read_csv_autodetect_date(input_tsv, sep="\t")
 
-    assert ~is_euro_format(df["acq_date"])
-    assert ~is_euro_format(df["participant_id"])
-    assert ~is_euro_format(df["age"])
-    assert ~is_euro_format(df["height"])
+    assert not is_euro_format(df["acq_date"])
+    assert not is_euro_format(df["participant_id"])
+    assert not is_euro_format(df["age"])
+    assert not is_euro_format(df["height"])
     assert is_euro_format(df["euro_format"])
 
 
