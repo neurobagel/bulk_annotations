@@ -1,6 +1,13 @@
 # bulk_annotations
 
-Retroactively annotate a large number of BIDS datasets at once
+Retroactively annotate the phenotypic data of a large number of BIDS datasets at once.
+
+At the moment this focuses on datasets with MRI data only.
+
+This takes as input the datasets that are available on the datalad superdataset.
+
+This may not reflect the latest version of all of the datasets on [openneuro](https://github.com/OpenNeuroDatasets)
+and [openneuro derivatives](https://github.com/OpenNeuroDerivatives).
 
 **OpenNeuro datasets:**
 
@@ -69,3 +76,13 @@ and it will create TSV file with basic info for each dataset and its derivatives
 
 - make it able to install on the fly datasets or subdatasets
   (especially `sourcedata/raw` for the openneuro-derivatives)
+
+
+### listing the content of the participants.tsv files
+
+Run `list_participants_tsv_columns.py.py`
+to get a listing of all the columns present in all the participants.tsv files
+and a list of all the unique columns across participants.tsv files.
+
+Run `list_participants_tsv_levels.py` to also get a listing of all the levels
+in all the columns present in all the participants.tsv files.
