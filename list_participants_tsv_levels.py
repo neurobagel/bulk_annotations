@@ -36,7 +36,13 @@ from pathlib import Path
 
 import pandas as pd
 
-from heuristics import is_age, is_participant_id, is_sex, skip_column
+from heuristics import (
+    get_levels_from_data_dict,
+    is_age,
+    is_participant_id,
+    is_sex,
+    skip_column,
+)
 from logger import bulk_annotation_logger
 from utils import (
     exclude_datasets,
@@ -108,7 +114,7 @@ def main():
             for key in output.keys():
                 output[key].append(this_row[key])
 
-            if skip_column(this_row):
+            if skip_column(this_row, participants_dict):
                 log.debug(f"  column '{column}': skipping column")
                 continue
 
@@ -139,16 +145,11 @@ def list_levels(
 
     Adds any undefined level not found in the data dictionary.
     """
-    levels = {}
-    if (
-        participants_dict
-        and participants_dict.get(column)
-        and participants_dict[column].get("Levels")
-    ):
-        levels = participants_dict[column]["Levels"]
+    levels = get_levels_from_data_dict(participants_dict, column)
+    if levels:
         output = append_levels(output, levels, column, row_template)
 
-    actual_levels = list(participants[column].unique())
+    actual_levels = [str(x) for x in participants[column].unique()]
     defined_levels = set(levels.keys())
     undefined_levels = set(actual_levels) - defined_levels
 
