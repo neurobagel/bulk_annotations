@@ -206,7 +206,12 @@ ds000113	37	handedness	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	handedness	r	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	handedness	r;l	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	hearing_problems_current	n/a	yes_no	2	True	n/a	n/a	n/a	n/a
+ds000113	37	hearing_problems_current	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	hearing_problems_current	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	hearing_problems_past	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds000113	37	hearing_problems_past	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	hearing_problems_past	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	hearing_problems_past	y	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	absolute_pitch	n/a	float64	4	True	n/a	n/a	n/a	n/a
 ds000113	37	german_speak	n/a	float64	2	True	n/a	n/a	n/a	n/a
 ds000113	37	german_comprehend	n/a	float64	2	True	n/a	n/a	n/a	n/a
@@ -288,7 +293,13 @@ ds000113	37	concert_preference3_duration	7h/week	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	concert_preference3_duration	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	favorite_music_examples	n/a	object	16	True	n/a	n/a	n/a	n/a
 ds000113	37	musician	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds000113	37	musician	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	musician	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	musician	y	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	music_lover	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds000113	37	music_lover	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	music_lover	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	music_lover	y	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_style1	n/a	object	7	True	n/a	n/a	n/a	n/a
 ds000113	37	musician_style1	Classical	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_style1	Folk	n/a	0	False	n/a	n/a	n/a	n/a
@@ -320,12 +331,18 @@ ds000113	37	musician_instruments	keyboard	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_instruments	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_instruments	recorder; transverse flute	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_improv	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds000113	37	musician_improv	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	musician_improv	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	musician_improv	y	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_improv_style	n/a	object	4	True	n/a	n/a	n/a	n/a
 ds000113	37	musician_improv_style	Jazz	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_improv_style	Rock/Blues	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_improv_style	n	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_improv_style	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_conductor	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds000113	37	musician_conductor	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	musician_conductor	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	musician_conductor	y	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_other_activities	n/a	object	4	True	n/a	n/a	n/a	n/a
 ds000113	37	musician_other_activities	Djing	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	musician_other_activities	jamming	n/a	0	False	n/a	n/a	n/a	n/a
@@ -379,6 +396,9 @@ ds000113	37	musician_act3_duration	n/a	float64	4	True	n/a	n/a	n/a	n/a
 ds000113	37	musician_act3_startage	n/a	float64	4	True	n/a	n/a	n/a	n/a
 ds000113	37	musician_act3_endage	n/a	float64	4	True	n/a	n/a	n/a	n/a
 ds000113	37	forrest_seen	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds000113	37	forrest_seen	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	forrest_seen	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	forrest_seen	y	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	forrest_seen_dist	n/a	float64	16	True	n/a	n/a	n/a	n/a
 ds000113	37	forrest_seen_count	n/a	float64	10	True	n/a	n/a	n/a	n/a
 ds000113	37	forrest_seen_languages	n/a	object	5	True	n/a	n/a	n/a	n/a
@@ -388,6 +408,9 @@ ds000113	37	forrest_seen_languages	german; english	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	forrest_seen_languages	german;english	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	forrest_seen_languages	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	forrest_ad_known	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds000113	37	forrest_ad_known	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	forrest_ad_known	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	forrest_ad_known	y	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	forrest_ad_rating	n/a	float64	4	True	n/a	n/a	n/a	n/a
 ds000113	37	forrest_ad_storydepth	n/a	float64	3	True	n/a	n/a	n/a	n/a
 ds000113	37	forrest_ad_fatigue	n/a	float64	5	True	n/a	n/a	n/a	n/a
@@ -402,7 +425,12 @@ ds000113	37	audioq6	n/a	float64	3	True	n/a	n/a	n/a	n/a
 ds000113	37	audioq7	n/a	float64	4	True	n/a	n/a	n/a	n/a
 ds000113	37	audioq8	n/a	float64	4	True	n/a	n/a	n/a	n/a
 ds000113	37	vision_problems_current	n/a	yes_no	2	True	n/a	n/a	n/a	n/a
+ds000113	37	vision_problems_current	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	vision_problems_current	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds000113	37	vision_problems_past	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds000113	37	vision_problems_past	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	vision_problems_past	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds000113	37	vision_problems_past	y	n/a	0	False	n/a	n/a	n/a	n/a
 ds000114	10	participant_id	n/a	object	10	True	n/a	nb:ParticipantID	n/a	n/a
 ds000114	10	dominant_hand	n/a	object	2	True	n/a	n/a	n/a	n/a
 ds000114	10	dominant_hand	left	n/a	0	False	n/a	n/a	n/a	n/a
@@ -611,6 +639,8 @@ ds000157	30	diet_importance	n/a	float64	7	True	subject's self-rating of how impo
 ds000157	30	appetite_pre	n/a	float64	14	True	subject's self-rating of appetite strength when asked before the scan	n/a	n/a	n/a
 ds000157	30	appetite_post	n/a	float64	8	True	subject's self-rating of appetite strength when asked after the scan	n/a	n/a	n/a
 ds000157	30	oral_contraceptive	n/a	yes_no	2	True	whether or not the subject was using an oral contraceptive	n/a	n/a	n/a
+ds000157	30	oral_contraceptive	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds000157	30	oral_contraceptive	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds000157	30	days_since_menstruationi	n/a	int64	18	True	n/a	n/a	n/a	n/a
 ds000157	30	cycle_phase_covariate	n/a	int64	3	True	Menstrual Cycle phase (based on days_since_menstruation and oral_contraceptive	n/a	n/a	n/a
 ds000168	35	participant_id	n/a	object	35	True	n/a	nb:ParticipantID	n/a	n/a
@@ -654,6 +684,8 @@ ds000174	42	audit total baseline	n/a	int64	13	True	n/a	n/a	n/a	n/a
 ds000174	42	audit total follow-up	n/a	int64	16	True	n/a	n/a	n/a	n/a
 ds000200	14	participant_id	n/a	object	14	True	n/a	nb:ParticipantID	n/a	n/a
 ds000200	14	MnExposition	n/a	yes_no	2	True	n/a	n/a	n/a	n/a
+ds000200	14	MnExposition	n	n/a	0	False	n/a	n/a	n/a	n/a
+ds000200	14	MnExposition	y	n/a	0	False	n/a	n/a	n/a	n/a
 ds000200	14	age	n/a	int64	7	True	n/a	nb:Age	n/a	n/a
 ds000200	14	gender	n/a	object	2	True	n/a	nb:Sex	n/a	n/a
 ds000200	14	gender	f	n/a	0	False	n/a	n/a	n/a	n/a
@@ -792,6 +824,9 @@ ds000201	86	SleepDeprivedSession2	Surely	n/a	0	False	n/a	n/a	n/a	n/a
 ds000201	86	SleepDeprivedSession2	SurelyNot	n/a	0	False	n/a	n/a	n/a	n/a
 ds000201	86	SleepDeprivedSession2	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds000201	86	EverBeenInStudyBefore	n/a	yes_no	3	True	whether participant has been in fMRI or experimental psychology experiment before, self-report yes/no	n/a	n/a	n/a
+ds000201	86	EverBeenInStudyBefore	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds000201	86	EverBeenInStudyBefore	Yes	n/a	0	False	n/a	n/a	n/a	n/a
+ds000201	86	EverBeenInStudyBefore	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds000201	86	MMSE	n/a	float64	5	True	Mini Mental State Exam, score	n/a	n/a	n/a
 ds000201	86	SawThroughEMGElectrodes	n/a	object	5	True	Whether participant realised that electrodes on face were for EMG	n/a	n/a	n/a
 ds000201	86	SawThroughEMGElectrodes	ForgotToAsk	n/a	0	False	n/a	n/a	n/a	n/a
@@ -1252,6 +1287,7 @@ ds000243	120	Gender	M	n/a	0	False	n/a	n/a	n/a	n/a
 ds000243	120	Handedness	n/a	object	1	True	n/a	n/a	n/a	n/a
 ds000243	120	Handedness	R	n/a	0	False	n/a	n/a	n/a	n/a
 ds000243	120	Native English Only	n/a	yes_no	1	True	n/a	n/a	n/a	n/a
+ds000243	120	Native English Only	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds000243	120	Total rest minutes	n/a	float64	14	True	n/a	n/a	n/a	n/a
 ds000244	12	participant_id	n/a	object	12	True	n/a	nb:ParticipantID	n/a	n/a
 ds000244	12	sex	n/a	object	2	True	n/a	nb:Sex	n/a	n/a
@@ -2132,6 +2168,9 @@ ds001784	14	madrs_bl	n/a	int64	8	True	Summary score on the Montgomery-Asberg Dep
 ds001784	14	madrs_fu	n/a	int64	10	True	Summary score on the Montgomery-Asberg Depression Rating Scale (MADRS) at follow-up visit (i.e. time of EEG data collection).	n/a	n/a	n/a
 ds001784	14	responder	n/a	bool	2	True	Whether the participant achieved clinical response at any point during his/her clinical trial; the criterion was a 50% drop in MADRS or a 35% drop in YBOCS. This may not have corresponded to the score at the time of study data collection.	n/a	n/a	n/a
 ds001784	14	hypomania	n/a	yes_no	3	True	Whether the participant ever experienced a hypomanic episode following DBS surgery.	n/a	n/a	n/a
+ds001784	14	hypomania	False	n/a	0	False	n/a	n/a	n/a	n/a
+ds001784	14	hypomania	True	n/a	0	False	n/a	n/a	n/a	n/a
+ds001784	14	hypomania	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds001784	14	dbs_stim_freq	n/a	int64	5	True	Frequency of participant's chronic deep brain stimulation.	n/a	n/a	n/a
 ds001796	64	participant_id	n/a	object	64	True	participant_id	nb:ParticipantID	n/a	n/a
 ds001796	64	age	n/a	int64	27	True	age of the participant	nb:Age	n/a	n/a
@@ -2495,14 +2534,19 @@ ds002006	30	Vision	n/a	object	2	True	n/a	n/a	n/a	n/a
 ds002006	30	Vision	Corrected	n/a	0	False	n/a	n/a	n/a	n/a
 ds002006	30	Vision	Normal	n/a	0	False	n/a	n/a	n/a	n/a
 ds002006	30	Learning_Attention_Disorder	n/a	yes_no	1	True	n/a	n/a	n/a	n/a
+ds002006	30	Learning_Attention_Disorder	No	n/a	0	False	n/a	n/a	n/a	n/a
 ds002006	30	Neurological_Disorder	n/a	yes_no	1	True	n/a	n/a	n/a	n/a
+ds002006	30	Neurological_Disorder	No	n/a	0	False	n/a	n/a	n/a	n/a
 ds002006	30	Mental_Health_Disorder	n/a	yes_no	1	True	n/a	n/a	n/a	n/a
+ds002006	30	Mental_Health_Disorder	No	n/a	0	False	n/a	n/a	n/a	n/a
 ds002006	30	Traumatic_Head_injury	n/a	yes_no	1	True	n/a	n/a	n/a	n/a
+ds002006	30	Traumatic_Head_injury	No	n/a	0	False	n/a	n/a	n/a	n/a
 ds002006	30	Medications_Drug_use	n/a	object	3	True	n/a	n/a	n/a	n/a
 ds002006	30	Medications_Drug_use	Nicomide_Beyaz_sulfamethoxazole	n/a	0	False	n/a	n/a	n/a	n/a
 ds002006	30	Medications_Drug_use	No	n/a	0	False	n/a	n/a	n/a	n/a
 ds002006	30	Medications_Drug_use	birth_control	n/a	0	False	n/a	n/a	n/a	n/a
 ds002006	30	Eating_Disorder	n/a	yes_no	1	True	n/a	n/a	n/a	n/a
+ds002006	30	Eating_Disorder	No	n/a	0	False	n/a	n/a	n/a	n/a
 ds002011	22	participant_id	n/a	object	22	True	n/a	nb:ParticipantID	n/a	n/a
 ds002011	22	sex	n/a	object	2	True	Participant's sex	nb:Sex	n/a	n/a
 ds002011	22	sex	F	n/a	0	False	n/a	n/a	n/a	n/a
@@ -3827,6 +3871,8 @@ ds002898	27	current_smoker_specify	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds002898	27	current_smoker_specify	once a month 2-3	n/a	0	False	n/a	n/a	n/a	n/a
 ds002898	27	current_smoker_specify	yes 2-3 per day	n/a	0	False	n/a	n/a	n/a	n/a
 ds002898	27	previous_smoker	n/a	yes_no	2	True	Previous smoking	n/a	n/a	n/a
+ds002898	27	previous_smoker	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds002898	27	previous_smoker	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds002898	27	previous_smoker_specify	n/a	object	12	True	Description of previous smoking habit	n/a	n/a	n/a
 ds002898	27	alcohol_consumption	n/a	yes_no	2	True	Self report a lcohol consumption.	n/a	n/a	n/a
 ds002898	27	alcohol_consumption	no	n/a	0	False	No	n/a	n/a	n/a
@@ -4021,15 +4067,35 @@ ds003008	49	BAS-fun seeking	n/a	int64	9	True	n/a	n/a	n/a	n/a
 ds003008	49	BIS	n/a	int64	9	True	behaviroal inhibition system	n/a	n/a	n/a
 ds003011	4	participant_id	n/a	object	4	True	Participant identifier	nb:ParticipantID	n/a	n/a
 ds003011	4	has_Y1CMH	n/a	yes_no	2	True	Scanned on GE 750w Discovery 3T at CMH in year 1 of study	n/a	n/a	n/a
+ds003011	4	has_Y1CMH	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003011	4	has_Y1CMH	Y	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	has_Y1MRC	n/a	yes_no	2	True	Scanned on Siemens Tim Trio 3T at MRC in year 1 of study	n/a	n/a	n/a
+ds003011	4	has_Y1MRC	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003011	4	has_Y1MRC	Y	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	has_Y1ZHH	n/a	yes_no	2	True	Scanned on GE 750 Signa 3T at ZHH in year 1 of study	n/a	n/a	n/a
+ds003011	4	has_Y1ZHH	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003011	4	has_Y1ZHH	Y	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	has_Y2CMH	n/a	yes_no	2	True	Scanned on GE 750w Discovery 3T at CMH in year 2 of study	n/a	n/a	n/a
+ds003011	4	has_Y2CMH	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003011	4	has_Y2CMH	Y	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	has_Y2MRC	n/a	yes_no	2	True	Scanned on Siemens Tim Trio 3T at MRC in year 2 of study	n/a	n/a	n/a
+ds003011	4	has_Y2MRC	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003011	4	has_Y2MRC	Y	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	has_Y2ZHH	n/a	yes_no	2	True	Scanned on GE 750 Signa 3T at ZHH in year 2 of study	n/a	n/a	n/a
+ds003011	4	has_Y2ZHH	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003011	4	has_Y2ZHH	Y	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	has_Y3CMH	n/a	yes_no	2	True	Scanned on GE 750w Discovery 3T at CMH in year 3 of study	n/a	n/a	n/a
+ds003011	4	has_Y3CMH	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003011	4	has_Y3CMH	Y	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	has_Y3MRP	n/a	yes_no	2	True	Scanned on Siemens Prisma at MRP in year 3 of study	n/a	n/a	n/a
+ds003011	4	has_Y3MRP	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003011	4	has_Y3MRP	Y	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	has_Y3ZHP	n/a	yes_no	2	True	Scanned on Siemens Prisma at ZHP in year 3 of study	n/a	n/a	n/a
+ds003011	4	has_Y3ZHP	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003011	4	has_Y3ZHP	Y	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	has_Y4CMP	n/a	yes_no	2	True	Scanned on Siemens Prisma at CMP in year 4 of study	n/a	n/a	n/a
+ds003011	4	has_Y4CMP	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003011	4	has_Y4CMP	Y	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	qc_comments	n/a	object	2	True	Quality control comments	n/a	n/a	n/a
 ds003011	4	qc_comments	dwi acquired with fewer slices in dim3	n/a	0	False	n/a	n/a	n/a	n/a
 ds003011	4	qc_comments	nan	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4039,6 +4105,8 @@ ds003017	25	sex	n/a	object	2	True	Self-rated by participant, M for male, F for f
 ds003017	25	sex	F	n/a	0	False	n/a	n/a	n/a	n/a
 ds003017	25	sex	M	n/a	0	False	n/a	n/a	n/a	n/a
 ds003017	25	headcase	n/a	yes_no	2	True	Whether the subject was using a custom-molded CaseForge headcase	n/a	n/a	n/a
+ds003017	25	headcase	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003017	25	headcase	Yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003020	8	participant_id	n/a	object	8	True	n/a	nb:ParticipantID	n/a	n/a
 ds003020	8	age	n/a	int64	6	True	n/a	nb:Age	n/a	n/a
 ds003020	8	sex	n/a	object	2	True	n/a	nb:Sex	n/a	n/a
@@ -4315,7 +4383,11 @@ ds003382	10	education_specify	masters	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	education_specify	technical school	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	body_weight	n/a	float64	8	True	body weight of the participant	n/a	n/a	n/a
 ds003382	10	efl	n/a	yes_no	2	True	english as first language	n/a	n/a	n/a
+ds003382	10	efl	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds003382	10	efl	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	visual_impairment	n/a	yes_no	2	True	any kind of vision impairment including wearing reading glasses	n/a	n/a	n/a
+ds003382	10	visual_impairment	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003382	10	visual_impairment	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	visual_impairment_specify	n/a	object	5	True	description of visual impairment	n/a	n/a	n/a
 ds003382	10	visual_impairment_specify	a little short sighted	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	visual_impairment_specify	glasses	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4323,6 +4395,8 @@ ds003382	10	visual_impairment_specify	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	visual_impairment_specify	reading glasses	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	visual_impairment_specify	slight short sightedness	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	mental_illness_history	n/a	yes_no	2	True	handedness of the participant as reported by the participant	n/a	n/a	n/a
+ds003382	10	mental_illness_history	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003382	10	mental_illness_history	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	mental_illness_specify	n/a	object	5	True	diagnosis or treatment of whether the person has received a diagnosis for any Axis I psychiatric condition	n/a	n/a	n/a
 ds003382	10	mental_illness_specify	anxiety	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	mental_illness_specify	anxiety, diagnosed treated and recovered	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4330,6 +4404,8 @@ ds003382	10	mental_illness_specify	depression	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	mental_illness_specify	depression, diagnosis, ongoing, receiving treatment	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	mental_illness_specify	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	mental_illness_family_history	n/a	yes_no	2	True	self-report of whether the person has a family member who has had a current or past Axis I psychiatric condition	n/a	n/a	n/a
+ds003382	10	mental_illness_family_history	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003382	10	mental_illness_family_history	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	mental_illness_family_history_specify	n/a	object	6	True	diagnosis or treatment of the family member’s  psychiatric condition	n/a	n/a	n/a
 ds003382	10	mental_illness_family_history_specify	father - depression	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	mental_illness_family_history_specify	grandfather - ptsd	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4349,7 +4425,10 @@ ds003382	10	cardiovascular	n/a	object	2	True	Whether the person has a current or
 ds003382	10	cardiovascular	"congenital tachycardia ""fixed"""	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	cardiovascular	no	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	diabetes	n/a	yes_no	1	True	Whether the person has a current or previous diabetes diagnosis	n/a	n/a	n/a
+ds003382	10	diabetes	no	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	regular_medication	n/a	yes_no	2	True	Whether the person is currently taking regular medication	n/a	n/a	n/a
+ds003382	10	regular_medication	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003382	10	regular_medication	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	regular_medication_specify	n/a	object	4	True	description of regular medication	n/a	n/a	n/a
 ds003382	10	regular_medication_specify	anxiety medication	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	regular_medication_specify	contraceptive pill	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4362,7 +4441,10 @@ ds003382	10	medication_last24hr	contraceptive pill	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	medication_last24hr	nexium	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	medication_last24hr	no	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	current_smoker	n/a	yes_no	1	True	currently smoking	n/a	n/a	n/a
+ds003382	10	current_smoker	no	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	previous_smoker	n/a	yes_no	2	True	previous smoking	n/a	n/a	n/a
+ds003382	10	previous_smoker	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003382	10	previous_smoker	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	previous_smoker_specify	n/a	object	5	True	description of previous smoking 	n/a	n/a	n/a
 ds003382	10	previous_smoker_specify	10 cigs a day for 10 years, stopped 3 years ago	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	previous_smoker_specify	6 in whole lifetime	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4372,6 +4454,8 @@ ds003382	10	previous_smoker_specify	yes as a social smoker	n/a	0	False	n/a	n/a	n
 ds003382	10	alcohol_days_per_week	n/a	float64	6	True	number of days per week the person drinks	n/a	n/a	n/a
 ds003382	10	standard_drinks_per_drinking_day	n/a	int64	5	True	number average number of standard drinks per drinking day	n/a	n/a	n/a
 ds003382	10	recreational_drugs	n/a	yes_no	2	True	used recreational drugs in last 6 months	n/a	n/a	n/a
+ds003382	10	recreational_drugs	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003382	10	recreational_drugs	yes 	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	recreational_drugs_specify	n/a	object	2	True	description of recreational drugs used in last 6 months	n/a	n/a	n/a
 ds003382	10	recreational_drugs_specify	2 x marijuana	n/a	0	False	n/a	n/a	n/a	n/a
 ds003382	10	recreational_drugs_specify	nan	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4407,7 +4491,15 @@ ds003397	15	handedness	Right	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	education_years	n/a	int64	4	True	years of education calculated as formal education of 6 months or more. starts from the first year of primary/elementary school onwards	n/a	n/a	n/a
 ds003397	15	highest_level_education_completed	n/a	int64	1	True	the highest level of formal education completed (i.e., does not include uncompleted education or education currently undertaken)	n/a	n/a	n/a
 ds003397	15	english_as_first_language	n/a	yes_no	4	True	english as first language	n/a	n/a	n/a
+ds003397	15	english_as_first_language	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	english_as_first_language	Yes	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	english_as_first_language	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	english_as_first_language	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	visual_impairments	n/a	yes_no	4	True	n/a	n/a	n/a	n/a
+ds003397	15	visual_impairments	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	visual_impairments	Yes	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	visual_impairments	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	visual_impairments	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	visual_impairment_specify	n/a	object	9	True	description of visual impairment	n/a	n/a	n/a
 ds003397	15	visual_impairment_specify	Glasses (myopia)	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	visual_impairment_specify	Glasses- short-sighted	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4419,14 +4511,27 @@ ds003397	15	visual_impairment_specify	short sighted (contact lenses)	n/a	0	False
 ds003397	15	visual_impairment_specify	short sighted (glasses)	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	visual_impairment_specify	short-sighted	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	hearing_impairment	n/a	yes_no	2	True	whether the participant has hearing impairment	n/a	n/a	n/a
+ds003397	15	hearing_impairment	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	hearing_impairment	no	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	hearing_specify	n/a	float64	1	True	specify the kind of hearing impairment	n/a	n/a	n/a
 ds003397	15	personal_history_mental_illness	n/a	yes_no	3	True	whether the participant has history mental illness	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	mental_illness_history_specify	n/a	object	2	True	diagnosis or treatment of whether the person has received a diagnosis for any Axis I psychiatric condition	n/a	n/a	n/a
 ds003397	15	mental_illness_history_specify	depression & anxiety	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	mental_illness_history_specify	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	personal_history_mental_illness_ever_diagnosed	n/a	yes_no	2	True	Whether a family member had suspected or diagnosed mental illness	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness_ever_diagnosed	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness_ever_diagnosed	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	personal_history_mental_illness_receive_treatment	n/a	yes_no	2	True	Whether the person diagnosed with mental illness disease received treatment	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness_receive_treatment	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness_receive_treatment	no	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	family_history_mental_illness	n/a	yes_no	4	True	whether the participant has family history mental illness	n/a	n/a	n/a
+ds003397	15	family_history_mental_illness	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	family_history_mental_illness	Yes	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	family_history_mental_illness	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	family_history_mental_illness	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	family_health_mental_illness_specify	n/a	object	5	True	diagnosis or treatment of the family member’s psychiatric condition	n/a	n/a	n/a
 ds003397	15	family_health_mental_illness_specify	Cousin - Depression/bipolar	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	family_health_mental_illness_specify	Mum - depression	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4434,7 +4539,15 @@ ds003397	15	family_health_mental_illness_specify	mum - anxiety	n/a	0	False	n/a	n
 ds003397	15	family_health_mental_illness_specify	mum, brother, aunties, cousins - depression and anxiety. one has psychosis	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	family_health_mental_illness_specify	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	personal_history_mental_illness_ever_diagnosed.1	n/a	yes_no	4	True	n/a	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness_ever_diagnosed.1	Yes	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness_ever_diagnosed.1	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness_ever_diagnosed.1	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	personal_history_mental_illness_ever_diagnosed.1	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	family_history_dementia	n/a	yes_no	4	True	Whether a family member had suspected or diagnosed dementia	n/a	n/a	n/a
+ds003397	15	family_history_dementia	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	family_history_dementia	Yes	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	family_history_dementia	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	family_history_dementia	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	family_history_dementia_specify	n/a	object	5	True	specify the family member had suspected or diagnosed dementia and the condition	n/a	n/a	n/a
 ds003397	15	family_history_dementia_specify	grandad - alzheimer's	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	family_history_dementia_specify	grandma - parkinsons	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4447,20 +4560,36 @@ ds003397	15	family_history_dementia_ever_diagnosed	don't know	n/a	0	False	n/a	n/
 ds003397	15	family_history_dementia_ever_diagnosed	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	family_history_dementia_ever_diagnosed	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	cardiovascular	n/a	yes_no	2	True	Whether the person has a current or previous cardiovascular condition	n/a	n/a	n/a
+ds003397	15	cardiovascular	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	cardiovascular	no	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	diabetes	n/a	yes_no	2	True	Whether the person has a current or previous diabetes diagnosis	n/a	n/a	n/a
+ds003397	15	diabetes	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	diabetes	no	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	current_tobacco	n/a	yes_no	4	True	Whether the person has tobacco currently	n/a	n/a	n/a
+ds003397	15	current_tobacco	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	current_tobacco	Yes	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	current_tobacco	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	current_tobacco	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	current_tobacco_average_per_day	n/a	object	4	True	how many tobacco average per day	n/a	n/a	n/a
 ds003397	15	current_tobacco_average_per_day	"""socially"""	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	current_tobacco_average_per_day	2 cigs a day/ for 6 months	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	current_tobacco_average_per_day	3 a day	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	current_tobacco_average_per_day	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	ever_smoked	n/a	yes_no	4	True	whether the participant ever smoked	n/a	n/a	n/a
+ds003397	15	ever_smoked	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	ever_smoked	Yes	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	ever_smoked	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	ever_smoked	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	ever_smoked_average	n/a	object	4	True	how many ever smoked in average	n/a	n/a	n/a
 ds003397	15	ever_smoked_average	1 every two months	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	ever_smoked_average	60 over lifetime	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	ever_smoked_average	<100 in life	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	ever_smoked_average	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	ever_consumed_alcohol	n/a	yes_no	4	True	whether the participant ever consumed alcohol	n/a	n/a	n/a
+ds003397	15	ever_consumed_alcohol	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	ever_consumed_alcohol	Yes	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	ever_consumed_alcohol	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	ever_consumed_alcohol	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	how_often	n/a	object	8	True	how often the person drinks	n/a	n/a	n/a
 ds003397	15	how_often	1 day a month	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	how_often	1 day a week	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4472,6 +4601,9 @@ ds003397	15	how_often	2 days per month	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	how_often	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	standard_drinks_per_occasion	n/a	nb:range	9	True	how many standard drinks per occasion	n/a	n/a	n/a
 ds003397	15	recreational_drugs_last_6_months	n/a	yes_no	3	True	used recreational drugs in last 6 months	n/a	n/a	n/a
+ds003397	15	recreational_drugs_last_6_months	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	recreational_drugs_last_6_months	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003397	15	recreational_drugs_last_6_months	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	drugs_specify	n/a	object	3	True	description of recreational drugs used in last 6 months	n/a	n/a	n/a
 ds003397	15	drugs_specify	cannabis	n/a	0	False	n/a	n/a	n/a	n/a
 ds003397	15	drugs_specify	cannabis (1/2 weeks); mdma (1/2 months); cocaine (1/ month)	n/a	0	False	n/a	n/a	n/a	n/a
@@ -4528,6 +4660,8 @@ ds003399	6	pathology	scar tissue	n/a	0	False	n/a	n/a	n/a	n/a
 ds003399	6	engel 1 year	n/a	object	1	True	Engel epilepsy surgery outcome scale	n/a	n/a	n/a
 ds003399	6	engel 1 year	1A	n/a	0	False	n/a	n/a	n/a	n/a
 ds003399	6	aed	n/a	yes_no	2	True	anti-epileptic drug status	n/a	n/a	n/a
+ds003399	6	aed	No	n/a	0	False	n/a	n/a	n/a	n/a
+ds003399	6	aed	Yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003401	35	participant_id	n/a	object	35	True	Participant identifier	nb:ParticipantID	n/a	n/a
 ds003401	35	age	n/a	int64	11	True	Age in years (TODO - verify) as in the initial session, might not be correct for other sessions	nb:Age	n/a	n/a
 ds003401	35	sex	n/a	object	2	True	self-rated by participant, M for male/F for female (TODO: verify)	nb:Sex	n/a	n/a
@@ -4877,6 +5011,8 @@ ds003574	18	group_won_game	n/a	object	2	True	subjects won at the face or the maz
 ds003574	18	group_won_game	face	n/a	0	False	n/a	n/a	n/a	n/a
 ds003574	18	group_won_game	maze	n/a	0	False	n/a	n/a	n/a	n/a
 ds003574	18	sub_reach_n3	n/a	yes_no	2	True	If yes, subjects reach until N3 sleep in the MRI. So the bold session sleep includes W, N1, N2 and N3 sleep stages, If no, subject reach until N2 sleep in the MRI. So the sleep bold session includes W, N1 and N2 sleep stages 	n/a	n/a	n/a
+ds003574	18	sub_reach_n3	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003574	18	sub_reach_n3	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003574	18	age	n/a	int64	8	True	Age at time of testing	nb:Age	n/a	n/a
 ds003574	18	sex	n/a	object	2	True	Biological sex of the participant	nb:Sex	n/a	n/a
 ds003574	18	sex	f	n/a	0	False	n/a	n/a	n/a	n/a
@@ -5569,6 +5705,8 @@ ds003830	37	Time between last reported seizure to MRI	n/a	object	12	True	n/a	n/a
 ds003830	37	Time between first seizure to MRI	n/a	object	15	True	n/a	n/a	n/a	n/a
 ds003830	37	Annfalsstyp	n/a	object	14	True	n/a	n/a	n/a	n/a
 ds003830	37	postictal agression	n/a	yes_no	2	True	n/a	n/a	n/a	n/a
+ds003830	37	postictal agression	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds003830	37	postictal agression	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003830	37	interictal behavioural changes	n/a	object	5	True	n/a	n/a	n/a	n/a
 ds003830	37	interictal behavioural changes	anxiety	n/a	0	False	n/a	n/a	n/a	n/a
 ds003830	37	interictal behavioural changes	anxiety 	n/a	0	False	n/a	n/a	n/a	n/a
@@ -5576,7 +5714,13 @@ ds003830	37	interictal behavioural changes	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds003830	37	interictal behavioural changes	seperation anxiety 	n/a	0	False	n/a	n/a	n/a	n/a
 ds003830	37	interictal behavioural changes	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003830	37	cluster-seizures before MRI	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds003830	37	cluster-seizures before MRI	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds003830	37	cluster-seizures before MRI	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003830	37	cluster-seizures before MRI	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003830	37	Status Epileptikus before MRI	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds003830	37	Status Epileptikus before MRI	nan	n/a	0	False	n/a	n/a	n/a	n/a
+ds003830	37	Status Epileptikus before MRI	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds003830	37	Status Epileptikus before MRI	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds003830	37	Sevofluran level start BOLD (%)	n/a	nb:euro	15	True	n/a	n/a	n/a	n/a
 ds003830	37	Sevofluran level end BOLD (%)	n/a	nb:euro	16	True	n/a	n/a	n/a	n/a
 ds003830	37	HF (/min)	n/a	int64	29	True	n/a	n/a	n/a	n/a
@@ -5701,6 +5845,9 @@ ds003999	29	Basal	P	n/a	0	False	Area was partially injured by the stroke	n/a	n/a
 ds003999	29	Basal	Y	n/a	0	False	Area was sugnificantly injured by the stroke	n/a	n/a	n/a
 ds003999	29	Basal	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds003999	29	Thalamus	n/a	yes_no	3	True	n/a	n/a	n/a	n/a
+ds003999	29	Thalamus	N	n/a	0	False	n/a	n/a	n/a	n/a
+ds003999	29	Thalamus	Y	n/a	0	False	n/a	n/a	n/a	n/a
+ds003999	29	Thalamus	nan	n/a	0	False	n/a	n/a	n/a	n/a
 ds004006	41	participant_id	n/a	object	41	True	n/a	nb:ParticipantID	n/a	n/a
 ds004006	41	age	n/a	int64	15	True	n/a	nb:Age	n/a	n/a
 ds004006	41	sex	n/a	object	2	True	n/a	nb:Sex	n/a	n/a
@@ -6398,9 +6545,14 @@ ds004194	11	site	n/a	object	2	True	Site where data was acquired	n/a	n/a	n/a
 ds004194	11	site	NYU	n/a	0	False	New York University School of Medicine	n/a	n/a	n/a
 ds004194	11	site	UMCU	n/a	0	False	Utrecht University Medical Center	n/a	n/a	n/a
 ds004194	11	high_density_grid	n/a	yes_no	2	True	Whether the patient had a high density grid implanted	n/a	n/a	n/a
+ds004194	11	high_density_grid	no	n/a	0	False	n/a	n/a	n/a	n/a
+ds004194	11	high_density_grid	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds004194	11	visual	n/a	yes_no	1	True	Whether participant performed visual BAIR tasks	n/a	n/a	n/a
+ds004194	11	visual	yes	n/a	0	False	n/a	n/a	n/a	n/a
 ds004194	11	motor	n/a	yes_no	1	True	Whether participant performed motor BAIR tasks	n/a	n/a	n/a
+ds004194	11	motor	no	n/a	0	False	n/a	n/a	n/a	n/a
 ds004194	11	tactile	n/a	yes_no	1	True	Whether participant performed tactile BAIR tasks	n/a	n/a	n/a
+ds004194	11	tactile	no	n/a	0	False	n/a	n/a	n/a	n/a
 ds004197	4	participant_id	n/a	object	4	True	Unique subject identifier	nb:ParticipantID	n/a	n/a
 ds004197	4	Age	n/a	int64	4	True	Age of the subject	nb:Age	n/a	n/a
 ds004197	4	Sex	n/a	object	2	True	Sex of the subject	nb:Sex	n/a	n/a

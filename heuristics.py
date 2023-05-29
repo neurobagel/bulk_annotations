@@ -136,7 +136,6 @@ def skip_column(this_row: dict, participant_dict: dict) -> bool:
             "datetime64[ns]",
             "float64",
             "int64",
-            "yes_no",
             "bool",
             "int",
             "float",
