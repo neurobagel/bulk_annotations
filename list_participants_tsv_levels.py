@@ -171,7 +171,7 @@ def append_levels(
     column: str,
     row_template: dict[str, str],
 ):
-    for level_ in levels:
+    for level_ in sorted(levels):
         log.debug(f"  column '{column}': appending level '{level_}'")
 
         this_row = row_template.copy()
