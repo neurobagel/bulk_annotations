@@ -116,15 +116,18 @@ COLUMNS_TO_SKIP = {
 MAX_NB_LEVELS = 10
 
 
-def skip_column(this_row: dict) -> bool:
+def skip_column(this_row: dict, participant_dict: dict) -> bool:
     """Return True if column should be skipped.
 
     The value returned depends on:
+    - if the levels of this column are already annotated in the participants.json,
     - the column name,
     - its controlled term,
     - its type,
     - the number of levels it has.
     """
+    if get_levels_from_data_dict(participant_dict, this_row["column"]):
+        return False
     return (
         this_row["column"].lower() in COLUMNS_TO_SKIP
         or this_row["controlled_term"] in ["nb:ParticipantID", "nb:Age"]
@@ -133,7 +136,6 @@ def skip_column(this_row: dict) -> bool:
             "datetime64[ns]",
             "float64",
             "int64",
-            "yes_no",
             "bool",
             "int",
             "float",
@@ -145,6 +147,17 @@ def skip_column(this_row: dict) -> bool:
         }
         or this_row["nb_levels"] > MAX_NB_LEVELS
     )
+
+
+def get_levels_from_data_dict(participants_dict: dict, column: str) -> dict:
+    if (
+        participants_dict
+        and participants_dict.get(column)
+        and participants_dict[column].get("Levels")
+    ):
+        return participants_dict[column]["Levels"]
+    else:
+        return {}
 
 
 def get_column_type(col: pd.Series):
