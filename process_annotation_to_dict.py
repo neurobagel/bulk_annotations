@@ -101,8 +101,7 @@ def main():
                 data_dict.setdefault(col, {}).update(**describe_continuous(col_df))
             
         write_data_dict(data_dict, MYPATH, name=dataset)
-    pass
-    
+
 
 if __name__ == "__main__":
     main()
