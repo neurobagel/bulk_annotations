@@ -74,6 +74,8 @@ def describe_discrete(df: pd.DataFrame) -> dict:
     
     
 def write_data_dict(data_dict: dict, path: Path, name: str) -> None:
+    if not path.is_dir():
+        path.mkdir()
     with (path / f"{name}.json").open("w") as f:
         json.dump(data_dict, f, indent=2)
     
@@ -85,22 +87,20 @@ def main():
     # TODO make this work for all datasets
     my_datasets = ["ds000001", "ds001541", "ds000003"]
     for dataset, ds_df in annotated.groupby("dataset"):
-        if dataset not in my_datasets:
-            continue
+        # if dataset not in my_datasets:
+            # continue
         data_dict = fetch_data_dictionary(dataset=dataset)
         
         for col, col_df in ds_df.groupby("column"):
             if is_dropped(col_df):
                 continue
             if is_discrete(col_df):
-                print(col, "discrete")
                 data_dict.setdefault(col, {}).update(**describe_discrete(col_df))
                 
             else:
-                print(col, "continuous")
                 data_dict.setdefault(col, {}).update(**describe_continuous(col_df))
             
-        write_data_dict(data_dict, MYPATH, name=dataset)
+        write_data_dict(data_dict, MYPATH / "outputs/data_dictionaries/", name=dataset)
 
 
 if __name__ == "__main__":
