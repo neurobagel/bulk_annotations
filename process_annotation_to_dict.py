@@ -94,11 +94,11 @@ def main():
                 continue
             if is_discrete(col_df):
                 print(col, "discrete")
-                data_dict[col] = describe_discrete(col_df)
+                data_dict.setdefault(col, {}).update(**describe_discrete(col_df))
                 
             else:
                 print(col, "continuous")
-                data_dict[col] = describe_continuous(col_df)
+                data_dict.setdefault(col, {}).update(**describe_continuous(col_df))
             
         write_data_dict(data_dict, MYPATH, name=dataset)
     pass
