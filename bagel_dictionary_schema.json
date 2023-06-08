@@ -157,8 +157,7 @@
         }
       },
       "required": [
-        "Description",
-        "Annotations"
+        "Description"
       ]
     },
     "CategoricalColumn": {
@@ -194,7 +193,6 @@
       },
       "required": [
         "Description",
-        "Annotations",
         "Levels"
       ]
     }
