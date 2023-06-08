@@ -1,10 +1,13 @@
 from pathlib import Path
 import json
 
+import jsonschema
 import pandas as pd
 
 
 MYPATH = Path(__file__).parent
+with (MYPATH / "bagel_dictionary_schema.json").open("r") as f:
+    SCHEMA = json.load(f)
 
 
 def is_discrete(df: pd.DataFrame) -> bool:
@@ -73,6 +76,29 @@ def describe_discrete(df: pd.DataFrame) -> dict:
     }
     
     
+def add_description(data_dict: dict) -> dict:
+    """
+    Given a column, adds an empty description if none is present.
+    Otherwise returns the column unchanged.
+    """
+    # TODO: This function is a hacky fix for bad data dictionaries in the input data and should be removed
+    for key, column in data_dict.items():
+        
+        if not "Description" in column.keys():
+            column["Description"] = "There should have been a description here, but there wasn't. :("
+        data_dict[key].update(**column)
+    return data_dict
+    
+    
+def is_valid_dict(data_dict: dict) -> bool:
+    """Returns True for valid Neurobagel data dictionary"""
+    try:
+        jsonschema.validate(data_dict, schema=SCHEMA)
+        return True
+    except jsonschema.ValidationError:
+        return False
+    
+    
 def write_data_dict(data_dict: dict, path: Path, name: str) -> None:
     if not path.is_dir():
         path.mkdir()
@@ -92,6 +118,7 @@ def main():
         data_dict = fetch_data_dictionary(dataset=dataset)
         
         for col, col_df in ds_df.groupby("column"):
+            
             if is_dropped(col_df):
                 continue
             if is_discrete(col_df):
@@ -99,7 +126,11 @@ def main():
                 
             else:
                 data_dict.setdefault(col, {}).update(**describe_continuous(col_df))
-            
+           
+        data_dict = add_description(data_dict=data_dict)
+        
+        if not is_valid_dict(data_dict):
+            print("Uhoh, this is not a valid dict", dataset)
         write_data_dict(data_dict, MYPATH / "outputs/data_dictionaries/", name=dataset)
 
 
