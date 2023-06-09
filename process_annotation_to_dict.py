@@ -19,6 +19,10 @@ def is_dropped(df: pd.DataFrame) -> bool:
     return (get_col_rows(df)["Decision"] == "drop").item()
 
 
+def is_tool(df: pd.DataFrame) -> bool:
+    return not (get_col_rows(df)["isPartOf"].isna()).item()
+
+
 def get_ds_path(dataset: str) -> Path:
     return MYPATH / "inputs/openneuro" / dataset
 
@@ -75,6 +79,15 @@ def describe_discrete(df: pd.DataFrame) -> dict:
         }
     }
     
+
+def describe_tool(df: pd.DataFrame) -> dict:
+    return {
+        "IsPartOf": {
+            "TermURL": get_col_rows(df)["isPartOf"].item(),
+            "Label": ""
+        }
+    }
+    
     
 def add_description(data_dict: dict) -> dict:
     """
@@ -116,10 +129,12 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
         if is_dropped(col_df):
             continue
         if is_discrete(col_df):
-            user_dict.setdefault(col, {}).update(**describe_discrete(col_df))
-            
+            user_dict.setdefault(col, {}).update(**describe_discrete(col_df))    
         else:
             user_dict.setdefault(col, {}).update(**describe_continuous(col_df))
+        
+        if is_tool(col_df):
+            user_dict[col].setdefault("Annotations", {}).update(**describe_tool(col_df))
         
     user_dict = add_description(data_dict=user_dict)
     
@@ -133,8 +148,11 @@ def main():
     # TODO make this work for all datasets
     my_datasets = ["ds000001", "ds001541", "ds000003"]
     for dataset, ds_df in annotated.groupby("dataset"):
-        if dataset not in my_datasets:
-            continue
+        # if dataset not in my_datasets:
+        #     continue
+        if not all(ds_df.isPartOf.isna()):
+            print("yo")
+            pass
         data_dict = fetch_data_dictionary(dataset=dataset)
         
         data_dict = process_dict(ds_df, data_dict)

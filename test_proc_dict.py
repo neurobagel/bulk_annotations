@@ -91,3 +91,10 @@ def test_original_data_augmented_by_annotation(continuous_annotation, user_dict)
     assert result.get("age", {}).get("Annotations") is not None
     assert result.get("sex") is not None
     
+    
+def test_partof_annotation_is_processed(tool_annotation, user_dict):
+    data = pd.DataFrame(tool_annotation)
+    result = process_dict(data, user_dict)
+    
+    assert result.get("tool1") is not None
+    assert result.get("tool1").get("Annotations", {}).get("IsPartOf") is not None
