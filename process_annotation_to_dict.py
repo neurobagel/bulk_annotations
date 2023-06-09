@@ -152,9 +152,10 @@ def main():
         data_dict = process_dict(ds_df, data_dict)
         
         if not is_valid_dict(data_dict):
+            # TODO: make smarter choices about logging and warnings
             print("Uhoh, this is not a valid dict", dataset)
         write_data_dict(data_dict, MYPATH / "outputs/data_dictionaries/", name=dataset)
-
+    print("Tada!")
 
 if __name__ == "__main__":
     main()
