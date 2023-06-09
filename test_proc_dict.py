@@ -46,7 +46,7 @@ def continuous_annotation():
 def tool_annotation():
     return {
         "dataset": {102: "ds000009"},
-        "column": {102: "BIS/BAS_BAS"},
+        "column": {102: "tool1"},
         "value": {102: ""},
         "is_row": {102: True},
         "description": {102: ""},
@@ -56,16 +56,29 @@ def tool_annotation():
     }
 
 
-def test_assessment_goes_through(discrete_annotation):
-    pass
-    annotated = pd.DataFrame(discrete_annotation)
-
-    assert False
-
-
-def test_we_dont_lose_existing_info():
-    assert False
+@pytest.fixture
+def drop_annotation(continuous_annotation):
+    continuous_annotation.update(**{"Decision": {10: "drop"}})
+    return continuous_annotation
 
 
-def test_everything_annotated_is_in():
-    assert False
+@pytest.fixture
+def user_dict():
+    return {
+        "age": {
+            "Description": "age of the participant",
+            "Units": "years",
+            "Annotations": {"IsAbout": {"TermURL": "nb:Age", "Label": ""}},
+        },
+        "sex": {
+            "Description": "gender of the participant",
+            "Levels": {"M": "male", "F": "female"},
+        },
+    }
+
+
+def test_original_data_unchanged_when_no_annotation(drop_annotation, user_dict):
+    """Dropped annotations should not be added to the generated data dictionary"""
+    data = pd.DataFrame(drop_annotation)
+    result = process_dict(data, user_dict)
+    assert result == user_dict

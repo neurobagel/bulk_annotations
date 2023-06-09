@@ -106,6 +106,26 @@ def write_data_dict(data_dict: dict, path: Path, name: str) -> None:
         json.dump(data_dict, f, indent=2)
     
 
+def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
+    """
+    Take an existing data dictionary (can be empty) and 
+    add what we have to it so that it gets more detailed.
+    """
+    for col, col_df in ds_df.groupby("column"):
+            
+        if is_dropped(col_df):
+            continue
+        if is_discrete(col_df):
+            user_dict.setdefault(col, {}).update(**describe_discrete(col_df))
+            
+        else:
+            user_dict.setdefault(col, {}).update(**describe_continuous(col_df))
+        
+    user_dict = add_description(data_dict=user_dict)
+    
+    return user_dict
+
+
 
 def main():
     annotated = pd.read_csv(MYPATH / "outputs/annotated_levels.tsv", sep="\t")
@@ -113,21 +133,11 @@ def main():
     # TODO make this work for all datasets
     my_datasets = ["ds000001", "ds001541", "ds000003"]
     for dataset, ds_df in annotated.groupby("dataset"):
-        # if dataset not in my_datasets:
-            # continue
+        if dataset not in my_datasets:
+            continue
         data_dict = fetch_data_dictionary(dataset=dataset)
         
-        for col, col_df in ds_df.groupby("column"):
-            
-            if is_dropped(col_df):
-                continue
-            if is_discrete(col_df):
-                data_dict.setdefault(col, {}).update(**describe_discrete(col_df))
-                
-            else:
-                data_dict.setdefault(col, {}).update(**describe_continuous(col_df))
-           
-        data_dict = add_description(data_dict=data_dict)
+        data_dict = process_dict(ds_df, data_dict)
         
         if not is_valid_dict(data_dict):
             print("Uhoh, this is not a valid dict", dataset)
