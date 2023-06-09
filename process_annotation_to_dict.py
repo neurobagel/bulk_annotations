@@ -145,14 +145,8 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
 def main():
     annotated = pd.read_csv(MYPATH / "outputs/annotated_levels.tsv", sep="\t")
     
-    # TODO make this work for all datasets
-    my_datasets = ["ds000001", "ds001541", "ds000003"]
     for dataset, ds_df in annotated.groupby("dataset"):
-        # if dataset not in my_datasets:
-        #     continue
-        if not all(ds_df.isPartOf.isna()):
-            print("yo")
-            pass
+        
         data_dict = fetch_data_dictionary(dataset=dataset)
         
         data_dict = process_dict(ds_df, data_dict)
