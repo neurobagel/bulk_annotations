@@ -82,3 +82,12 @@ def test_original_data_unchanged_when_no_annotation(drop_annotation, user_dict):
     data = pd.DataFrame(drop_annotation)
     result = process_dict(data, user_dict)
     assert result == user_dict
+
+
+def test_original_data_augmented_by_annotation(continuous_annotation, user_dict):
+    data = pd.DataFrame(continuous_annotation)
+    result = process_dict(data, user_dict)
+    
+    assert result.get("age", {}).get("Annotations") is not None
+    assert result.get("sex") is not None
+    
