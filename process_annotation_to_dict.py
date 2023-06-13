@@ -11,6 +11,7 @@ with (MYPATH / "bagel_dictionary_schema.json").open("r") as f:
 
 
 def is_discrete(df: pd.DataFrame) -> bool:
+    """True if each row in dataframe describes a discrete value in a column."""
     return  not df.is_row.all()
 
 
@@ -20,7 +21,7 @@ def is_dropped(df: pd.DataFrame) -> bool:
 
 
 def is_tool(df: pd.DataFrame) -> bool:
-    return not (get_col_rows(df)["isPartOf"].isna()).item()
+    return get_col_rows(df)["isPartOf"].notna().item()
 
 
 def get_ds_path(dataset: str) -> Path:
