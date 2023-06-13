@@ -67,8 +67,7 @@ def user_dict():
     return {
         "age": {
             "Description": "age of the participant",
-            "Units": "years",
-            "Annotations": {"IsAbout": {"TermURL": "nb:Age", "Label": ""}},
+            "Units": "years"
         },
         "sex": {
             "Description": "gender of the participant",
