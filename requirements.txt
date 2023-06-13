@@ -3,3 +3,4 @@ datalad
 pandas
 pandas-stubs
 pytest
+jsonschema
