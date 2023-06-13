@@ -60,7 +60,7 @@ def get_level_rows(df: pd.DataFrame) -> pd.DataFrame:
     return df.query("is_row == False")
 
     
-def describe_level(level: str, term: str) -> dict:
+def describe_level(term: str) -> dict:
     return {
             "TermURL": term,
             "Label": ""
@@ -75,7 +75,7 @@ def describe_discrete(df: pd.DataFrame) -> dict:
                 "Label": ""
             },
             "Levels": {
-                row.value: describe_level(row.value, row.controlled_term) for _, row in get_level_rows(df).iterrows()
+                row.value: describe_level(row.controlled_term) for _, row in get_level_rows(df).iterrows()
             }
         }
     }
@@ -114,8 +114,7 @@ def is_valid_dict(data_dict: dict) -> bool:
     
     
 def write_data_dict(data_dict: dict, path: Path, name: str) -> None:
-    if not path.is_dir():
-        path.mkdir()
+    path.mkdir(exist_ok=True)
     with (path / f"{name}.json").open("w") as f:
         json.dump(data_dict, f, indent=2)
     
