@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from process_annotation_to_dict import process_dict
+from process_annotation_to_dict import process_dict, get_transform_heuristic
 
 
 @pytest.fixture
@@ -33,6 +33,7 @@ def continuous_annotation():
     return {
         "dataset": {10: "ds000002"},
         "column": {10: "age"},
+        "type": {10: "float"},
         "value": {10: ""},
         "is_row": {10: True},
         "description": {10: ""},
@@ -91,9 +92,37 @@ def test_original_data_augmented_by_annotation(continuous_annotation, user_dict)
     assert result.get("sex") is not None
     
     
+def test_good_continuous_has_transformation(continuous_annotation, user_dict):
+    data = pd.DataFrame(continuous_annotation)
+    result = process_dict(data, user_dict)
+    
+    assert result.get("age").get("Annotations").get("Transformation") is not None
+    
+    
+def test_bad_continuous_has_transformation(continuous_annotation, user_dict):
+    data = pd.DataFrame(continuous_annotation.update(**{"type": {10: "nonsense_heuristic"}}))
+    result = process_dict(data, user_dict)
+    
+    assert result.get("age").get("Annotations").get("Transformation") is None
+    
+    
 def test_partof_annotation_is_processed(tool_annotation, user_dict):
     data = pd.DataFrame(tool_annotation)
     result = process_dict(data, user_dict)
     
     assert result.get("tool1") is not None
     assert result.get("tool1").get("Annotations", {}).get("IsPartOf") is not None
+    
+
+@pytest.mark.parametrize("annotation,expected", [
+    ({'type': {10: "float64"}}, "nb:float"),
+    ({'type': {10: "int64"}}, "nb:int"),
+    ({'type': {10: "nb:bounded"}}, "nb:bounded"),
+    ({'type': {10: "nb:euro"}}, "nb:euro"),
+    ])
+def test_get_transform_heuristic(annotation, expected, continuous_annotation):
+    continuous_annotation.update(**annotation)
+    df = pd.DataFrame(continuous_annotation)
+    result = get_transform_heuristic(df)
+    assert result[0] == expected
+    

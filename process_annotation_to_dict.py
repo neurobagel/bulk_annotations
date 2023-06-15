@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+from typing import Tuple
 
 import jsonschema
 import pandas as pd
@@ -39,6 +40,20 @@ def fetch_data_dictionary(dataset: str) -> dict:
         return data_dict
     else:
         return {}
+    
+    
+def get_transform_heuristic(df: pd.DataFrame) -> Tuple[str]:
+    col_type = get_col_rows(df)["type"].item()
+    if col_type == "float64":
+        return ("nb:float", "float data")
+    if col_type == "int64":
+        return ("nb:int", "integer data")
+    if col_type == "nb:bounded":
+        return ("nb:bounded", "bounded data")
+    if col_type == "nb:euro":
+        return ("nb:euro", "european decimal value")
+    else:
+        return ("", "")
     
     
 def describe_continuous(df: pd.DataFrame) -> dict:
@@ -98,7 +113,7 @@ def add_description(data_dict: dict) -> dict:
     # TODO: This function is a hacky fix for bad data dictionaries in the input data and should be removed
     for key, column in data_dict.items():
         
-        if not "Description" in column.keys():
+        if "Description" not in column.keys():
             column["Description"] = "There should have been a description here, but there wasn't. :("
         data_dict[key].update(**column)
     return data_dict
