@@ -103,8 +103,9 @@ def test_good_continuous_has_transformation(continuous_annotation, user_dict):
 
 
 def test_bad_continuous_has_transformation(continuous_annotation, user_dict):
+    continuous_annotation.update(**{"type": {10: "nonsense_heuristic"}})
     data = pd.DataFrame(
-        continuous_annotation.update(**{"type": {10: "nonsense_heuristic"}})
+        continuous_annotation
     )
     result = process_dict(data, user_dict)
 

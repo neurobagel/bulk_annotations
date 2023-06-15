@@ -69,11 +69,16 @@ def describe_level(term: str) -> dict:
 
 
 def describe_continuous(df: pd.DataFrame) -> dict:
+    t_url, t_label = get_transform_heuristic(df)
     return {
         "Annotations": {
             "IsAbout": {
                 "TermURL": get_col_rows(df)["controlled_term"].item(),
                 "Label": "",
+            },
+            "Transformation": {
+                "TermURL": t_url,
+                "Labels": t_label
             }
         }
     }
