@@ -56,17 +56,6 @@ def get_transform_heuristic(df: pd.DataFrame) -> Tuple[str]:
         return ("", "")
 
 
-def describe_continuous(df: pd.DataFrame) -> dict:
-    return {
-        "Annotations": {
-            "IsAbout": {
-                "TermURL": get_col_rows(df)["controlled_term"].item(),
-                "Label": "",
-            }
-        }
-    }
-
-
 def get_col_rows(df: pd.DataFrame) -> pd.DataFrame:
     return df.query("is_row == True")
 
@@ -77,6 +66,17 @@ def get_level_rows(df: pd.DataFrame) -> pd.DataFrame:
 
 def describe_level(term: str) -> dict:
     return {"TermURL": term, "Label": ""}
+
+
+def describe_continuous(df: pd.DataFrame) -> dict:
+    return {
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": get_col_rows(df)["controlled_term"].item(),
+                "Label": "",
+            }
+        }
+    }
 
 
 def describe_discrete(df: pd.DataFrame) -> dict:
