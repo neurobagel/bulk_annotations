@@ -22,7 +22,7 @@ def is_dropped(df: pd.DataFrame) -> bool:
 
 
 def is_tool(df: pd.DataFrame) -> bool:
-    return get_col_rows(df)["isPartOf"].notna().item()
+    return get_col_rows(df)["isPartOf"].item() != ""
 
 
 def get_ds_path(dataset: str) -> Path:
@@ -79,7 +79,9 @@ def describe_continuous(df: pd.DataFrame) -> dict:
         }
     }
     if t_url:
-       annotations["Annotations"].update(**{"Transformation": {"TermURL": t_url, "Label": t_label}})
+        annotations["Annotations"].update(
+            **{"Transformation": {"TermURL": t_url, "Label": t_label}}
+        )
     return annotations
 
 
@@ -100,9 +102,15 @@ def describe_discrete(df: pd.DataFrame) -> dict:
 
 def describe_tool(df: pd.DataFrame) -> dict:
     return {
-        "IsPartOf": {
-            "TermURL": get_col_rows(df)["isPartOf"].item(),
-            "Label": "",
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": get_col_rows(df)["controlled_term"].item(),
+                "Label": "",
+            },
+            "IsPartOf": {
+                "TermURL": get_col_rows(df)["isPartOf"].item(),
+                "Label": "",
+            },
         }
     }
 
@@ -147,13 +155,10 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
             continue
         if is_discrete(col_df):
             user_dict.setdefault(col, {}).update(**describe_discrete(col_df))
+        elif is_tool(col_df):
+            user_dict.setdefault(col, {}).update(**describe_tool(col_df))
         else:
             user_dict.setdefault(col, {}).update(**describe_continuous(col_df))
-
-        if is_tool(col_df):
-            user_dict[col].setdefault("Annotations", {}).update(
-                **describe_tool(col_df)
-            )
 
     user_dict = add_description(data_dict=user_dict)
 
