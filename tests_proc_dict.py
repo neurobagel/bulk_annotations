@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from process_annotation_to_dict import process_dict, get_transform_heuristic
+from process_annotation_to_dict import process_dict, get_transform_heuristic, describe_continuous
 
 
 @pytest.fixture
@@ -33,7 +33,7 @@ def continuous_annotation():
     return {
         "dataset": {10: "ds000002"},
         "column": {10: "age"},
-        "type": {10: "float"},
+        "type": {10: "float64"},
         "value": {10: ""},
         "is_row": {10: True},
         "description": {10: ""},
@@ -110,6 +110,20 @@ def test_bad_continuous_has_transformation(continuous_annotation, user_dict):
     result = process_dict(data, user_dict)
 
     assert result.get("age").get("Annotations").get("Transformation") is None
+
+
+def test_describe_continuous(continuous_annotation):
+    result = describe_continuous(pd.DataFrame(continuous_annotation))
+    assert result == {"Annotations": {
+        "IsAbout": {
+            "TermURL": "nb:Age",
+            "Label": "",
+        },
+        "Transformation": {
+            "TermURL": "nb:float",
+            "Label": "float data",
+            },
+    }}
 
 
 def test_partof_annotation_is_processed(tool_annotation, user_dict):

@@ -70,18 +70,17 @@ def describe_level(term: str) -> dict:
 
 def describe_continuous(df: pd.DataFrame) -> dict:
     t_url, t_label = get_transform_heuristic(df)
-    return {
+    annotations = {
         "Annotations": {
             "IsAbout": {
                 "TermURL": get_col_rows(df)["controlled_term"].item(),
                 "Label": "",
-            },
-            "Transformation": {
-                "TermURL": t_url,
-                "Labels": t_label
             }
         }
     }
+    if t_url:
+       annotations["Annotations"].update(**{"Transformation": {"TermURL": t_url, "Label": t_label}})
+    return annotations
 
 
 def describe_discrete(df: pd.DataFrame) -> dict:
