@@ -26,7 +26,7 @@ def is_identifying(df: pd.DataFrame) -> bool:
 
 
 def is_tool(df: pd.DataFrame) -> bool:
-    return get_col_rows(df)["isPartOf"].item() != ""
+    return isinstance(get_col_rows(df)["isPartOf"].item(), str) and "cogatlas:" in get_col_rows(df)["isPartOf"].item()
 
 
 def get_ds_path(dataset: str) -> Path:
@@ -173,6 +173,7 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
         elif is_tool(col_df):
             user_dict.setdefault(col, {}).update(**describe_tool(col_df))
         else:
+            print("Yes age")
             user_dict.setdefault(col, {}).update(**describe_continuous(col_df))
 
     user_dict = add_description(data_dict=user_dict)
@@ -190,7 +191,8 @@ def main():
 
         if not is_valid_dict(data_dict):
             # TODO: make smarter choices about logging and warnings
-            print("Uhoh, this is not a valid dict", dataset)
+            # print("Uhoh, this is not a valid dict", dataset)
+            pass
         write_data_dict(
             data_dict, MYPATH / "outputs/data_dictionaries/", name=dataset
         )
