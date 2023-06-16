@@ -94,6 +94,7 @@ def describe_level(term: str) -> dict:
 def describe_continuous(df: pd.DataFrame) -> dict:
     t_url, t_label = get_transform_heuristic(df)
     if not t_url:
+        print(df["dataset"].item(),  "has no age")
         return {}
     
     return {
@@ -173,7 +174,6 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
         elif is_tool(col_df):
             user_dict.setdefault(col, {}).update(**describe_tool(col_df))
         else:
-            print("Yes age")
             user_dict.setdefault(col, {}).update(**describe_continuous(col_df))
 
     user_dict = add_description(data_dict=user_dict)
