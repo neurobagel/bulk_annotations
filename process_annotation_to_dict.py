@@ -76,6 +76,15 @@ def describe_isabout(term: str) -> dict:
                 "Label": "",
             }
     }
+    
+    
+def describe_identified(df: pd.DataFrame) -> dict:
+    return {
+        "Annotations": {
+        **describe_isabout(get_col_rows(df)["controlled_term"].item()),
+        "Identifies": "participant"
+        }
+    }
 
 
 def describe_level(term: str) -> dict:

@@ -26,6 +26,21 @@ def discrete_annotation():
         "isPartOf": {1: "", 2: "", 3: "", 4: ""},
         "Decision": {1: "keep", 2: "keep", 3: "keep", 4: "keep"},
     }
+    
+    
+@pytest.fixture
+def participant_annotation():
+    return {
+        "dataset": {10: "ds000002"},
+        "column": {10: "participant_id"},
+        "type": {10: "str"},
+        "value": {10: ""},
+        "is_row": {10: True},
+        "description": {10: ""},
+        "controlled_term": {10: "nb:ParticipantID"},
+        "isPartOf": {10: ""},
+        "Decision": {10: "keep"},
+    }
 
 
 @pytest.fixture
@@ -150,3 +165,13 @@ def test_get_transform_heuristic(annotation, expected, continuous_annotation):
     df = pd.DataFrame(continuous_annotation)
     result = get_transform_heuristic(df)
     assert result[0] == expected
+    
+    
+def test_participant_id_column_goes_through(participant_annotation, user_dict):
+    df = pd.DataFrame(participant_annotation)
+    result = process_dict(df, user_dict)
+    assert result.get("participant_id") is not None
+    assert result.get("participant_id").get("Annotations") is not None
+    assert result.get("participant_id").get("Annotations").get("Identifies") is not None
+
+
