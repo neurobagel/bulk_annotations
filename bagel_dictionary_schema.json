@@ -58,15 +58,6 @@
             "type": "string"
           }
         },
-        "IsPartOf": {
-          "title": "Ispartof",
-          "description": "If the column is a subscale or item of an assessment tool then the assessment tool should be specified here.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Identifier"
-            }
-          ]
-        },
         "Levels": {
           "title": "Levels",
           "description": "For categorical variables: An object of values (keys) in the column and the semanticterm (URI and label) they are unambiguously mapped to.",
@@ -79,11 +70,88 @@
       "required": [
         "IsAbout",
         "Levels"
-      ]
+      ],
+      "additionalProperties": false
     },
     "ContinuousNeurobagel": {
       "title": "ContinuousNeurobagel",
       "description": "A Neurobagel annotation for a continuous column",
+      "type": "object",
+      "properties": {
+        "IsAbout": {
+          "title": "Isabout",
+          "description": "The concept or controlled term that describes this column",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Identifier"
+            }
+          ]
+        },
+        "MissingValues": {
+          "title": "Missingvalues",
+          "description": "A list of unique values that represent invalid responses, typos, or missing data",
+          "default": [],
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Transformation": {
+          "title": "Transformation",
+          "description": "For continuous columns this field can be used to describea transformation that can be applied to the values in thiscolumn in order to match the desired format of a standardizeddata element referenced in the IsAbout attribute.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Identifier"
+            }
+          ]
+        }
+      },
+      "required": [
+        "IsAbout",
+        "Transformation"
+      ],
+      "additionalProperties": false
+    },
+    "IdentifierNeurobagel": {
+      "title": "IdentifierNeurobagel",
+      "description": "A Neurobagel annotation for an identifier column",
+      "type": "object",
+      "properties": {
+        "IsAbout": {
+          "title": "Isabout",
+          "description": "The concept or controlled term that describes this column",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Identifier"
+            }
+          ]
+        },
+        "MissingValues": {
+          "title": "Missingvalues",
+          "description": "A list of unique values that represent invalid responses, typos, or missing data",
+          "default": [],
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Identifies": {
+          "title": "Identifies",
+          "description": "For identifier columns, the type of observation uniquely identified by this column.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "IsAbout",
+        "Identifies"
+      ],
+      "additionalProperties": false
+    },
+    "ToolNeurobagel": {
+      "title": "ToolNeurobagel",
+      "description": "A Neurobagel annotation for an assessment tool column",
       "type": "object",
       "properties": {
         "IsAbout": {
@@ -113,20 +181,13 @@
               "$ref": "#/definitions/Identifier"
             }
           ]
-        },
-        "Transformation": {
-          "title": "Transformation",
-          "description": "For continuous columns this field can be used to describea transformation that can be applied to the values in thiscolumn in order to match the desired format of a standardizeddata element referenced in the IsAbout attribute.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Identifier"
-            }
-          ]
         }
       },
       "required": [
-        "IsAbout"
-      ]
+        "IsAbout",
+        "IsPartOf"
+      ],
+      "additionalProperties": false
     },
     "ContinuousColumn": {
       "title": "ContinuousColumn",
@@ -147,6 +208,12 @@
             },
             {
               "$ref": "#/definitions/ContinuousNeurobagel"
+            },
+            {
+              "$ref": "#/definitions/IdentifierNeurobagel"
+            },
+            {
+              "$ref": "#/definitions/ToolNeurobagel"
             }
           ]
         },
@@ -179,6 +246,12 @@
             },
             {
               "$ref": "#/definitions/ContinuousNeurobagel"
+            },
+            {
+              "$ref": "#/definitions/IdentifierNeurobagel"
+            },
+            {
+              "$ref": "#/definitions/ToolNeurobagel"
             }
           ]
         },
