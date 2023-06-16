@@ -43,6 +43,7 @@ def fetch_data_dictionary(dataset: str) -> dict:
 
 
 def get_transform_heuristic(df: pd.DataFrame) -> Tuple[str]:
+    """Returns Neurobagel transformation term and short label from parsed type"
     col_type = get_col_rows(df)["type"].item()
     if col_type == "float64":
         return ("nb:float", "float data")
