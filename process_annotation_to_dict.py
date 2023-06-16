@@ -98,10 +98,7 @@ def describe_continuous(df: pd.DataFrame) -> dict:
 def describe_discrete(df: pd.DataFrame) -> dict:
     return {
         "Annotations": {
-            "IsAbout": {
-                "TermURL": get_col_rows(df)["controlled_term"].item(),
-                "Label": "",
-            },
+            **describe_isabout(get_col_rows(df)["controlled_term"].item()),
             "Levels": {
                 row.value: describe_level(row.controlled_term)
                 for _, row in get_level_rows(df).iterrows()
@@ -113,10 +110,7 @@ def describe_discrete(df: pd.DataFrame) -> dict:
 def describe_tool(df: pd.DataFrame) -> dict:
     return {
         "Annotations": {
-            "IsAbout": {
-                "TermURL": get_col_rows(df)["controlled_term"].item(),
-                "Label": "",
-            },
+            **describe_isabout(get_col_rows(df)["controlled_term"].item()),
             "IsPartOf": {
                 "TermURL": get_col_rows(df)["isPartOf"].item(),
                 "Label": "",
