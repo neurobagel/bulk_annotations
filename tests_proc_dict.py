@@ -102,14 +102,14 @@ def test_good_continuous_has_transformation(continuous_annotation, user_dict):
     )
 
 
-def test_bad_continuous_has_transformation(continuous_annotation, user_dict):
+def test_bad_continuous_lacks_transformation(continuous_annotation, user_dict):
     continuous_annotation.update(**{"type": {10: "nonsense_heuristic"}})
     data = pd.DataFrame(
         continuous_annotation
     )
     result = process_dict(data, user_dict)
 
-    assert result.get("age").get("Annotations").get("Transformation") is None
+    assert result.get("age").get("Annotations", {}).get("Transformation") is None
 
 
 def test_describe_continuous(continuous_annotation):

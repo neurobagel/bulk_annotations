@@ -21,6 +21,10 @@ def is_dropped(df: pd.DataFrame) -> bool:
     return (get_col_rows(df)["Decision"] == "drop").item()
 
 
+def is_identifying(df: pd.DataFrame) -> bool:
+    return get_col_rows(df)["controlled_term"].item() == "nb:ParticipantID"
+
+
 def is_tool(df: pd.DataFrame) -> bool:
     return get_col_rows(df)["isPartOf"].item() != ""
 
@@ -65,25 +69,30 @@ def get_level_rows(df: pd.DataFrame) -> pd.DataFrame:
     return df.query("is_row == False")
 
 
+def describe_isabout(term: str) -> dict:
+    return {            
+            "IsAbout": {
+                "TermURL": term,
+                "Label": "",
+            }
+    }
+
+
 def describe_level(term: str) -> dict:
     return {"TermURL": term, "Label": ""}
 
 
 def describe_continuous(df: pd.DataFrame) -> dict:
     t_url, t_label = get_transform_heuristic(df)
-    annotations = {
+    if not t_url:
+        return {}
+    
+    return {
         "Annotations": {
-            "IsAbout": {
-                "TermURL": get_col_rows(df)["controlled_term"].item(),
-                "Label": "",
-            }
+            **describe_isabout(get_col_rows(df)["controlled_term"].item()),
+            "Transformation": {"TermURL": t_url, "Label": t_label}
         }
     }
-    if t_url:
-        annotations["Annotations"].update(
-            **{"Transformation": {"TermURL": t_url, "Label": t_label}}
-        )
-    return annotations
 
 
 def describe_discrete(df: pd.DataFrame) -> dict:
@@ -154,7 +163,9 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
     for col, col_df in ds_df.groupby("column"):
         if is_dropped(col_df):
             continue
-        if is_discrete(col_df):
+        if is_identifying(col_df):
+            user_dict.setdefault(col, {}).update(**describe_identified(col_df))
+        elif is_discrete(col_df):
             user_dict.setdefault(col, {}).update(**describe_discrete(col_df))
         elif is_tool(col_df):
             user_dict.setdefault(col, {}).update(**describe_tool(col_df))
