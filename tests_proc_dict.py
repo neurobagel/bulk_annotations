@@ -124,7 +124,7 @@ def test_bad_continuous_lacks_transformation(continuous_annotation, user_dict):
     )
     result = process_dict(data, user_dict)
 
-    assert result.get("age").get("Annotations", {}).get("Transformation") is None
+    assert result.get("age").get("Annotations") is None
 
 
 def test_describe_continuous(continuous_annotation):

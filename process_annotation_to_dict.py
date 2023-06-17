@@ -26,7 +26,7 @@ def is_identifying(df: pd.DataFrame) -> bool:
 
 
 def is_tool(df: pd.DataFrame) -> bool:
-    return isinstance(get_col_rows(df)["isPartOf"].item(), str) and "cogatlas:" in get_col_rows(df)["isPartOf"].item()
+    return "cogatlas:" in str(get_col_rows(df)["isPartOf"].item())
 
 
 def get_ds_path(dataset: str) -> Path:
