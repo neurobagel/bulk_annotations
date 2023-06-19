@@ -86,3 +86,18 @@ and a list of all the unique columns across participants.tsv files.
 
 Run `list_participants_tsv_levels.py` to also get a listing of all the levels
 in all the columns present in all the participants.tsv files.
+
+## Clone the datasets from OpenNeuro-JSONLD
+
+The [OpenNeuro-JSONLD](https://github.com/OpenNeuroDatasets-JSONLD) org
+has augmented openneuro datasets. To clone these effectively,
+you can use the below command:
+
+It uses the GH CLI: https://cli.github.com/manual/installation
+
+And make sure to be logged into the CLI
+
+```bash
+gh repo list OpenNeuroDatasets-JSONLD --fork -L 500 | awk '{print $1}' | sed 's/OpenNeuroDatasets-JSONLD\///g' | parallel -j 6 git clone git@github.com:OpenNeuroDatasets-JSONLD/{}
+```
+
