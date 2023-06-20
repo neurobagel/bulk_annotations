@@ -101,3 +101,10 @@ And make sure to be logged into the CLI
 gh repo list OpenNeuroDatasets-JSONLD --fork -L 500 | awk '{print $1}' | sed 's/OpenNeuroDatasets-JSONLD\///g' | parallel -j 6 git clone git@github.com:OpenNeuroDatasets-JSONLD/{}
 ```
 
+## Running the `bagel-cli` on bulk annotated data
+The following scripts are needed:
+- `extract_bids_dataset_name.py`
+- `parallel_bagel.sh`
+- `run_bagel_cli.sh`
+
+Install Python dependencies in an environment with `pip install -r requirements.txt`.
