@@ -181,8 +181,12 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
     return user_dict
 
 
-def main():
-    annotated = pd.read_csv(MYPATH / "outputs/annotated_levels.tsv", sep="\t")
+def load_annotations(annotated_path: Path) -> pd.DataFrame:
+    return pd.read_csv(annotated_path, sep="\t", dtype=str, keep_default_na=False)
+
+
+def main(annotated_path: Path = MYPATH / "outputs/annotated_levels.tsv"):
+    annotated = load_annotations(annotated_path)
 
     for dataset, ds_df in annotated.groupby("dataset"):
         data_dict = fetch_data_dictionary(dataset=dataset)

@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from process_annotation_to_dict import process_dict, get_transform_heuristic, describe_continuous
+from process_annotation_to_dict import process_dict, get_transform_heuristic, describe_continuous, load_annotations
 
 
 @pytest.fixture
@@ -56,6 +56,31 @@ def continuous_annotation():
         "isPartOf": {10: ""},
         "Decision": {10: "keep"},
     }
+
+
+@pytest.fixture
+def missing_value():
+    return {
+        "dataset": {10: "ds000002"},
+        "column": {10: "sex"},
+        "type": {10: "n/a"},
+        "value": {10: "nan"},
+        "is_row": {10: True},
+        "description": {10: ""},
+        "controlled_term": {10: "nb:Age"},
+        "isPartOf": {10: ""},
+        "Decision": {10: "keep"},
+    }
+
+
+@pytest.fixture
+def missing_file(tmp_path):
+    header = "\t".join(["dataset", "column", "type", "value", "is_row", "description", "controlled_term", "isPartOf", "Decision"])
+    row1 = "\t".join(["ds000002", "sex", "n/a", "nan", "True", "", "nb:MissingValue", "", "keep"])
+    with open(tmp_path / "missing.tsv", "w") as f:
+        f.write("\n".join([header, row1]))
+
+    return tmp_path / "missing.tsv"
 
 
 @pytest.fixture
@@ -175,3 +200,8 @@ def test_participant_id_column_goes_through(participant_annotation, user_dict):
     assert result.get("participant_id").get("Annotations").get("Identifies") is not None
 
 
+def test_nan_is_read_as_string(missing_file):
+    result = load_annotations(missing_file)
+    assert result.isPartOf[0] == ""
+    assert result.value[0] == "nan"
+    assert result.type[0] == "n/a"
