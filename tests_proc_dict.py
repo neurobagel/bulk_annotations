@@ -78,10 +78,11 @@ def missing_value():
 @pytest.fixture
 def missing_file(tmp_path):
     header = "\t".join(["dataset", "column", "type", "value", "is_row", "description", "controlled_term", "isPartOf", "Decision"])
-    row1 = "\t".join(["ds000002", "sex", "object", "n/a", "True", "", "nb:MissingValue", "", "keep"])
+    row1 = "\t".join(["ds000002", "sex", "object", "n/a", "True", "", "nb:Sex", "", "keep"])
     row2 = "\t".join(["ds000002", "sex", "n/a", "nan", "False", "", "nb:MissingValue", "", "keep"])
+    row3 = "\t".join(["ds000002", "sex", "n/a", "m", "False", "", "snomed:248153007", "", "keep"])
     with open(tmp_path / "missing.tsv", "w") as f:
-        f.write("\n".join([header, row1, row2]))
+        f.write("\n".join([header, row1, row2, row3]))
 
     return tmp_path / "missing.tsv"
 
@@ -219,9 +220,9 @@ def test_participant_id_column_goes_through(participant_annotation, user_dict):
 
 def test_nan_is_read_as_string(missing_file):
     result = load_annotations(missing_file)
-    assert result.isPartOf[1] == ""
-    assert result.value[1] == "nan"
-    assert result.type[1] == "n/a"
+    assert result.isPartOf[0] == ""
+    assert result.value[0] == "n/a"
+    assert result.type[0] == "object"
 
 
 def test_unusual_strings_are_identical_in_output(unusual_file, tmp_path):
@@ -234,3 +235,27 @@ def test_unusual_strings_are_identical_in_output(unusual_file, tmp_path):
     assert "True" in result and isinstance(result.get("True"), dict)
     assert "" in result and isinstance(result.get(""), dict)
 
+
+def test_missing_value_is_parsed_correctly(missing_file, tmp_path):
+    out_path = tmp_path / "ds000002.json"
+    main(missing_file, tmp_path)
+    result = json.loads(out_path.read_text())
+
+    assert result == {
+  "sex": {
+    "Annotations": {
+      "IsAbout": {
+        "TermURL": "nb:Sex",
+        "Label": ""
+      },
+      "Levels": {
+        "m": {
+          "TermURL": "snomed:248153007",
+          "Label": ""
+        }
+      },
+        "MissingValues": ["nan"]
+    },
+    "Description": "There should have been a description here, but there wasn't. :("
+  }
+}

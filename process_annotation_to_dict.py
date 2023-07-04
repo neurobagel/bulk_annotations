@@ -105,16 +105,24 @@ def describe_continuous(df: pd.DataFrame) -> dict:
     }
 
 
+def get_missing(df: pd.DataFrame) -> bool:
+    return [row["value"] for rid, row in df.iterrows() if row["controlled_term"] == "nb:MissingValue"]
+
+
 def describe_discrete(df: pd.DataFrame) -> dict:
-    return {
+    col_annotation = {
         "Annotations": {
             **describe_isabout(get_col_rows(df)["controlled_term"].item()),
             "Levels": {
                 row.value: describe_level(row.controlled_term)
-                for _, row in get_level_rows(df).iterrows()
+                for _, row in get_level_rows(df).iterrows() if not row["controlled_term"] == "nb:MissingValue"
             },
         }
     }
+    if missing := get_missing(df):
+        col_annotation["Annotations"]["MissingValues"] = missing
+
+    return col_annotation
 
 
 def describe_tool(df: pd.DataFrame) -> dict:
