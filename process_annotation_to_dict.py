@@ -182,10 +182,10 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
 
 
 def load_annotations(annotated_path: Path) -> pd.DataFrame:
-    return pd.read_csv(annotated_path, sep="\t", dtype=str, keep_default_na=False)
+    return pd.read_csv(annotated_path, sep="\t", dtype={'isPartOf': str, 'value': str, 'type': str}, keep_default_na=False)
 
 
-def main(annotated_path: Path = MYPATH / "outputs/annotated_levels.tsv"):
+def main(annotated_path: Path = MYPATH / "outputs/annotated_levels.tsv", output_path: Path = MYPATH / "outputs/data_dictionaries/"):
     annotated = load_annotations(annotated_path)
 
     for dataset, ds_df in annotated.groupby("dataset"):
@@ -198,7 +198,7 @@ def main(annotated_path: Path = MYPATH / "outputs/annotated_levels.tsv"):
             # print("Uhoh, this is not a valid dict", dataset)
             pass
         write_data_dict(
-            data_dict, MYPATH / "outputs/data_dictionaries/", name=dataset
+            data_dict, output_path, name=dataset
         )
     print("Tada!")
 
