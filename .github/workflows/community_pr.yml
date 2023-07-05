@@ -15,7 +15,7 @@ jobs:
 
       - name: Set up GitHub CLI
         uses: actions/setup-node@v2
-        with:
+        with:External
           node-version: 14
 
       - name: Install GitHub CLI
@@ -39,5 +39,5 @@ jobs:
             gh pr label ${pr_number} add "External"
           else
             echo "The pull request is opened by a maintainer. No label will be applied."
-            gh pr label ${pr_number} add "Internal"
+            gh pr label ${pr_number} add "Internal!"
           fi
