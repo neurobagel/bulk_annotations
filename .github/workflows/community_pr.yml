@@ -1,0 +1,42 @@
+name: Apply Label to External Pull Requests
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  apply_label:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up GitHub CLI
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install GitHub CLI
+        run: |
+          npm install -g gh
+
+      - name: Apply Label
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pr_number=$(gh pr view https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }} --json number -q '.number')
+          pr_author=$(gh pr view https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }} --json user.login -q '.user.login')
+          repo_owner=$(gh repo view ${{ github.repository }} --json owner.login -q '.owner.login')
+
+          # Check if the user is a maintainer
+          is_maintainer=$(gh api -X GET /repos/${{ github.repository }} -f per_page=100 -f page=1 --json '[.permissions.admin]' -q ".[] | .[\"${pr_author}\"]")
+
+          # If the user is not a maintainer, apply the label
+          if [[ $is_maintainer == "null" ]]; then
+            echo "Adding 'External' label to the pull request."
+            gh pr label ${pr_number} add "External"
+          else
+            echo "The pull request is opened by a maintainer. No label will be applied."
+          fi
