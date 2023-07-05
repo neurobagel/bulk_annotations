@@ -39,4 +39,5 @@ jobs:
             gh pr label ${pr_number} add "External"
           else
             echo "The pull request is opened by a maintainer. No label will be applied."
+            gh pr label ${pr_number} add "Internal"
           fi
