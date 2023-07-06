@@ -43,6 +43,7 @@ def fetch_data_dictionary(dataset: str) -> dict:
             data_dict = json.load(f)
         return data_dict
     else:
+        print(f"cannot find {dataset} data dictionary at {get_dict_path(dataset)}")
         return {}
 
 
@@ -177,10 +178,10 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
             continue
         if is_identifying(col_df):
             user_dict.setdefault(col, {}).update(**describe_identified(col_df))
-        elif is_discrete(col_df):
-            user_dict.setdefault(col, {}).update(**describe_discrete(col_df))
         elif is_tool(col_df):
             user_dict.setdefault(col, {}).update(**describe_tool(col_df))
+        elif is_discrete(col_df):
+            user_dict.setdefault(col, {}).update(**describe_discrete(col_df))
         else:
             user_dict.setdefault(col, {}).update(**describe_continuous(col_df))
 
