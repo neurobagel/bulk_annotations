@@ -1,7 +1,9 @@
+import json
+
 import pandas as pd
 import pytest
 
-from process_annotation_to_dict import process_dict, get_transform_heuristic, describe_continuous
+from process_annotation_to_dict import process_dict, get_transform_heuristic, describe_continuous, load_annotations, main
 
 
 @pytest.fixture
@@ -56,6 +58,19 @@ def continuous_annotation():
         "isPartOf": {10: ""},
         "Decision": {10: "keep"},
     }
+
+
+
+@pytest.fixture
+def missing_file(tmp_path):
+    header = "\t".join(["dataset", "column", "type", "value", "is_row", "description", "controlled_term", "isPartOf", "Decision"])
+    row1 = "\t".join(["ds000002", "sex", "object", "n/a", "True", "", "nb:Sex", "", "keep"])
+    row2 = "\t".join(["ds000002", "sex", "n/a", "nan", "False", "", "nb:MissingValue", "", "keep"])
+    row3 = "\t".join(["ds000002", "sex", "n/a", "m", "False", "", "snomed:248153007", "", "keep"])
+    with open(tmp_path / "missing.tsv", "w") as f:
+        f.write("\n".join([header, row1, row2, row3]))
+
+    return tmp_path / "missing.tsv"
 
 
 @pytest.fixture
@@ -175,3 +190,24 @@ def test_participant_id_column_goes_through(participant_annotation, user_dict):
     assert result.get("participant_id").get("Annotations").get("Identifies") is not None
 
 
+def test_nan_is_read_as_string(missing_file):
+    result = load_annotations(missing_file)
+    assert result.isPartOf[0] == ""
+    assert result.value[0] == "n/a"
+    assert result.type[0] == "object"
+
+
+def test_missing_value_is_parsed_correctly(missing_file, tmp_path):
+    """
+    Ensure that values annotated with nb:MissingValue end up in "MissingValues"
+    and are not treated like normal controlled term mappings (i.e. end up in "Levels")
+    """
+    out_path = tmp_path / "ds000002.json"
+    main(missing_file, tmp_path)
+    result = json.loads(out_path.read_text())
+    
+    annotations = result["sex"]["Annotations"]
+    
+    assert "m" in annotations["Levels"]
+    assert "nan" not in annotations["Levels"]
+    assert "nan" in annotations["MissingValues"]

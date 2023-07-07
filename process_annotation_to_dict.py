@@ -43,6 +43,7 @@ def fetch_data_dictionary(dataset: str) -> dict:
             data_dict = json.load(f)
         return data_dict
     else:
+        print(f"cannot find {dataset} data dictionary at {get_dict_path(dataset)}")
         return {}
 
 
@@ -105,16 +106,24 @@ def describe_continuous(df: pd.DataFrame) -> dict:
     }
 
 
+def get_missing(df: pd.DataFrame) -> list:
+    return [row["value"] for rid, row in df.iterrows() if row["controlled_term"] == "nb:MissingValue"]
+
+
 def describe_discrete(df: pd.DataFrame) -> dict:
-    return {
+    col_annotation = {
         "Annotations": {
             **describe_isabout(get_col_rows(df)["controlled_term"].item()),
             "Levels": {
                 row.value: describe_level(row.controlled_term)
-                for _, row in get_level_rows(df).iterrows()
+                for _, row in get_level_rows(df).iterrows() if not row["controlled_term"] == "nb:MissingValue"
             },
         }
     }
+    if missing := get_missing(df):
+        col_annotation["Annotations"]["MissingValues"] = missing
+
+    return col_annotation
 
 
 def describe_tool(df: pd.DataFrame) -> dict:
@@ -169,10 +178,10 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
             continue
         if is_identifying(col_df):
             user_dict.setdefault(col, {}).update(**describe_identified(col_df))
-        elif is_discrete(col_df):
-            user_dict.setdefault(col, {}).update(**describe_discrete(col_df))
         elif is_tool(col_df):
             user_dict.setdefault(col, {}).update(**describe_tool(col_df))
+        elif is_discrete(col_df):
+            user_dict.setdefault(col, {}).update(**describe_discrete(col_df))
         else:
             user_dict.setdefault(col, {}).update(**describe_continuous(col_df))
 
@@ -181,8 +190,12 @@ def process_dict(ds_df: pd.DataFrame, user_dict: dict) -> dict:
     return user_dict
 
 
-def main():
-    annotated = pd.read_csv(MYPATH / "outputs/annotated_levels.tsv", sep="\t")
+def load_annotations(annotated_path: Path) -> pd.DataFrame:
+    return pd.read_csv(annotated_path, sep="\t", dtype={'isPartOf': str, 'value': str, 'type': str}, keep_default_na=False)
+
+
+def main(annotated_path: Path = MYPATH / "outputs/annotated_levels.tsv", output_path: Path = MYPATH / "outputs/data_dictionaries/"):
+    annotated = load_annotations(annotated_path)
 
     for dataset, ds_df in annotated.groupby("dataset"):
         data_dict = fetch_data_dictionary(dataset=dataset)
@@ -194,7 +207,7 @@ def main():
             # print("Uhoh, this is not a valid dict", dataset)
             pass
         write_data_dict(
-            data_dict, MYPATH / "outputs/data_dictionaries/", name=dataset
+            data_dict, output_path, name=dataset
         )
     print("Tada!")
 
