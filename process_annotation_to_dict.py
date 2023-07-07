@@ -106,7 +106,7 @@ def describe_continuous(df: pd.DataFrame) -> dict:
     }
 
 
-def get_missing(df: pd.DataFrame) -> bool:
+def get_missing(df: pd.DataFrame) -> list:
     return [row["value"] for rid, row in df.iterrows() if row["controlled_term"] == "nb:MissingValue"]
 
 
