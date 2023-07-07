@@ -223,25 +223,16 @@ def test_unusual_strings_are_identical_in_output(unusual_file, tmp_path):
 
 
 def test_missing_value_is_parsed_correctly(missing_file, tmp_path):
+    """
+    Ensure that values annotated with nb:MissingValue end up in "MissingValues"
+    and are not treated like normal controlled term mappings (i.e. end up in "Levels")
+    """
     out_path = tmp_path / "ds000002.json"
     main(missing_file, tmp_path)
     result = json.loads(out_path.read_text())
-
-    assert result == {
-  "sex": {
-    "Annotations": {
-      "IsAbout": {
-        "TermURL": "nb:Sex",
-        "Label": ""
-      },
-      "Levels": {
-        "m": {
-          "TermURL": "snomed:248153007",
-          "Label": ""
-        }
-      },
-        "MissingValues": ["nan"]
-    },
-    "Description": "There should have been a description here, but there wasn't. :("
-  }
-}
+    
+    annotations = result["sex"]["Annotations"]
+    
+    assert "m" in annotations["Levels"]
+    assert "nan" not in annotations["Levels"]
+    assert "nan" in annotations["MissingValues"]
