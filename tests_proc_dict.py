@@ -60,20 +60,6 @@ def continuous_annotation():
     }
 
 
-@pytest.fixture
-def missing_value():
-    return {
-        "dataset": {10: "ds000002"},
-        "column": {10: "sex"},
-        "type": {10: "n/a"},
-        "value": {10: "nan"},
-        "is_row": {10: True},
-        "description": {10: ""},
-        "controlled_term": {10: "nb:Age"},
-        "isPartOf": {10: ""},
-        "Decision": {10: "keep"},
-    }
-
 
 @pytest.fixture
 def missing_file(tmp_path):
