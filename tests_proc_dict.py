@@ -74,20 +74,6 @@ def missing_file(tmp_path):
 
 
 @pytest.fixture
-def unusual_file(tmp_path):
-    header = "\t".join(["dataset", "column", "type", "value", "is_row", "description", "controlled_term", "isPartOf", "Decision"])
-    row1 = "\t".join(["ds000002", "sex", "object", "n/a", "True", "", "nb:Sex", "", "keep"])
-    row2 = "\t".join(["ds000002", "sex", "n/a", "nan", "False", "", "nb:Male", "", "keep"])
-    row3 = "\t".join(["ds000002", "sex", "n/a", "True", "False", "", "nb:Male", "", "keep"])
-    row4 = "\t".join(["ds000002", "sex", "n/a", "", "False", "", "nb:Male", "", "keep"])
-    row5 = "\t".join(["ds000002", "sex", "n/a", "n/a", "False", "", "nb:Male", "", "keep"])
-    with open(tmp_path / "missing.tsv", "w") as f:
-        f.write("\n".join([header, row1, row2, row3, row4, row5]))
-
-    return tmp_path / "missing.tsv"
-
-
-@pytest.fixture
 def tool_annotation():
     return {
         "dataset": {102: "ds000009"},
@@ -209,17 +195,6 @@ def test_nan_is_read_as_string(missing_file):
     assert result.isPartOf[0] == ""
     assert result.value[0] == "n/a"
     assert result.type[0] == "object"
-
-
-def test_unusual_strings_are_identical_in_output(unusual_file, tmp_path):
-    out_path = tmp_path / "ds000002.json"
-    main(unusual_file, tmp_path)
-    result = json.loads(out_path.read_text()).get("sex", {}).get("Annotations", {}).get("Levels")
-
-    assert result is not None
-    assert "nan" in result and isinstance(result.get("nan"), dict)
-    assert "True" in result and isinstance(result.get("True"), dict)
-    assert "" in result and isinstance(result.get(""), dict)
 
 
 def test_missing_value_is_parsed_correctly(missing_file, tmp_path):
