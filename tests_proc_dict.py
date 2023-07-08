@@ -153,6 +153,7 @@ def test_describe_continuous(continuous_annotation):
             "TermURL": "nb:float",
             "Label": "float data",
             },
+        "MissingValues": ["", "n/a", " "]
     }}
 
 

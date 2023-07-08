@@ -101,7 +101,8 @@ def describe_continuous(df: pd.DataFrame) -> dict:
     return {
         "Annotations": {
             **describe_isabout(get_col_rows(df)["controlled_term"].item()),
-            "Transformation": {"TermURL": t_url, "Label": t_label}
+            "Transformation": {"TermURL": t_url, "Label": t_label},
+            "MissingValues": ["", "n/a", " "]
         }
     }
 
