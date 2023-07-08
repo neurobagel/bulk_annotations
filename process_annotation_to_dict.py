@@ -107,7 +107,10 @@ def describe_continuous(df: pd.DataFrame) -> dict:
 
 
 def get_missing(df: pd.DataFrame) -> list:
-    return [row["value"] for rid, row in df.iterrows() if row["controlled_term"] == "nb:MissingValue"]
+    missing = [row["value"] for rid, row in df.iterrows() if row["controlled_term"] == "nb:MissingValue"]
+    if "nan" in missing:
+        missing.append(["n/a", "", " "])
+    return missing
 
 
 def describe_discrete(df: pd.DataFrame) -> dict:
