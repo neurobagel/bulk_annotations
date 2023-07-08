@@ -34,5 +34,6 @@ if [ ! -e ${out} ]; then
     docker run -v ${workdir}:${workdir} neurobagel/bagelcli:latest pheno --pheno ${workdir}/participants.tsv --dictionary ${workdir}/participants.json --output ${workdir} --name "$ds_name" --portal $ds_portal
     docker run -v ${workdir}:${workdir} neurobagel/bagelcli:latest bids --jsonld-path ${workdir}/pheno.jsonld  --bids-dir ${workdir} --output ${workdir}
 
+    git -C ${workdir} checkout HEAD -- participants.json
     cp ${workdir}/pheno_bids.jsonld ${out}
 fi
