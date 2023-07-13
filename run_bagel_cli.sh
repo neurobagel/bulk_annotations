@@ -8,8 +8,9 @@ ldout=outputs/openneuro-jsonld/
 
 ds="$1"
 ds_name="$2"
-ds_portal=https://openneuro.org/datasets/${ds}
+ds_portal=https://github.com/OpenNeuroDatasets-JSONLD/${ds}.git
 workdir=`realpath ${ldin}/$ds`
+container_dir=/${ds}
 out=(${ldout}/${ds}.jsonld)
 
 if [ "$ds_name" == "None" ]; then
@@ -23,17 +24,16 @@ fi
 echo $ds "$ds_name"
 if [ ! -e ${out} ]; then
 
-    echo Resetting dataset to HEAD
-    git -C ${workdir} checkout HEAD -- participants.json
-
     echo Checking data dictionary for descriptions!
     source ./venv/bin/activate
     python3 add_description.py ${workdir}/participants.json
 
     echo bagel pheno --pheno ${workdir}/participants.tsv --dictionary ${workdir}/participants.json --output ${workdir} --name "$ds_name" --portal $ds_portal
-    docker run -v ${workdir}:${workdir} neurobagel/bagelcli:latest pheno --pheno ${workdir}/participants.tsv --dictionary ${workdir}/participants.json --output ${workdir} --name "$ds_name" --portal $ds_portal
-    docker run -v ${workdir}:${workdir} neurobagel/bagelcli:latest bids --jsonld-path ${workdir}/pheno.jsonld  --bids-dir ${workdir} --output ${workdir}
+    docker run -v ${workdir}:${container_dir} neurobagel/bagelcli:latest pheno --pheno ${container_dir}/participants.tsv --dictionary ${container_dir}/participants.json --output ${container_dir} --name "$ds_name" --portal $ds_portal
+    docker run -v ${workdir}:${container_dir} neurobagel/bagelcli:latest bids --jsonld-path ${container_dir}/pheno.jsonld  --bids-dir ${container_dir} --output ${container_dir}
 
+    echo Resetting dataset to HEAD
     git -C ${workdir} checkout HEAD -- participants.json
+    
     cp ${workdir}/pheno_bids.jsonld ${out}
 fi
