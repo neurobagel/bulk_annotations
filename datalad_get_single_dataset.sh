@@ -5,8 +5,8 @@ ds_id=$1
 
 ds_portal="https://github.com/OpenNeuroDatasets-JSONLD/${ds_id}.git"
 GIT="git@github.com:OpenNeuroDatasets-JSONLD/${ds_id}"
-bagel_dir="/home/maellef/DataBase/NeuroBagel_test/"
-ldout="${bagel_dir}outputs/openneuro-jsonld/"
+bagel_dir="inputs/openneuro-jsonld/"
+ldout="outputs/openneuro-jsonld/"
 mkdir -p $ldout
 out="${ldout}${ds_id}.jsonld"
 
