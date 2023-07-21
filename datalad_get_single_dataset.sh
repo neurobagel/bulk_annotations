@@ -4,17 +4,17 @@
 ds_id=$1
 
 ds_portal="https://github.com/OpenNeuroDatasets-JSONLD/${ds_id}.git"
-GIT="git@github.com:OpenNeuroDatasets-JSONLD/${ds_id}"
+ds_git="git@github.com:OpenNeuroDatasets-JSONLD/${ds_id}"
 
-bagel_dir="inputs/openneuro-jsonld/"
-mkdir -p $bagel_dir
+ldin="inputs/openneuro-jsonld/"
+mkdir -p $ldin
 ldout="outputs/openneuro-jsonld/"
 mkdir -p $ldout
 
-workdir="${bagel_dir}${ds_id}"
+workdir="${ldin}${ds_id}"
 out="${ldout}${ds_id}.jsonld"
 
-datalad clone ${GIT} ${workdir}
+datalad clone ${ds_git} ${workdir}
 datalad get -d $workdir "${workdir}/participants.tsv"
 datalad get -d $workdir "${workdir}/participants.json"
 datalad get -d $workdir "${workdir}/dataset_description.json"
