@@ -3,7 +3,7 @@
 #step1
 ds_id=$1
 
-ds_portal="https://openneuro.org/datasets/${ds_id}"
+ds_portal="https://github.com/OpenNeuroDatasets-JSONLD/${ds_id}.git"
 GIT="git@github.com:OpenNeuroDatasets-JSONLD/${ds_id}"
 bagel_dir="/home/maellef/DataBase/NeuroBagel_test/"
 ldout="${bagel_dir}outputs/openneuro-jsonld/"
