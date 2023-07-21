@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #step1
-ds_id="ds004107"
+ds_id=$1
 
 ds_portal="https://openneuro.org/datasets/${ds_id}"
 GIT="git@github.com:OpenNeuroDatasets-JSONLD/${ds_id}"
