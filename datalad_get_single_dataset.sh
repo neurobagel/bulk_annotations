@@ -11,7 +11,7 @@ mkdir -p $ldin
 ldout="outputs/openneuro-jsonld/"
 mkdir -p $ldout
 
-workdir="${ldin}${ds_id}"
+workdir=$(realpath ${ldin}${ds_id})
 out="${ldout}${ds_id}.jsonld"
 
 datalad clone ${ds_git} ${workdir}
@@ -23,6 +23,6 @@ ds_name=$(python extract_bids_dataset_name.py --ds $workdir)
 if [ "$ds_name" == "None" ] ; then ds_name=$ds_id ; else ds_name=$ds_name ; fi
 
 #step2
-bagel pheno --pheno ${workdir}/participants.tsv --dictionary ${workdir}/participants.json --output ${workdir} --name "$ds_name" --portal $ds_portal
-bagel bids --jsonld-path ${workdir}/pheno.jsonld  --bids-dir ${workdir} --output ${workdir}
+docker run --rm -v ${workdir}:${workdir} neurobagel/bagelcli pheno --pheno ${workdir}/participants.tsv --dictionary ${workdir}/participants.json --output ${workdir} --name "$ds_name" --portal $ds_portal
+docker run --rm -v ${workdir}:${workdir} neurobagel/bagelcli bids --jsonld-path ${workdir}/pheno.jsonld  --bids-dir ${workdir} --output ${workdir}
 cp ${workdir}/pheno_bids.jsonld ${out}
