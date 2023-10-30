@@ -25,7 +25,6 @@ echo $ds "$ds_name"
 if [ ! -e ${out} ]; then
 
     echo Checking data dictionary for descriptions!
-    source ./venv/bin/activate
     python3 add_description.py ${workdir}/participants.json
 
     echo bagel pheno --pheno ${workdir}/participants.tsv --dictionary ${workdir}/participants.json --output ${workdir} --name "$ds_name" --portal $ds_portal
