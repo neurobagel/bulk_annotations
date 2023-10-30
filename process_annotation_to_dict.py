@@ -101,13 +101,17 @@ def describe_continuous(df: pd.DataFrame) -> dict:
     return {
         "Annotations": {
             **describe_isabout(get_col_rows(df)["controlled_term"].item()),
-            "Transformation": {"TermURL": t_url, "Label": t_label}
+            "Transformation": {"TermURL": t_url, "Label": t_label},
+            "MissingValues": ["", "n/a", " "]
         }
     }
 
 
 def get_missing(df: pd.DataFrame) -> list:
-    return [row["value"] for rid, row in df.iterrows() if row["controlled_term"] == "nb:MissingValue"]
+    missing = [row["value"] for rid, row in df.iterrows() if row["controlled_term"] == "nb:MissingValue"]
+    if "nan" in missing:
+        missing.extend(["n/a", "", " "])
+    return list(set(missing))
 
 
 def describe_discrete(df: pd.DataFrame) -> dict:
