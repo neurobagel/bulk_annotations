@@ -102,9 +102,22 @@ gh repo list OpenNeuroDatasets-JSONLD --fork -L 500 | awk '{print $1}' | sed 's/
 ```
 
 ## Running the `bagel-cli` on bulk annotated data
-The following scripts are needed:
+The following scripts are used:
 - `extract_bids_dataset_name.py`
-- `parallel_bagel.sh`
+- `add_description.py`
 - `run_bagel_cli.sh`
+- `parallel_bagel.sh`
 
-Install Python dependencies in an environment with `pip install -r requirements.txt`.
+### Steps
+1. (Optional) create a new Python environment with `python -m venv my_env`.
+2. Activate your python environment with `source ./my_env/bin/activate`
+3. Install the dependencies with `pip install -r requirements.txt`
+
+4. Get the latest version of the `bagel-cli` from Docker Hub: `docker pull neurobagel/bagelcli:latest`
+
+5. Create a directory called `inputs` in the repository root that contains all the datasets that will be processed with the CLI.
+
+5. To run the CLI in parallel across the datasets in `inputs/`, double check that the directory paths used by `parallel_bagel.sh` and `run_bagel_cli.sh` are correct, then run:
+```bash
+./parallel_bagel.sh
+```
