@@ -111,9 +111,11 @@ The following scripts are used:
 ### Steps
 1. Activate a new Python environment and install the dependencies for this repo with `pip install -r requirements.txt`.
 
-2. Create a directory called `inputs` in the repository root that contains all the datasets that will be processed with the CLI.
+2. Get the latest version of the `bagel-cli` from Docker Hub: `docker pull neurobagel/bagelcli:latest`
 
-3. To run the CLI in parallel across the datasets in `inputs/`, double check that the directory paths used by `parallel_bagel.sh` and `run_bagel_cli.sh` are correct, then run:
+3. Create a directory called `inputs` in the repository root that contains all the datasets that will be processed with the CLI.
+
+4. To run the CLI in parallel across the datasets in `inputs/`, double check that the directory paths used by `parallel_bagel.sh` and `run_bagel_cli.sh` are correct, then run:
 ```bash
 ./parallel_bagel.sh
 ```
