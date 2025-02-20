@@ -22,3 +22,9 @@ outputs/list_participants_tsv_columns.py: outputs/openneuro.tsv
 
 outputs/list_participants_tsv_levels.py: outputs/openneuro.tsv
 	python list_participants_tsv_levels.py
+
+outputs/assessments.json:
+	python src/fetch_assessments.py
+
+outputs/assessments.tsv: outputs/assessments.json
+	python src/assessments_to_tsv.py
