@@ -6,3 +6,4 @@ pybids
 pytest
 typer
 jsonschema
+requests
