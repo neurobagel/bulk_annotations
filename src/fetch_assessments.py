@@ -11,5 +11,5 @@ def fetch_assessments(api_url, output_file):
 
 if __name__ == "__main__":
     API_URL = "https://api.neurobagel.org/assessments/"  # Replace with your API URL
-    OUTPUT_FILE = "assessments.json"
+    OUTPUT_FILE = "outputs/assessments.json"
     fetch_assessments(API_URL, OUTPUT_FILE)

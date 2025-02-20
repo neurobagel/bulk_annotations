@@ -18,6 +18,6 @@ def convert_to_table(input_file, output_file):
     
 
 if __name__ == "__main__":
-    INPUT_FILE = "assessments.json"
-    OUTPUT_FILE = "assessments.tsv"
+    INPUT_FILE = "outputs/assessments.json"
+    OUTPUT_FILE = "outputs/assessments.tsv"
     convert_to_table(INPUT_FILE, OUTPUT_FILE)
