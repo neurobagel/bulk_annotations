@@ -1,4 +1,4 @@
-.PHONY: openneuro openneuro-derivatives
+.PHONY: openneuro openneuro-derivativesv remap_openneuro
 
 install:
 	pip install -r requirements.txt
@@ -28,3 +28,16 @@ outputs/assessments.json:
 
 outputs/assessments.tsv: outputs/assessments.json
 	python src/assessments_to_tsv.py
+
+openneuro-annotations:
+	git submodule update --init --recursive
+
+manual_files/assessments_data_dictionary.json:
+	echo "You don't have the assessments data dictionary file. Please create it by following the instructions in manual_files/README.md."
+
+outputs/vocab_map.json: openneuro-annotations outputs/assessments.tsv manual_files/assessments_data_dictionary.json
+	python src/vocab_map.py
+
+remap_openneuro: openneuro-annotations outputs/vocab_map.json
+	python src/replace_in_dictionary.py
+
