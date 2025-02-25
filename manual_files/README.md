@@ -8,3 +8,11 @@ by running the following command:
 ```bash
 make outputs/assessments.tsv
 ```
+
+
+# Apply remapping of terms
+
+1. Run `make outputs/assessments.json` and `make outputs/assessments.tsv`
+2. Manually annotate the `outputs/assessments.tsv` file with the Neurobagel annotation tool: [https://annotate.neurobagel.org/](https://annotate.neurobagel.org/) and store it under `manual_files/assessments_data_dictionary.json`.
+3. Run `make remap_openneuro` to apply the remapping of terms to the annotated open neuro data dictionaries.
+4. Check the updated data dictionaries and then push the changes to the openneuro-annotations repo
