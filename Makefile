@@ -1,4 +1,4 @@
-.PHONY: openneuro openneuro-derivativesv remap_openneuro
+.PHONY: openneuro openneuro-derivatives remap_openneuro
 
 install:
 	pip install -r requirements.txt

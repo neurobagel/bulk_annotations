@@ -1,3 +1,5 @@
+"""Get the term URLs and labels of current assessment instances in the OpenNeuro graph."""
+
 import requests
 import json
 

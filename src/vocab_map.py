@@ -1,3 +1,5 @@
+"""Create a JSON where keys are Cognitive Atlas assessment term URIs (in the format <prefix>:<id>) and values are corresponding SNOMED term URIs."""
+
 import json
 
 import pandas as pd
