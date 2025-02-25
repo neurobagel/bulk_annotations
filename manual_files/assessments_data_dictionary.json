@@ -1,0 +1,125 @@
+{
+    "participant": {
+        "Description": "A participant ID",
+        "Annotations": {
+            "IsAbout": {
+                "Label": "Subject Unique Identifier",
+                "TermURL": "nb:ParticipantID"
+            },
+            "Identifies": "participant"
+        }
+    },
+    "Positive and Negative Affect Scale": {
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": "nb:Assessment",
+                "Label": "Assessment tool"
+            },
+            "IsPartOf": {
+                "TermURL": "snomed:304755000",
+                "Label": "Positive and negative affect schedule"
+            },
+            "MissingValues": []
+        },
+        "Description": ""
+    },
+  
+    "Wechsler Memory Scale Fourth Edition": {
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": "nb:Assessment",
+                "Label": "Assessment tool"
+            },
+            "IsPartOf": {
+                "TermURL": "snomed:273921009",
+                "Label": "Wechsler memory scale"
+            },
+            "MissingValues": []
+        },
+        "Description": ""
+    },
+    "Wechsler Adult Intelligence Scale - Revised": {
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": "nb:Assessment",
+                "Label": "Assessment tool"
+            },
+            "IsPartOf": {
+                "TermURL": "snomed:273917002",
+                "Label": "Wechsler adult intelligence scale - revised"
+            },
+            "MissingValues": []
+        },
+        "Description": ""
+    },
+    "Mini Mental State Examination": {
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": "nb:Assessment",
+                "Label": "Assessment tool"
+            },
+            "IsPartOf": {
+                "TermURL": "snomed:414750000",
+                "Label": "Mini mental state score"
+            },
+            "MissingValues": []
+        },
+        "Description": ""
+    },
+    "Raven's Advanced Progressive Matrices": {
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": "nb:Assessment",
+                "Label": "Assessment tool"
+            },
+            "IsPartOf": {
+                "TermURL": "snomed:718148002",
+                "Label": "Raven's Advanced Progressive Matrices"
+            },
+            "MissingValues": []
+        },
+        "Description": ""
+    },
+    "Peabody Picture Vocabulary Test": {
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": "nb:Assessment",
+                "Label": "Assessment tool"
+            },
+            "IsPartOf": {
+                "TermURL": "snomed:273692005",
+                "Label": "Peabody Picture Vocabulary Test"
+            },
+            "MissingValues": []
+        },
+        "Description": ""
+    },
+    "National Adult Reading Test": {
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": "nb:Assessment",
+                "Label": "Assessment tool"
+            },
+            "IsPartOf": {
+                "TermURL": "snomed:273640001",
+                "Label": "National adult reading test"
+            },
+            "MissingValues": []
+        },
+        "Description": ""
+    },
+    "Structured Clinical Interview for Diagnostic and Statistical Manual of Mental Disorders (DSM-IV)": {
+        "Annotations": {
+            "IsAbout": {
+                "TermURL": "nb:Assessment",
+                "Label": "Assessment tool"
+            },
+            "IsPartOf": {
+                "TermURL": "snomed:273843002",
+                "Label": "Structured clinical interview for DSM-III-R"
+            },
+            "MissingValues": []
+        },
+        "Description": ""
+    }
+}
