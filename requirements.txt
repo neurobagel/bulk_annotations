@@ -6,3 +6,5 @@ pybids
 pytest
 typer
 jsonschema
+requests
+tqdm
